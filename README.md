@@ -70,3 +70,10 @@ This course was published several years ago (Angular 7, currently versoin 15), f
 - Cuando se declara un objeto inicializándolo y posteriormente se le asigna otro objeto, si este no cumple con la estrucutra **exacta** del inicial (propiedades y tipo) TS marcará error. Cuando digo **exacta**, quiero decir, que no se pueden ni añadir ni quitar propiedades al objeto de las definidas inicialmente.
 
 ![Data type](./course_resources/Section_2/data_type_code_6.PNG)
+
+## 2.4 Skip files to compile
+- Es posible decirle a TS que el watcher omita ficheros/directorios a compilar. Para ello he movido el fichero TS usado para el estudio de los tipos de variables a la carpeta creada "typescript" y ene l tsconfig.json he especificado en un nuevo campo **exclude** el directorio que quiero omitir compilar. Por ello antes de activar el watcher (**tsc --w**) no tengo ningún JS generado y tras activarlo compila todo salvo la carpeta "typescript". En este caso genera sólo el app.js porque no hay más ficheros TS fuera de la carpeta "typescript".
+
+![Skip file / directory to compile](./course_resources/Section_2/skip_to_compile_1.PNG)
+![Skip file / directory to compile](./course_resources/Section_2/skip_to_compile_2.PNG)
+![Skip file / directory to compile](./course_resources/Section_2/skip_to_compile_3.PNG)
