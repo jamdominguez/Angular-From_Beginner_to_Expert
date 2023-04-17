@@ -50,3 +50,23 @@ This course was published several years ago (Angular 7, currently versoin 15), f
 </div>
 
 - El tipo **const** determina que una "variable" es constante y por tanto no se puede reasignar su valor. TS marcará el error y nos informará que ocurre. Pero al igual que antes, no restringe la compilación y el código JS dará error en tiempo de ejecución aunque su JS no marque error alguno. Es buena práctica usar constante porque necesitan menos espacio en memoria porque no tienen funciones para establecer valores. Por convención, su nombre se suele indicar en mayúscula del siguiente modo "MAX_CUSTOMERS".
+
+![Const](./course_resources/Section_2/const_ts_code.PNG)
+![Const](./course_resources/Section_2/const_js_code.PNG)
+![Const](./course_resources/Section_2/const_js_browser.PNG)
+
+## 2.3 Introduction to data type
+- En TS se puede definir el tipo de variable al declararla, esto se hace también de manera "automática" al asignarle el valor. Es decir, si al crear una variable le asignamos una palabra, automaticamente TS entiende que es de tipo **string** sin necesidad de que nosotros le indiquemos el tipo, aunque es aconsejable por mantenimiento de código. Con esto, si se intenta cambiar el valor por otr tipo, **number** por ejemplo, TS marcará error. Si se intenta asignar un valor de tipo distinto al que se declaró la variable, TS marcará error.
+
+![Data type](./course_resources/Section_2/data_type_code_1.PNG)
+![Data type](./course_resources/Section_2/data_type_code_2.PNG)
+
+- En TS existe el tipo de dato **any**, que puede ser cualquier cosa. Este tipo se asigna automáticamente cuando se declara una variable sin inicializarla, con lo que TS no sabe de qué tipo es. Una variable tipo any puede aceptar cualquier valor, es como una variable de JS, que no le afecta el tipado, TS no marcará error alguno. También se puede especificar que una variable pueda ser de uno u otro tipo con **|**.
+
+![Data type](./course_resources/Section_2/data_type_code_3.PNG)
+![Data type](./course_resources/Section_2/data_type_code_4.PNG)
+![Data type](./course_resources/Section_2/data_type_code_5.PNG)
+
+- Cuando se declara un objeto inicializándolo y posteriormente se le asigna otro objeto, si este no cumple con la estrucutra **exacta** del inicial (propiedades y tipo) TS marcará error. Cuando digo **exacta**, quiero decir, que no se pueden ni añadir ni quitar propiedades al objeto de las definidas inicialmente.
+
+![Data type](./course_resources/Section_2/data_type_code_6.PNG)

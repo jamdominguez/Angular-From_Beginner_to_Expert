@@ -1,15 +1,19 @@
-(function(){
-    
-let message = 'Hi';
+(function () {
 
-const id = '123';
-id = '53';
+    let greetings: string = 'Hi';    
+    let amount: number = 123;
+    let isOK: boolean = true;
+    let today: Date = new Date();
 
-if(true) {
-    let message = 'World';
-}
+    let something;
+    something = greetings;
+    something = amount;
+    something = isOK;
+    something = today;
 
-console.log(message); // Print Hi
-
+    let spiderMan = {
+        name: 'Peter',
+        age: 30
+    };
 
 })();

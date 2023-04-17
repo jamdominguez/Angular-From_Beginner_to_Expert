@@ -1,10 +1,16 @@
 "use strict";
 (function () {
-    let message = 'Hi';
-    const id = '123';
-    id = '53';
-    if (true) {
-        let message = 'World';
-    }
-    console.log(message); // Print Hi
+    var greetings = 'Hi';
+    var amount = 123;
+    var isOK = true;
+    var today = new Date();
+    var something;
+    something = greetings;
+    something = amount;
+    something = isOK;
+    something = today;
+    var spiderMan = {
+        name: 'Peter',
+        age: 30
+    };
 })();
