@@ -38,6 +38,7 @@ This course was published several years ago (Angular 7, currently versoin 15), f
 - Aunque el fichero TS tenga marque errores, el servicio de autocompilación lo compila. Si con un error por ejemplo en la declaración de una variable, ejecutamos el JS resultante, el navegador nos informará del error que ya nos estaba marcando TS.
 
 ![Variable no declared](./course_resources/Section_2/variable_no_declared_code.PNG)
+
 ![Variable no declared](./course_resources/Section_2/variable_no_declared_browser.PNG)
 
 - Dónde sea que hasta ahora se estuviese declarando en JS una variable tipo **var**, ahora se puede hacer tipo **let**. Las variables tipo **let** existen dentro de un scope determinado mientras que cno **var** no sucede esto.
@@ -45,6 +46,7 @@ This course was published several years ago (Angular 7, currently versoin 15), f
 <div align="center">
 
 ![Scope let](./course_resources/Section_2/scope_let_code.PNG)
+
 ![Scope var](./course_resources/Section_2/scope_var_code.PNG)
 
 </div>
@@ -52,19 +54,24 @@ This course was published several years ago (Angular 7, currently versoin 15), f
 - El tipo **const** determina que una "variable" es constante y por tanto no se puede reasignar su valor. TS marcará el error y nos informará que ocurre. Pero al igual que antes, no restringe la compilación y el código JS dará error en tiempo de ejecución aunque su JS no marque error alguno. Es buena práctica usar constante porque necesitan menos espacio en memoria porque no tienen funciones para establecer valores. Por convención, su nombre se suele indicar en mayúscula del siguiente modo "MAX_CUSTOMERS".
 
 ![Const](./course_resources/Section_2/const_ts_code.PNG)
+
 ![Const](./course_resources/Section_2/const_js_code.PNG)
+
 ![Const](./course_resources/Section_2/const_js_browser.PNG)
 
 ## 2.3 Introduction to data type
 - En TS se puede definir el tipo de variable al declararla, esto se hace también de manera "automática" al asignarle el valor. Es decir, si al crear una variable le asignamos una palabra, automaticamente TS entiende que es de tipo **string** sin necesidad de que nosotros le indiquemos el tipo, aunque es aconsejable por mantenimiento de código. Con esto, si se intenta cambiar el valor por otr tipo, **number** por ejemplo, TS marcará error. Si se intenta asignar un valor de tipo distinto al que se declaró la variable, TS marcará error.
 
 ![Data type](./course_resources/Section_2/data_type_code_1.PNG)
+
 ![Data type](./course_resources/Section_2/data_type_code_2.PNG)
 
 - En TS existe el tipo de dato **any**, que puede ser cualquier cosa. Este tipo se asigna automáticamente cuando se declara una variable sin inicializarla, con lo que TS no sabe de qué tipo es. Una variable tipo any puede aceptar cualquier valor, es como una variable de JS, que no le afecta el tipado, TS no marcará error alguno. También se puede especificar que una variable pueda ser de uno u otro tipo con **|**.
 
 ![Data type](./course_resources/Section_2/data_type_code_3.PNG)
+
 ![Data type](./course_resources/Section_2/data_type_code_4.PNG)
+
 ![Data type](./course_resources/Section_2/data_type_code_5.PNG)
 
 - Cuando se declara un objeto inicializándolo y posteriormente se le asigna otro objeto, si este no cumple con la estrucutra **exacta** del inicial (propiedades y tipo) TS marcará error. Cuando digo **exacta**, quiero decir, que no se pueden ni añadir ni quitar propiedades al objeto de las definidas inicialmente.
@@ -75,5 +82,14 @@ This course was published several years ago (Angular 7, currently versoin 15), f
 - Es posible decirle a TS que el watcher omita ficheros/directorios a compilar. Para ello he movido el fichero TS usado para el estudio de los tipos de variables a la carpeta creada "typescript" y ene l tsconfig.json he especificado en un nuevo campo **exclude** el directorio que quiero omitir compilar. Por ello antes de activar el watcher (**tsc --w**) no tengo ningún JS generado y tras activarlo compila todo salvo la carpeta "typescript". En este caso genera sólo el app.js porque no hay más ficheros TS fuera de la carpeta "typescript".
 
 ![Skip file / directory to compile](./course_resources/Section_2/skip_to_compile_1.PNG)
+
 ![Skip file / directory to compile](./course_resources/Section_2/skip_to_compile_2.PNG)
+
 ![Skip file / directory to compile](./course_resources/Section_2/skip_to_compile_3.PNG)
+
+## 2.5 String templates
+- El uso de backtics (**``**) permite usar string templates para que la concatenación de strings no sea tan engorrosa. Permite que todo lo que esté entre los backtics se procese como un string sin necesidad de poner caracteres especiales con el \n para el salto de línea, pero también los permite. También permite añadir lógica en la template, es decir todo lo que esté entre **{}** se considera código JS. Comprando el TS con el JS se puede ver que la mejora a la hora de trabajar con string es evidente
+ 
+![String templates](./course_resources/Section_2/string_template_1.PNG)
+
+![String templates](./course_resources/Section_2/string_template_2.PNG)
