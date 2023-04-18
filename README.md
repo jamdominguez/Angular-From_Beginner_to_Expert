@@ -93,3 +93,9 @@ This course was published several years ago (Angular 7, currently versoin 15), f
 ![String templates](./course_resources/Section_2/string_template_1.PNG)
 
 ![String templates](./course_resources/Section_2/string_template_2.PNG)
+
+## 2.6 Functions: Mandatory, Optional and Default parameters
+- Es muy importante espeficicar el tipo de dato en los parámetros de una función al definirla. Normalmente el orden de definir los parámetros de una función es obligatorios, opcionales y por defecto.
+  - Parámetro obligatorio: Se indica el nombre seguido de **:** y el tipo
+  - Parámetro opcional: Se indica como un obligatorio pero el nombre del parámetro concatenado con **?**
+  - Parámetro con valor por defecto: Se indica como un obligatorio seguido de **=** igual al valor por defecto
