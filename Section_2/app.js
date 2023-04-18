@@ -1,18 +1,17 @@
 "use strict";
-(function () {
-    var avengers = ['Thor', 'Ironman', 'Spiderman'];
-    console.log(avengers[0]); // Thor
-    console.log(avengers[1]); // Ironman
-    console.log(avengers[2]); // Spiderman
-    var lighting = avengers[0], technology = avengers[1], net = avengers[2]; // Here the order matters
-    console.log(lighting); // Thor
-    console.log(technology); // Ironman
-    console.log(net); // Spiderman
-    var human = avengers[1];
-    console.log(human); // Ironman
-    var extractArray = function (_a) {
-        var insect = _a[2];
-        console.log(insect); // Spiderman
-    };
-    extractArray(avengers);
+(() => {
+    console.log('Init');
+    // The promises can not be compiler to ES5 in JS, it is necessary change target version to ES6
+    const prom1 = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve('Timeout resolve');
+        }, 2000);
+        setTimeout(() => {
+            reject('Timeout reject');
+        }, 1000);
+    });
+    prom1
+        .then(message => console.log(message))
+        .catch(error => console.warn(error));
+    console.log('End');
 })();

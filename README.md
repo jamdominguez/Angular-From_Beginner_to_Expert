@@ -126,3 +126,25 @@ This course was published several years ago (Angular 7, currently versoin 15), f
 - Para extraer sólo algunos elementos de un array se usan **[]** y se pueden guardar directamente en variables. Para ellos los nombres de las variables pueden ser los que se quiera, pero aquí si que hay que respetar el orden. Si sólo se quiere extraer un elemento, habrá que seguir respentando el orden. Al igual que antes, también es posible usar la extracción directamente en una función (en la imagen no se marca como error porque aquí si se especifica el tipo)
 
 ![Destructure](./course_resources/Section_2/desctructure_3.PNG)
+
+## 2.9 Promises
+- Las promesas principialmente permiten tener una gestión sobre la respuesta de llamadas asíncronas. Cuando se requiere trabajar con respuestas de llamadas asíncronas el código se llena de callbacks, que se ejecutan (normalmente) cuando la llamada asíncrona en cuestión responde. Las promesas, ayudan a que el código no esté cargado de callbacks y que cuando se requiera utilizar los datos de una llamada asíncrona, saber si ese datos está ya disponible o no.
+- Al crear la promesa se le debe pasar función cuyo dos argumentos sean dos funciones, **resolve** y **reject**. El resolve se devuelve cuando todo funciona correctamente y el reject cuando algo falla.
+- La promesa tiene dos funciones, **then** y **catch**. Usamos then cuando todo ha ido bien y catch cuando falla algo. Y se recibe lo que se pase como parametro en el resolve o el reject. El no manejar errores en las promesas pueden detener el flujo del programa como se ve en una de las siguientes imágenes.
+
+![Promises](./course_resources/Section_2/promise_resolve_1.PNG)
+![Promises](./course_resources/Section_2/promise_resolve_2.PNG)
+![Promises](./course_resources/Section_2/promise_reject_1.PNG)
+![Promises](./course_resources/Section_2/promise_reject_2.PNG)
+
+- Hay que definir qué hacer en caso de que la promesa se resuelva bien y también mal.
+
+![Promises](./course_resources/Section_2/promise_reject_3.PNG)
+![Promises](./course_resources/Section_2/promise_reject_4.PNG)
+
+- En el ejemplo si se juega con el delay del timout se podrá verifica que sólo se ejecuta una de las funciones que se le pasa a la promesa, la que llegue antes.
+
+![Promises](./course_resources/Section_2/promise_1.PNG)
+![Promises](./course_resources/Section_2/promise_2.PNG)
+![Promises](./course_resources/Section_2/promise_3.PNG)
+![Promises](./course_resources/Section_2/promise_4.PNG)
