@@ -148,3 +148,18 @@ This course was published several years ago (Angular 7, currently versoin 15), f
 ![Promises](./course_resources/Section_2/promise_2.PNG)
 ![Promises](./course_resources/Section_2/promise_3.PNG)
 ![Promises](./course_resources/Section_2/promise_4.PNG)
+
+- Se puede simular la llamada a una función que retorne una promesa, esta se encargaría de solicitar a un servicio que hiciera algo (retirada de dinero en este caso) e implementar que hacer en caso de que la promesa se resuelva o falle. Además gracias a las función flecha puede quedar muy simple.
+
+![Promises](./course_resources/Section_2/promise_5.PNG)
+![Promises](./course_resources/Section_2/promise_5b.PNG)
+![Promises](./course_resources/Section_2/promise_6.PNG)
+![Promises](./course_resources/Section_2/promise_6b.PNG)
+![Promises](./course_resources/Section_2/promise_7.PNG)
+![Promises](./course_resources/Section_2/promise_7b.PNG)
+
+- Ahora mismo no hay control sobre el tipo de datos que devuelve la promesa, se indica que es desconocido (**unknown**). Para especificar esto en la función getMoney hay que definir el tipo de dato que se va a devolver, en este caso una promesa que si se resuelve será un number.
+
+![Promises](./course_resources/Section_2/promise_8.PNG)
+![Promises](./course_resources/Section_2/promise_9.PNG)
+![Promises](./course_resources/Section_2/promise_10.PNG)
