@@ -112,3 +112,17 @@ This course was published several years ago (Angular 7, currently versoin 15), f
 - Las funciones flecha pueden solventar el problema del scope de las funciones tradicionales, es decir, el **this** cambia. Con las funciones arrow no se cambia el scope.
 
 ![Arrow function](./course_resources/Section_2/arrow_function_2.PNG)
+
+## 2.8 Destructure objetcs and arrays
+- Es posible extraer partes de un objeto o de un array de manera simple.
+- Para extraer sólo algunos campos de un objeto se usan **{}** y se pueden guardar directamente en variables. Para ello los nombres de las variables deben coincidir con el nombre del campo, pero da igual el orden de extracción.
+
+![Destructure](./course_resources/Section_2/desctructure_1.PNG)
+
+- Es posible usar la extracción directamente en la definición de una función (en la imagen se marca como error porque no se especifica el tipo)
+
+![Destructure](./course_resources/Section_2/desctructure_2.PNG)
+
+- Para extraer sólo algunos elementos de un array se usan **[]** y se pueden guardar directamente en variables. Para ellos los nombres de las variables pueden ser los que se quiera, pero aquí si que hay que respetar el orden. Si sólo se quiere extraer un elemento, habrá que seguir respentando el orden. Al igual que antes, también es posible usar la extracción directamente en una función (en la imagen no se marca como error porque aquí si se especifica el tipo)
+
+![Destructure](./course_resources/Section_2/desctructure_3.PNG)
