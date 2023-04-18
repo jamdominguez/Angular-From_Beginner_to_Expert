@@ -99,3 +99,16 @@ This course was published several years ago (Angular 7, currently versoin 15), f
   - Parámetro obligatorio: Se indica el nombre seguido de **:** y el tipo
   - Parámetro opcional: Se indica como un obligatorio pero el nombre del parámetro concatenado con **?**
   - Parámetro con valor por defecto: Se indica como un obligatorio seguido de **=** igual al valor por defecto
+
+![Function parameters](./course_resources/Section_2/function_parameter_1.PNG)
+
+## 2.7 Arrow functions
+- Definir una función como una variable de tipo constante me permite que no pueda ser modificada, es una buena práctica.
+- Las funciones flecha fueron incluidas en ES6
+- Las funciones flecha tienen la ventaja de que si sólo tiene una línea con return, se puede omitir poner las llaves de la función **{}** y el propio **return**.
+
+![Arrow function](./course_resources/Section_2/arrow_function_1.PNG)
+
+- Las funciones flecha pueden solventar el problema del scope de las funciones tradicionales, es decir, el **this** cambia. Con las funciones arrow no se cambia el scope.
+
+![Arrow function](./course_resources/Section_2/arrow_function_2.PNG)
