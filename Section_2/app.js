@@ -1,19 +1,11 @@
 "use strict";
 (() => {
-    const getMoney = (amount) => {
-        let currentAmount = 1300;
-        return new Promise((resolve, reject) => {
-            if (amount > currentAmount) {
-                reject('Not enough money');
-            }
-            else {
-                currentAmount -= amount;
-                resolve(currentAmount);
-            }
-        });
+    const sentToMission = (xmen) => {
+        console.log(`${xmen.name} in action!`);
     };
-    getMoney(1500)
-        .then(currentAmount => console.log(`Current amount: ${currentAmount}`))
-        //.catch(error => console.warn(error)); // works
-        .catch(console.warn); // works too
+    const wolverine = {
+        name: 'Logan',
+        age: 60
+    };
+    sentToMission(wolverine);
 })();

@@ -163,3 +163,20 @@ This course was published several years ago (Angular 7, currently versoin 15), f
 ![Promises](./course_resources/Section_2/promise_8.PNG)
 ![Promises](./course_resources/Section_2/promise_9.PNG)
 ![Promises](./course_resources/Section_2/promise_10.PNG)
+
+## 2.10 Intefaces
+- Cuando se quiere acceder a propiedades de un objeto, no se puede estar seguro sin hacer una validación previa, que el objeto contenga dicha propiedad. Se podría indicar en una llamda que se manda un objeto y sus campos indicando el tipo de cada uno. De este modo si se intenta usar la función con un objeto que no cumpla al menos con los campos que se necesitan, se marcará error. Pero no es la mejor manera.
+
+![Interfaces](./course_resources/Section_2/interfaces_1.PNG)
+
+- Para tener un código robusto y además poder darle una entidad a los objetos, se usan interfaces. Basicamente es poner reglas para asegurarse de cumplirlas. No existe una interpretación de interface TS en JS. Para definir las interfaces se usa la palabra reservada **interface**. En la siguiente imágen se puede ver como tras definir la interface TS nos avisa que no se está asignando una propiedad que posea la interfaz definida.
+
+![Interfaces](./course_resources/Section_2/interfaces_2.PNG)
+
+- Si por alguna razón en el futuro hay que cambiar el nombre de una propiedad, TS avisaría de todos los lugares donde se está usando.
+
+![Interfaces](./course_resources/Section_2/interfaces_3.PNG)
+
+- También puede ocurrir que se le añada una propiedad a la interfaz, esto maracará error en la creación del objeto de ese tipo. Pero se puede indicar que una propiedad sea opcional concatenando **?** al nombre del campo. En la siguiente imagen se puede ver como TS indica que faltan dos de las tres nueas propiedades, esto es porque una de ellas es opcional.
+
+![Interfaces](./course_resources/Section_2/interfaces_4.PNG)
