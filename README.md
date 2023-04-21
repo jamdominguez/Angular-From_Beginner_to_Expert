@@ -233,7 +233,6 @@ set NODE_OPTIONS=--openssl-legacy-provider
 - Esta sección se centra en las importaciones, para ello, vamos a ver como importar una clase. Crear un fichero donde definir una clase y anteponer la plabra reservada **export** para poder usarla en otros ficheros, sin poner el export sólo se podría usar en su propio fichero (privada). En el index.ts usar esta clase (sin importarla aún), TS marcará un error
 
 ![Imports](./course_resources/Section_2/importer_4.PNG)
-
 ![Imports](./course_resources/Section_2/importer_5.PNG)
 
 - Para importar una clase no sólo es necesario que esta esté definida con el **export**, sino que dónde se quiera usar habrá que incar que la importamos, para ello se usa **import {...} from '...'**, dónde entre las {} se indica el nombre de la clase y tras el from la ruta dónde está definida. En la siguiente imagen se puede ver cómo ahora sí que reconoce la clase y TS nos indica que hay que añadir dos argumentos al constructor. Si se añaden métodos u otras propiedades, TS las reconoce y nos facilita la impmentación
@@ -244,3 +243,17 @@ set NODE_OPTIONS=--openssl-legacy-provider
 ![Imports](./course_resources/Section_2/importer_8b.PNG)
 
 - Hay más maneras de hacer importaciones, pero esta es la más común, el resto se irán viendo durante el curso según se necesiten.
+
+## 2.13 Classes decorators
+- Un decorador es una anotación (como en Java Spring) que se coloca antes de la clase y sirve para añadir funcionalidades / propiedades a la clase, como que es un componente, un servicio, etc, es decir, expande la clase. Para poder usarlos hay que inicar al TS que los habilite, para ello en el tsconfig.json descomentar la propiedad "experimentalDecorators" que está a true.
+
+![Classes decorators](./course_resources/Section_2/decorators_1.PNG)
+
+- Para que TS tome correctamente los cambios, habría que parar la aplicación y volver a levantarla, así el navegador ya no mostrará el error relacionado con los decoradores.
+
+- Añadiendo una función y poniendola en el decorador, se puede ver en el navegador como se ejecuta el código de la función añadida en el decorador cuando se crea la clase.
+
+![Classes decorators](./course_resources/Section_2/decorators_2.PNG)
+![Classes decorators](./course_resources/Section_2/decorators_2b.PNG)
+
+- Angular hará las importaciones / decoraciones automáticamente. El fin de este curso no es crear decoradores, si no usar los que Angular ya provee, y este punto de la sección está para entender qué hacen.
