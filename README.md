@@ -254,6 +254,22 @@ set NODE_OPTIONS=--openssl-legacy-provider
 - Añadiendo una función y poniendola en el decorador, se puede ver en el navegador como se ejecuta el código de la función añadida en el decorador cuando se crea la clase.
 
 ![Classes decorators](./course_resources/Section_2/decorators_2.PNG)
+
 ![Classes decorators](./course_resources/Section_2/decorators_2b.PNG)
 
 - Angular hará las importaciones / decoraciones automáticamente. El fin de este curso no es crear decoradores, si no usar los que Angular ya provee, y este punto de la sección está para entender qué hacen.
+
+## 2.14 Function return type
+- Hasta ahora no se había especificado el tipo de dato que devuelve una función, aunque TS si que lo reconoce, como en el siguiente ejemplo de una función que suman dos números (sabe que devuelve un número), por lo que podríamos ahorrarnos el especificar el tipo. Para específicar hay que indicarlo usando los **:** justo después de la declaración de argumentos de la función. Esto se hace para evitar errores y devolver algo que no se quiera, como se dijo anteriormente, es poner reglas para asegurarse cumplirlas.
+
+![Function return type](./course_resources/Section_2/function_return_type_1.PNG)
+
+![Function return type](./course_resources/Section_2/function_return_type_2.PNG)
+
+![Function return type](./course_resources/Section_2/function_return_type_3.PNG)
+
+- Pero, hay ocasiones en las que TS no es capaz de reconocer el tipo de dato que se devuelve. Eso es lo que pasa si se devuelve por ejemplo una promesa, que no se sabe de qué tipo es. Y portanto no se podría tener un buen control sobre el dato duvelto cuando se resuelva / rechace.
+
+![Function return type](./course_resources/Section_2/function_return_type_4.PNG)
+
+![Function return type](./course_resources/Section_2/function_return_type_5.PNG)
