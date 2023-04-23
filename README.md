@@ -273,3 +273,55 @@ set NODE_OPTIONS=--openssl-legacy-provider
 ![Function return type](./course_resources/Section_2/function_return_type_4.PNG)
 
 ![Function return type](./course_resources/Section_2/function_return_type_5.PNG)
+
+# 3 WebApp: Hello World
+En esta sección se va a realiar las primera aplicación Angular ("Hello World"). También se explicarán conceptos clave de Angular y se empezará a utilizar algunas instrucciones.
+
+## Introduction to Components and Directives
+- Las aplicaciones de Angular están basadas en múltiples componentes. Un componente es una pequeña clase que cumple una tarea específica. Contiene su propia lógica(TS), estructura (HTML) y estilo (CSS). Se aisla del resto de componentes, esto permite que sea reutilizable.
+- Las directivas estructurales son instrucciones que indican a la parte del HTML qué tiene que hacer. Dos directivas de las más utilizadas son **\*ngIf** y **\*ngFor**. La primera se suele utilizar para pintar o no elementos del HTML y la segunda para construir elementos a partir de iterar objetos / arrays.
+- Hay dos webs que son de gran ayuda a la hora de trabajar con Angular, una es su propia web https://angular.io/, donde encontrar toda la información sobre el framework. Y otra es un servicio que es un IDE en linea para probar rápidamente código con varios tipos de framworks, https://stackblitz.com/. En este servicio si pulsamos sobre la opción de Angular, arranca automaticament una aplicación ejemplo en Angular, dónde se puede ver la composición del proyecto, código y resultado.
+
+![Stackblitz](./course_resources/Section_3/stackblitz_1.PNG)
+
+![Stackblitz](./course_resources/Section_3/stackblitz_2.PNG)
+
+- En el ejemplo de Stackblitz se puede ver varias cosas en relación a los componentes. En el index.html que es el HTML que se carga al inicio se usa una tag llamada **my-app**, esta tag no es de HTML, sino que es la tag que indica que se pinte el componente cuyo selector es el nombre de la tag. Si se mira el main.ts, aquí se declarar un componente (con el decorador @Component) cuya propiedad **selector** es 'my-app', por lo que será este componente el que se pinte en el index.html. Este ejemplo es un caso particular ya que el componente también posee la propiedad **template** que indica como se ha de pintar el componente, pero lo normal es tener esto en un fichero separado del TS del componente. En el HTML de un componente se puede acceder a las propiedades del mismo con llaves dobles **{{}}**, se denomina **interpolación**. De hecho, en Angular cuando se usan las llaves dobles se puede ejecutar lógica cómo se fuese un JS.
+
+![Stackblitz](./course_resources/Section_3/stackblitz_3.PNG)
+
+![Stackblitz](./course_resources/Section_3/stackblitz_4.PNG)
+
+## Components
+- Es una clase extendida, es decir, con más funcionalidades.
+- Para crear un componente se usa la instrución de Angunar **ng g c nombreDelComponente** desde un terminal / consola de comandos (AngularCLI).
+- Usa el decorador **@Component** que es importado del módulo **Component** en **@angular/core**.
+- Propiedades relevantes:
+  - selector: Indica el nombre de la tag para usar el componente dentro de un HTML
+  - template: Estructura HTML del componente
+  - templateUrl: Ruta donde se encuentra el HTML que tiene la estructura del componente
+  - styleUrls: Array de rutas de los CSS que usa el componente.
+
+
+## Creating the WebApp
+- Para crear una aplicación Angular (sirivendonos de AngularCLI) se usa el comando **ng new nombreDeLaApp**. Si en la generación de la aplicación pregunta si usar routing, contestar no, y en el tipo de estilo a usar, contestar CSS.
+
+![Creating WebApp](./course_resources/Section_3/creating_webapp_1.PNG)
+
+![Creating WebApp](./course_resources/Section_3/creating_webapp_2.PNG)
+
+- Se instalarán todos los paquetes necesarios para crear la aplicación. Una vez instalados, en la terminal que se usa para los comandos se debe estar dentro de la carpeta creada para el proyecto, si no, no se reconocerán los comandos ng para trabajar en la aplicación.
+
+- Para arrancar la aplicación, usar el comando **ng serve**. Esto levanta un servidor local en el purto 4200 por defect. Si después del comando se añade el atributo **-p** se puede cambiar el puerto, si se añade el atributo **-o**, abrirá directamente el navegador con la aplicación.
+
+![Creating WebApp](./course_resources/Section_3/creating_webapp_3.PNG)
+
+- Tras crear la aplicación y levantarla, siempre que se haga un cambio en ella que necesite renderizarse, esto se hará de manera automática.
+
+- En la carpeta *src > app* es dónde se crea el componente principal de la aplicación, por así decirlo, el "componente aplicación". Si se modifica su app.component.html se verá como lo que renderiza la aplicación cambia.
+
+![Creating WebApp](./course_resources/Section_3/creating_webapp_4.PNG)
+
+![Creating WebApp](./course_resources/Section_3/creating_webapp_4c.PNG)
+
+![Creating WebApp](./course_resources/Section_3/creating_webapp_4b.PNG)
