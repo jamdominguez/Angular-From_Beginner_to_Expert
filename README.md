@@ -294,7 +294,11 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 
 ## Components
 - Es una clase extendida, es decir, con más funcionalidades.
-- Para crear un componente se usa la instrución de Angunar **ng g c nombreDelComponente** desde un terminal / consola de comandos (AngularCLI).
+- Para crear un componente se usa la instrución de Angunar **ng g c nombreDelComponente** desde un terminal / consola de comandos (AngularCLI). Esto cerará por defecto 4 ficheros y actualizará el app.module.ts añadiendo el nuevo componente a los declarados (**declarations**).
+  - HTML: Estructura del componente.
+  - CSS: Estilo del componente.
+  - TS: Lógica del componente
+  - SPEC.TS: Para testing del componente
 - Usa el decorador **@Component** que es importado del módulo **Component** en **@angular/core**.
 - Propiedades relevantes:
   - selector: Indica el nombre de la tag para usar el componente dentro de un HTML
@@ -356,7 +360,7 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
   - header.component.ts: Para la lógica del componente.
   - header.component.html: Para la estructura visual del componente.
   - header.component.css: Para el estilo visual del component.
-  - header.component.spec: Para testear el componente.
+  - header.component.spec.ts: Para testear el componente.
 
 - Hay que recordar que si la clase del componente no se exporta, no se podrá  importar y añadir a **declarations** en el app.module.ts y por tanto no se podrá usar en la aplicación con su selector.
 
@@ -383,3 +387,9 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![First Component](./course_resources/Section_3/first_component_8.PNG)
 
 ![First Component](./course_resources/Section_3/first_component_8b.PNG)
+
+- Habiendo visto lo tediso que es crear componentes de manera manual, es el momento de crearlos usando AngularCLI con el comando **ng g c nombreDelComponente** dentro de la carpeta del proyecto / aplicación Angular. Con el compando crear el "footer", creará 4 archivos y actualizará automaticamente el app.module.ts declarando el nuevo component.
+
+![First Component](./course_resources/Section_3/first_component_9.PNG)
+
+- Para aplicar estilos globales de la aplicación se usa el style.css que cuelga directamente de la carpeta "src", está al mismo nivel que la carpeta "app".
