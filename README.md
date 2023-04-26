@@ -372,7 +372,7 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 
 ![First Component](./course_resources/Section_3/first_component_3b.PNG)
 
-- Ahora se va a hacer uso de bootstrap para darle un aspecto más atractivo a la aplicación, para ello se usará el navbar en un nuevo fichero que se llamarán header.component.html ya que la cantidad de código es mucho mayor al aconsejable poner en la propiedad **template**. Este será el que usará el componente, por lo que hay que referenciarlo en su TS, en la propiedad **templateUrl**.
+- Ahora se va a hacer uso de bootstrap para darle un aspecto más atractivo a la aplicación, para ello se usará el *navbar* en un nuevo fichero que se llamarán header.component.html ya que la cantidad de código es mucho mayor al aconsejable poner en la propiedad **template**. Este será el que usará el componente, por lo que hay que referenciarlo en su TS, en la propiedad **templateUrl**.
 
 ![First Component](./course_resources/Section_3/first_component_4.PNG)
 
@@ -393,3 +393,33 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![First Component](./course_resources/Section_3/first_component_9.PNG)
 
 - Para aplicar estilos globales de la aplicación se usa el style.css que cuelga directamente de la carpeta "src", está al mismo nivel que la carpeta "app".
+
+![First Component](./course_resources/Section_3/first_component_10.PNG)
+
+![First Component](./course_resources/Section_3/first_component_12.PNG)
+
+![First Component](./course_resources/Section_3/first_component_11.PNG)
+
+- El siguiente paso es empezar a implementar el "body". Para ello se usará las *cards* y *lists* de bootstrap, además de modificar algo el css para que el aspecto de la aplicación quede mejor. Dejando de la siguiente manera los HTML's el aspecto de la página mejor mucho. Ya sólo quedaría aplicar directivas de Angular.
+
+![First App](./course_resources/Section_3/first_app_1.PNG)
+
+![First App](./course_resources/Section_3/first_app_2.PNG)
+
+![First App](./course_resources/Section_3/first_app_2b.PNG)
+
+## Directives: *ngInf and *ngFor
+- Las directivas estrucutrales son instrucciones que agregan, eliminan o reemplazan elementos HTML en la template.
+- La directiva estructural *gnIf se suele utilizar para mostrar / ocultar algo del componente. Para ello se usa la directiva en el elemento que se desea mostrar / ocultar. Si la directiva es igual a true, mostrará en elemento, si es igual a false, lo ocultará. Hay que tener en cuenta que usando esta directiva, Angular lo que hace es destruir / recrear el objeto (no ocultarlo / mostarlo.). En el ejemplo, con el botón se puede cambiar el valor de la variable usada para mostrar u ocultar la zona de información. La directiva quedaría como **\*ngIf="showElement"**
+
+![ngIf](./course_resources/Section_3/ngif_1.PNG)
+
+![ngIf](./course_resources/Section_3/ngif_2.PNG)
+
+- La directiva estructural *ngFor se usa pintar un mismo elemento / bloque de código varias veces con diferente información, normalmete recorriendo un array. La directiva quedaría como **\*ngFor="let element of list"**, pudiendo usar element para obetner la información. Dentro del *ngFor se puede acceder al indice (**index**) de la iteración que se está realizando.
+
+![ngFor](./course_resources/Section_3/ngfor_1.PNG)
+
+![ngFor](./course_resources/Section_3/ngfor_2.PNG)
+
+![ngFor](./course_resources/Section_3/ngfor_2b.PNG)

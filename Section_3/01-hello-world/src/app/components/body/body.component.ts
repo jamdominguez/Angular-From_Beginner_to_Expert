@@ -6,4 +6,16 @@ import { Component } from "@angular/core";
 })
 export class BodyComponent {
 
+    cardInfo: any = {
+        message: 'Un gran poder conyeba una gran responsabilidad',
+        author: 'Ben Parker'
+    };
+
+    showCardInfo = true;
+
+    characters = [
+        'Spiderman',
+        'Venom',
+        'Dr. Octopus'
+    ];
 }
