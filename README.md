@@ -298,7 +298,7 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 - Usa el decorador **@Component** que es importado del módulo **Component** en **@angular/core**.
 - Propiedades relevantes:
   - selector: Indica el nombre de la tag para usar el componente dentro de un HTML
-  - template: Estructura HTML del componente
+  - template: Estructura HTML del componente. Se usa cuando el HTML del componente es simple (1 o 2 líneas)
   - templateUrl: Ruta donde se encuentra el HTML que tiene la estructura del componente
   - styleUrls: Array de rutas de los CSS que usa el componente.
 
@@ -344,3 +344,42 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 - <u>**tsconfig.json**</u>: Indica a TS cómo trabajar.
 
 ![Project Structure](./course_resources/Section_3/project_structure_1.PNG)
+
+## Using Boostrap in first component
+- Para al primera aplicación se va a usar la librería bootsrap (https://getbootstrap.com/) para aplicar un CSS atractivo para la misma. Para ello no se va a instalar ninguna dependencia de bootsrap, sino que directamente se usará la librería (fichero) que tienen publicado importándolo es la aplicación vía CDN. Se añade al index.html de la aplicación.
+
+![Bootstrap CDN](./course_resources/Section_3/using_bootstrap_CDN_1.PNG)
+
+![Bootstrap CDN](./course_resources/Section_3/using_bootstrap_CDN_2.PNG)
+
+- Este primer componente se creará de manera manual (no mediante el comando del AngularCLI), para así entender mejor como funciona Angular. La estructura que se suele seguir es crear una carpeta **components** dentro de **app** para almacenar todos los componentes y dentro de esta una carpeta por cada componente. Empezaremos por el "header". Dentro de la carpeta header es dónde se añadirán los archivos del componente.
+  - header.component.ts: Para la lógica del componente.
+  - header.component.html: Para la estructura visual del componente.
+  - header.component.css: Para el estilo visual del component.
+  - header.component.spec: Para testear el componente.
+
+- Hay que recordar que si la clase del componente no se exporta, no se podrá  importar y añadir a **declarations** en el app.module.ts y por tanto no se podrá usar en la aplicación con su selector.
+
+![First Component](./course_resources/Section_3/first_component_1.PNG)
+
+![First Component](./course_resources/Section_3/first_component_2.PNG)
+
+![First Component](./course_resources/Section_3/first_component_3.PNG)
+
+![First Component](./course_resources/Section_3/first_component_3b.PNG)
+
+- Ahora se va a hacer uso de bootstrap para darle un aspecto más atractivo a la aplicación, para ello se usará el navbar en un nuevo fichero que se llamarán header.component.html ya que la cantidad de código es mucho mayor al aconsejable poner en la propiedad **template**. Este será el que usará el componente, por lo que hay que referenciarlo en su TS, en la propiedad **templateUrl**.
+
+![First Component](./course_resources/Section_3/first_component_4.PNG)
+
+![First Component](./course_resources/Section_3/first_component_5.PNG)
+
+- Se puede crear otro componente "body" dentro de la carpeta "app > components" para usarse después del "header", este debe tener su TS y su HTML, además deberá ser declarado en el app.module.tos, quedando de la siguiente manera:
+
+![First Component](./course_resources/Section_3/first_component_6.PNG)
+
+![First Component](./course_resources/Section_3/first_component_7.PNG)
+
+![First Component](./course_resources/Section_3/first_component_8.PNG)
+
+![First Component](./course_resources/Section_3/first_component_8b.PNG)
