@@ -505,3 +505,42 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 
 - La información para rellenar este componente debe ser proveida por un servicio, es estandar y buena práctica.
 
+## Heroes Service
+- La idea de los servicios es aislas los datos de los componentes y que estos sólo se encarguen de pintar cosas y si tienen que hacer alguan lógica es en referencia a los datos que tratan, no a obtener datos, estos deben ser proveidos por un servicio. Así, si otro componente necesita los mismos datos que el anterior, puede usar este servicio también.
+- Los servicios:
+  - Proveen información a quien lo necesite
+  - Realizan peticiones CRUD
+  - Persistencia de datos
+  - Recurso reutilizable
+- AngularCLI permite crear servicios con la instrucción **ng g s nombreDelServicio**. Se suelen organizar dentro de una carpeta "app > services"
+
+![Heroes service](./course_resources/Section_4/heroes_service_1.PNG)
+
+- Una vez creado, se puede inyectar en el componente que se quiera usar. Para ello, en el constructor del componente añadir un argumento privado del tipo del servicio. En nuestro caso, en el componente heroes. Cuando se inyecta un servicio, sólo se hace una vez y aunque se vuelva a llamar al componente, no se vuelve a crear el servicio. Es decir, ya queda inyectado en el momento que se crea el primer componente que lo use (como un singleton de Java).
+
+![Heroes service](./course_resources/Section_4/heroes_service_2.PNG)
+
+- En el curso indica que los servicios hay que declararlos en el app.module.ts en la propieda **providers**, pero el lo crea de manera manual, sin comando y a mi no se me ha actualizado, pudiendo usarlo / inyectarlo correctamente en el componente. Así parece que ya no hace falta dicha declaración.
+- Para rellenar de información el servicio, se usarán los datos del fichero data.txt proporcionado en los recursos del curso y se puede añadir como array dentro del servicio. Con una función pública el servicio puede proveer dicha información y usar dicha función en el heroes component.
+
+![Heroes service](./course_resources/Section_4/heroes_service_3.PNG)
+
+- El sitio adecuado donde hacer una llamada a un servicio y guardar su valor en un campo de un componente es el ngOnInit. Aquí es dónde se debería hacer y ya con los datos crear el contenido del componente.
+
+![Heroes service](./course_resources/Section_4/heroes_service_4.PNG)
+
+![Heroes service](./course_resources/Section_4/heroes_service_4b.PNG)
+
+- Con toda la información proporcionada por el servicio se puede construir el componente heroes usando la directiv *ngFor.
+
+![Heroes service](./course_resources/Section_4/heroes_service_5.PNG)
+
+![Heroes service](./course_resources/Section_4/heroes_service_5b.PNG)
+
+- Una ultima cosa para dejar bien el código sería que el array de heroes no fuese de tipo any, sino que fuese del tipo Heroes (interfaz). Se puede crear la interfaz dentro del servicio y exportarla para poder usarla en los componentes también.
+
+![Heroes service](./course_resources/Section_4/heroes_service_6.PNG)
+
+![Heroes service](./course_resources/Section_4/heroes_service_7.PNG)
+
+![Heroes service](./course_resources/Section_4/heroes_service_8.PNG)
