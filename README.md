@@ -490,5 +490,18 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![Routing](./course_resources/Section_4/routing_5.PNG)
 
 - Para mejorar la transición entre componentes se puede incluir el animate.css de los recursos de la sección. El contenido de este fichero se puede pegar en el style.css de la aplicación.
-
 - Por último en relación a las rutas es hacer que el estilo del navbar se actualice según ruta seleccionada. Se debe a que no se le está colocando la clase active al elemento. Esto se puede hacer usando el **routerLinkActive** en cada "a" del "navbar" e igualándolo a la clase que se quiere aplicar cuando se seleccione la ruta.
+
+![Navbar](./course_resources/Section_4/navbar_2.PNG)
+
+## Heroes Component
+- Para montar este componente se va a usar las "cards" de Bootstrap en https://getbootstrap.com/docs/5.3/components/card/#about
+
+![Heroes](./course_resources/Section_4/heroes_1.PNG)
+
+![Heroes](./course_resources/Section_4/heroes_2.PNG)
+
+![Heroes](./course_resources/Section_4/heroes_2b.PNG)
+
+- La información para rellenar este componente debe ser proveida por un servicio, es estandar y buena práctica.
+
