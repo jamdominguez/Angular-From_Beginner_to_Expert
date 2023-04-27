@@ -274,7 +274,7 @@ set NODE_OPTIONS=--openssl-legacy-provider
 
 ![Function return type](./course_resources/Section_2/function_return_type_5.PNG)
 
-# 3 WebApp: Hello World
+# Section 3 WebApp: Hello World
 En esta sección se va a realiar las primera aplicación Angular ("Hello World"). También se explicarán conceptos clave de Angular y se empezará a utilizar algunas instrucciones.
 
 ## Introduction to Components and Directives
@@ -423,3 +423,72 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![ngFor](./course_resources/Section_3/ngfor_2.PNG)
 
 ![ngFor](./course_resources/Section_3/ngfor_2b.PNG)
+
+
+# Section 4: SPA
+- Una Single Page Application, es una WebApp que usa ruta, servicios, buscadores y que refresca sólo sus componentes sin tener que refrescar el navegador.
+- De los recursos adjuntos en la sección para la realización de la WebApp, destacar el animate.css que contiene animaciones en CSS3 que harán la aplicación más atractiva y el data.txt que contiene información que mostrar en la aplicación.
+- Crear la aplicación spa con **ng new spa** y renombrar la carpeta a 02-spa. Cuando en la creación se pregunta si crear routing, responder N.
+- Para esta aplicación se generarán componentes compartidos, para ello, crear la carpeta app > components > shared, y dentro de ella el primer componente navbar con **ng g c components/shared/navbar**. Para este componente no necesitaremos ni su propio CSS ni su fichero de testing (SPEC.TS), por lo que se pueden eliminar. Recordar eliminar la referencia en el componente en la propiedad **stylesUrl**.
+
+![Navbar](./course_resources/Section_4/navbar_1.PNG)
+
+- El siguiente componente a crear podría ser el home, usando el mismo comando visto, pero esta vez dentro de la carpeta components pero no de la shared. Aquí tampoco se van a usar su CSS ni su fichero de testing, por lo que también se pueden elminar.
+- Si por alguna razón se crea un componente de manera errónea, es decir, se crea en un sitio que no queremos, o nos equivocamos en el nombre, etc, AngularCLI tiene un comando para eliminarlo, pero es posible hacerlo a mano, borrando su carpeta y posteriormente actualizando el app.module.ts, que es donde se declaran los componentes de la aplicación. También se puede modificar a mano, pero habrá que actualizar también el app.module.ts con los cambios hechos.
+
+## Libraries from 3rd parties (Bootstrap)
+- Existen 3 maneras de instalar bootstrap en la aplicación:
+  - Linkando la dirección CDN en https://getbootstrap.com/docs/5.3/getting-started/download/. Esta fue la manera usanda en la primera y es aplicación del curso. Es la aconsejada si se trata de una aplicación Web, ya que requerirá internet para cargar la librería, además puede que el usuario ya tenga cacheada la referencia a la librería de haber estado navegando por otras páginas. Lo que se hace es copiar el código de la página de bootstrap y pegarlo en el index.html de nuestra aplicación. Recordad que los links se colocan al principio del HTML y los scripts al final.
+
+  ![Bootstrap](./course_resources/Section_4/bootstrap_1.PNG)
+
+  - Descargando la librería en https://getbootstrap.com/docs/5.3/getting-started/download/. Se puede descargar la versión distribuida, copiar y pegar en el proyecto las carpetas CSS y JS. Así para utilizar bootstrap de este modo cuando se haga referencia a los ficheros habrá que indicar la ruta de donde se ha colocado dentro del proyecto. Esta manera tiene la ventaja de que no es necesaria conexión a internet, ya que la aplicación contiene ya las librerías. Normalmente, las librerías de externos, se suelen guardar en "src > assets > libs > nombreDeLalibreria".
+
+  ![Bootstrap](./course_resources/Section_4/bootstrap_5.PNG)
+
+  - La última manera es instalando la dependencia de bootstrap usando npm, con la instrucción **npm install** como indica la página de bootstrap https://getbootstrap.com/docs/5.3/getting-started/download/. Añadiendo el atributo **--save** a la instalación le indicamos a Angular que esta va a ser una librería que va a necesitar. Una vez instalado se puede comprobar que se ha añadido a la carpeta "node_modules". Así se isntala la última versión estable, se puede ver añadida al package.json del proyecto. En el curso, con la versión 4.1 de Bootstrap era necesario instalar jquery y popper.js ya que se informaban en unos warnings, pero a mi me ha instalado la versión 5.2 y no ha aparecido ningún warning, por lo que entiendo que esta dependencia ya no existe. Lo ultimo sería añandir en el angular.json el estilo de la aplicación, que en nuestro caso será aplicado por la librería Bootstrap. Esto se hace añadiendo esta información en los campos **styles** y **scripts**, así AngularCLI sabrá como funciona la aplicación. Después de esto es necesario parar la aplicación y volver a levantarla. Esta última manera hace que todas las librerías formen parte del bundle, y puede hacer que la librería pese un poco más.
+
+  ![Bootstrap](./course_resources/Section_4/bootstrap_3.PNG)
+
+  ![Bootstrap](./course_resources/Section_4/bootstrap_4.PNG)
+
+  ![Bootstrap](./course_resources/Section_4/bootstrap_5.PNG)
+
+  ![Bootstrap](./course_resources/Section_4/bootstrap_6.PNG)
+
+- Si tras aplicar alguna de estas maneras para añadir bootstrap a la aplicación y volver arrancarla, se comrprueba que el estilo ha cambiado (aunque sea minimamente) y no hay errores en la terminal o en la consola del navegador, es que se ha hecho bien.
+  
+## Components configuration
+- Lo primero es copiarse todos los recursos descargados a la carpeta "assets > imgs" del proyecto.
+- El favicon.ico reemplazarlo por el de los recursos de la sección.
+- Para el componente navbar usar el código de navbar de bootstrap https://getbootstrap.com/docs/5.3/components/navbar/#how-it-works
+- Para el componente home usar el código de jumbotron de bootstrap https://getbootstrap.com/docs/5.3/examples/jumbotron/
+- En este punto hay que añadir 2 nuevos componentes, uno para los "heroes" y otro para el "about"
+
+## Routing
+- Las rutas permiten navegar entre componentes / paginas de nuestra WebApp sin necesidad de hacer refresh del navegador. Si se creo el proyecto sin routing, habrá que crear el fichero donde configurar las rutas, si por el contrario se creo con routing, este fichero ya existirá y sólo habrá que ir actualizandolo. El fichero se encuentra al mismo nivel que el app.module.ts. Existe una convención para que este archivo se llame **app.routes.ts**. Con la extensión Angular 10 Snippets (en mi caso) tendremos sugerencias para crear este módulo de rutas en Angular. Cuando el curso se creó, el componente de rutas se creaba con ng2-routes, pero parece que esto ya no existe en mi versión (15), y ahora se usa **ng-router-appmodule**. Al fichero de rutas también se le suele llamar **app-routing.module.ts**.
+
+![Routing](./course_resources/Section_4/routing_1.PNG)
+
+- Una vez creado el contenido del fichero, hay que crear las diferentes rutas de la aplicación. Por ahora con definir la ruta del home y del about es suficiente. Al forRoot es recomendable usar el hash con **{useHash: true}** para evitar problemas en el envío de parámetros. Por otro lado en el index.html se indica **base href="/"**, si esto se quita / comenta y no se usan rutas, la aplicación va a dar error (No base href set).
+
+![Routing](./course_resources/Section_4/routing_2.PNG)
+
+![Routing](./course_resources/Section_4/routing_2b.PNG)
+
+- Una cosa muy importante, si no, no se podrán usar las rutas, es ten el app.module.ts indicar que se va a importar el sitema / módulo de rutas. Para ello en el campo **imports** añadir el **AppRoutingModule**. En el curso se hace algo diferente ya que la versión de Angular es más antigua y esto ha cambiado en la versión que yo uso (15)
+
+![Routing](./course_resources/Section_4/routing_3.PNG)
+
+- En el app.component.html con el selector **router-outlet** es como indicamos que ese ahí se renderizará un componente según la ruta.
+
+![Routing](./course_resources/Section_4/routing_4.PNG)
+
+- Terminar de añadir las rutas e indicar que para un path no definido que redireccione a lo mismo que hace la ruta home.
+- Ahora se va a añadir **routerLink** en los elementos del navbar con los que queremos hacer que se navegue. A estas directivas de Angular se les asigna un array, donde cada posición del array es un segmento del path que va a cargar y por tanto su componente asociado y definido en el app.routes.ts.
+
+![Routing](./course_resources/Section_4/routing_5.PNG)
+
+- Para mejorar la transición entre componentes se puede incluir el animate.css de los recursos de la sección. El contenido de este fichero se puede pegar en el style.css de la aplicación.
+
+- Por último en relación a las rutas es hacer que el estilo del navbar se actualice según ruta seleccionada. Se debe a que no se le está colocando la clase active al elemento. Esto se puede hacer usando el **routerLinkActive** en cada "a" del "navbar" e igualándolo a la clase que se quiere aplicar cuando se seleccione la ruta.
