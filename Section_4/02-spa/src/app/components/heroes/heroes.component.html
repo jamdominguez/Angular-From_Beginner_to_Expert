@@ -3,9 +3,9 @@
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
 
-    <div *ngFor="let hero of heroes" class="col">
+    <div *ngFor="let hero of heroes; let i = index" class="col animated fastIn fast">
         <div class="card h-100">
-            <img src="{{ hero.img }}" class="card-img-top" alt="{{ hero.nombre }}">
+            <img [src]="hero.img" class="card-img-top" [alt]="hero.nombre">
             <div class="card-body">
                 <h5 class="card-title">{{ hero.nombre }}</h5>
                 <p class="card-text">{{ hero.bio }}</p>
@@ -13,7 +13,8 @@
             <div class="card-footer">
                 <small class="text-body-secondary">{{ hero.casa }} {{ hero.aparicion }}</small>
             </div>
-            <button type="button" class="btn btn-outline-primary">Ver mas...</button>
+            <button (click)="goToHeroeDetail(i)" type="button" class="btn btn-outline-primary">Ver más...</button>
+            <!-- <a [routerLink]="['/heroe', i]" class="btn btn-outline-primary">Ver más...</a> -->
         </div>
     </div>
 

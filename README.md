@@ -544,3 +544,61 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![Heroes service](./course_resources/Section_4/heroes_service_7.PNG)
 
 ![Heroes service](./course_resources/Section_4/heroes_service_8.PNG)
+
+- Un detalle cuando se asigna un valor a un atributo (src, alt, etc) de un elemento, es que aunque funcione usando **{{}}**, es mejor modo, poner entre **[]** el atributo, para indicar que eso lo maneja Angular e igualarlo directamente al valor / campo del componente sin poner nada más. Para lo que hay dentro de una etiqueta de un elemento si que se usa la interpolación (**{{}}**)
+
+![Heroes service](./course_resources/Section_4/heroes_service_9.PNG)
+
+- Hay dos mejoras que se pueden hacer, una es la de indicar en la fecha de aparición sólo el año y mes y en la biografia controlar el número de caracteres a mostrar. Para ello se usan los **Pipes** que se verán más adelante.
+
+## Routing with Router and ActivatedRoute parameter
+- Lo primero será crear un componente heroe que contenga toda la información de un heroe. Eb mi caso lo llamaré hero-detail, por difenrenciarlo un poco de la interfaz que se creó en el punto anterior.
+- Lo siguiente es añadir la nueva ruta de este componente al app.routes.ts. A la ruta habrá que indicarle que se le pasa un id para que el componente sepa de qué heroe se trata.
+
+![Routing parameter](./course_resources/Section_4/routing_parameter_1.PNG)
+
+- Lo siguiente es modificar el botón del componente heroes para que permita navegar a otra página. Pero aquí se tiene que tener en cuenta que si se usa routerLink como vimos anteriormente no va a funcionar, ya que el componente está dentro del router outlet, no como en el otro ejemplo, que el menú de navegación estaba en el header que era común y por tanto no estaba dentro del router outlet. Para que funcione es necesario moverse a la raiz. Si se escribe en el navegador "http://localhost:4200/heroe/1" funcionaría.
+
+![Routing parameter](./course_resources/Section_4/routing_parameter_2.PNG)
+
+- Hay dos formas de arreglar esto, o se modifica la ruta en el app.routes.ts, teniendo en cuenta que intentamos acceder a la ruta heroe cuando estamos en la de heroes. Aunque esta no es buena y aque interasa no cambiar la url de la raiz.
+
+![Routing parameter](./course_resources/Section_4/routing_parameter_3.PNG)
+
+- La segunda opción para arreglar esto sería en el routerLink en lugar de poner "heroe" directamente se pone "**/**heroe", que es lo aconsejable, logicamente sin modificar la ruta.
+
+![Routing parameter](./course_resources/Section_4/routing_parameter_4.PNG)
+
+- Por ahora se ha visto como hacer la redirección sustituyendo el "button" por un "a". Pero si queremos mantener el buttón, habría que hacer la redirección usando programación en el TS del componente. Para ello en el evento click del botón se asigna una función que hay que implementar usando el módulo Router. Para poder usarlo, hay que hacer igual que con un servicio, inyectarlo en el constructor. Con su función **navigate** y pasandole como parámetros lo mismo que al routerLink, se podrá navegar pulsando el botón que llama a esta función.
+
+![Routing parameter](./course_resources/Section_4/routing_parameter_5.PNG)
+
+![Routing parameter](./course_resources/Section_4/routing_parameter_6.PNG)
+
+- Lo siguiente es obtener el index que se manda por parámetro en el componente que tiene el detalle del heroe. Para esto se usa **ActivatedRoute**. Su propiedad **param** devuelve un observable (algo parecido a una promesa) que está atento de los cambios ne los parámetros de la ruta. Para ello es necesario suscribirse al observador. Así se obtiene el parámetro definido en la ruta (en este casi id) con su valor.
+
+![Routing parameter](./course_resources/Section_4/routing_parameter_7.PNG)
+
+- Ya conociendo el id del heroe, añadiendo un servicio al HeroesService para obtener el heroe a partir del id tendríamos toda la información que se necesita para pintar el componente de detalles del heroe.
+
+![Routing parameter](./course_resources/Section_4/routing_parameter_8.PNG)
+
+![Routing parameter](./course_resources/Section_4/routing_parameter_9.PNG)
+
+## Heroe Component and Pipes
+
+- Con la la información ya en el componente, se puede diseñar la pantalla de detalle de heroe y usar los datos.
+
+![Heroe detail](./course_resources/Section_4/heroe_detail_1.PNG)
+
+![Heroe detail](./course_resources/Section_4/heroe_detail_2.PNG)
+
+- Las Pipes son elementos de Angular que permiten modificar la visualización de datos basandose en templates, por ello hay un número determinado y definido de Pipes (https://angular.io/guide/pipes). En este componente se puede hacer que el nombre del título siempre en mayúsculas y que de la fecha sólo se muestre el año.
+
+![Pipes](./course_resources/Section_4/pipes_1.PNG)
+
+- Para usar las Pipes se utiliza el caracter **|**, de ahí su nombre (pipe, tubería)
+
+![Pipes](./course_resources/Section_4/pipes_2.PNG)
+
+![Pipes](./course_resources/Section_4/pipes_3.PNG)

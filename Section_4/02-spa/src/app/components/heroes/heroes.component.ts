@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Heroe, HeroesService } from 'src/app/services/heroes.service';
 
 @Component({
@@ -9,9 +10,13 @@ export class HeroesComponent {
 
   heroes: Heroe[] = [];
 
-  constructor(private heroesService: HeroesService) { }
+  constructor(private heroesService: HeroesService, private router: Router) { }
 
   ngOnInit(): void {
     this.heroes = this.heroesService.getHeroes();
+  }
+
+  goToHeroeDetail = (index: number) => {
+    this.router.navigate(['/heroe', index]);
   }
 }

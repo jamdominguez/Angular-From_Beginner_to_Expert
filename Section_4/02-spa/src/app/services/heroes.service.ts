@@ -57,17 +57,17 @@ export class HeroesService {
     }
   ];
 
-  constructor() {
-    console.log('HeroesService');
-  }
+  constructor() { }
 
   getHeroes = () => this.HEROES;
+
+  getHeroe = (id: number) => this.HEROES[id];
 }
 
 export interface Heroe {
-  nombre: string,
-  bio: string,
-  img: string,
-  aparicion: string,
-  casa: string
+  nombre?: string,
+  bio?: string,
+  img?: string,
+  aparicion?: string,
+  casa?: string
 }
