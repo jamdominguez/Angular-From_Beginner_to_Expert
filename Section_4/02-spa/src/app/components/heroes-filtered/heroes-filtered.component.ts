@@ -9,13 +9,15 @@ import { ActivatedRoute } from '@angular/router';
 export class HeroesFilteredComponent {
 
   heroes: Heroe[] = [];
+  name: string = '';
 
   constructor(
     private heroesService: HeroesService,
     private activatedRoute: ActivatedRoute) {
 
       this.activatedRoute.params.subscribe( params => {        
-        this.heroes = this.heroesService.searchHeroe(params['name']);
+        this.name = params['name'];
+        this.heroes = this.heroesService.searchHeroe(this.name);
       });
   }
 

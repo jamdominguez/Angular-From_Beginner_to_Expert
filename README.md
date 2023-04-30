@@ -631,4 +631,10 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![Search heroe](./course_resources/Section_4/search_hero_9b.PNG)
 
 - La única diferencia del heroes filtered al heroes es que he quitado el botón de ver más para diferenciarlos, además porque la función de ver detalles no funciona aquí correctamente ya que le pasa el index de un elemento del array filtrado y no del total de heroes y por tanto los detalles a los que redirecciona son del heroe equivocado (podéis probar). La manera de solucionar esto podría ser crear otra función en el service que se basara en este array filtrado para buscar los detalles del heroe, modificar el buscar detalles para que no se basara en el index si no en otra cosa (el nombre por ejemplo) y la última opción que se me ocurre sería modificar el array de datos para que tuviese un campo ID y que este fuese el que se pasara en la ruta para el detalle del heroe y por el que se filtrase (para mí la más fiable). No se que solución buscará Fernando (el profesor), o ni si quiera si lo hará ya que creo que esto en particular no es el fin de esta parte de la sección. Pero tras ello tomaré una decisión para la resolución, ya que creo que es una feature que debería aparecer.
+- En la resolución del ejercicio, las únicas diferencias fueron que la implementación de la función para obtener los heroes filtrados se llama difernte y no está hecha con .filter. Quel el HTML del componente es ligeramente diferente (lo voy a adaptar al de la resolución por dejarlo igual) y que en la lógica del nuevo componente la hace en el ngOnit y no en el constructor como yo.
+- En la resolución se propuso que el componente mostrara algo de información en el caso de que no encontrase nada. Para ello se crea una division para mostrar el mensaje y con una variable se decide si mostrar o no.
+
+![Search heroe](./course_resources/Section_4/search_hero_10.PNG)
+
+![Search heroe](./course_resources/Section_4/search_hero_10b.PNG)
 

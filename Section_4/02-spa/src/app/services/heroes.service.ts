@@ -71,7 +71,6 @@ export class HeroesService {
       const nameLower = hero.nombre?.toLocaleLowerCase();
       return nameLower && nameLower.indexOf(nameToSearch) > -1;
     });
-    console.log(filteredHeroes);
     return filteredHeroes;
   }
 }

@@ -1,8 +1,15 @@
-<h1> Héroes <small>Marvel y DC</small></h1>
+<h1> Héroes filtrados por: <small> {{ name }}</small></h1>
 <hr>
 
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div *ngIf="heroes.length === 0" class="row animated fadeIn">
+    <div class="col-md-12">
+        <div class="alert alert-info" role="alert">
+            No existen resultados para: {{ name }}
+        </div>
+    </div>
+</div>
 
+<div class="row row-cols-1 row-cols-md-3 g-4">
     <div *ngFor="let hero of heroes; let i = index" class="col animated fastIn fast">
         <div class="card h-100">
             <img [src]="hero.img" class="card-img-top" [alt]="hero.nombre">
@@ -15,5 +22,4 @@
             </div>
         </div>
     </div>
-
 </div>
