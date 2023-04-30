@@ -57,11 +57,23 @@ export class HeroesService {
     }
   ];
 
+  
   constructor() { }
-
+  
   getHeroes = () => this.HEROES;
-
+  
   getHeroe = (id: number) => this.HEROES[id];
+  
+  searchHeroe = (nameToSearch: string): Heroe[] => {
+    let filteredHeroes: Heroe[] = [];
+    filteredHeroes = this.HEROES.filter(hero => {
+      nameToSearch = nameToSearch.toLowerCase();
+      const nameLower = hero.nombre?.toLocaleLowerCase();
+      return nameLower && nameLower.indexOf(nameToSearch) > -1;
+    });
+    console.log(filteredHeroes);
+    return filteredHeroes;
+  }
 }
 
 export interface Heroe {

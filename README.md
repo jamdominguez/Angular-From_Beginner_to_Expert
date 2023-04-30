@@ -602,3 +602,30 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![Pipes](./course_resources/Section_4/pipes_2.PNG)
 
 ![Pipes](./course_resources/Section_4/pipes_3.PNG)
+
+## Search Heroes feature
+- En el navbar está el control de buscar. Lo que se quiere aquí es que se use para poder buscar cualquier heroe de los que aparezcan en la WebApp
+- Para facilitar el trabajo con los elementos del dom, se puede usar un alias con el carcater **\#** y después el nombre que se le quiera dar.
+- Para asociar un evento en un elemento, se pone el nombre del evento entre **()**. Con ello y lo explicado anteriormente se puede asociar una función al evento y pasarle el valor del elemento para así poder filtrar. Un detalle con respecto al curso, es que si se hace enter en el input se hará submit del formulario, al igual que si se pulsa el botón "Search". Por ello hay que hacer dos modificaciones extras, una es cambiar el form por un div y otra es cambiar en el botón que sea de tipo button en lugar de submit.
+
+![Search heroe](./course_resources/Section_4/search_hero_1.PNG)
+
+- Ahora la función en el navbar
+  
+![Search heroe](./course_resources/Section_4/search_hero_2.PNG)
+  
+- Como ejercicio añadir un componente que muestre los heroes fildtrados por nombre. Es decir, habría que crear una función nueva en el heroes service que devuelva los heroes filtrados. Ésta deberá ser llamada desde el componente nuevo para pintar la pantallla al mismo estilo que la del componente heroes. Previamente, la navbar debe proporcionarle el texto introducido por el usuario para que el nuevo componenten se lo pase a la función del servicio. Además habrá que añadir la ruta del nuevo componente.
+
+![Search heroe](./course_resources/Section_4/search_hero_3.PNG)
+
+![Search heroe](./course_resources/Section_4/search_hero_4.PNG)
+
+![Search heroe](./course_resources/Section_4/search_hero_5.PNG)
+
+![Search heroe](./course_resources/Section_4/search_hero_6.PNG)
+
+![Search heroe](./course_resources/Section_4/search_hero_7.PNG)
+
+![Search heroe](./course_resources/Section_4/search_hero_8.PNG)
+
+![Search heroe](./course_resources/Section_4/search_hero_9b.PNG)
