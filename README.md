@@ -638,3 +638,24 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 
 ![Search heroe](./course_resources/Section_4/search_hero_10b.PNG)
 
+## @Input: Information from parent to son
+- La idea es construir componentes usando otros componentes, por ejemplo un nuevo componente podría ser una tarjeta de heroe con la que se construye el componente heroes.Por tanto, crear un componente heroe tarjeta (heroe-card) cuyo HTML sea el del div que se usaba con el ngFor en el componente heroes, pero sin la directiva.
+- En esto punto se necesita enviar información de heroes a heroe-card, para ello es necesario el decorador **@Input()**, que lo que hace es indicarle a Angular que una propiedad que se quiere usar puede venir "de fuera" (ojo que hay que importarlo del core de Angular). Esto permite que desde el componente padre, cuando se usa el tag del componente hijo, se le pase información asignando el nombre entre **[]**.
+
+![Input](./course_resources/Section_4/input_1.PNG)
+
+![Input](./course_resources/Section_4/input_2.PNG)
+
+![Input](./course_resources/Section_4/input_3.PNG)
+
+- La función de ver detalle no está funcionando. Se puede utilizar el **@Input** para también pasar el indice y que así funcione correctamente.
+
+![Input](./course_resources/Section_4/input_4.PNG)
+
+![Input](./course_resources/Section_4/input_5.PNG)
+
+- Como tarea se propone utilizar del mmismo modo la reutilización de componentes en el heroes filtered. Tras hacerla, aunque ahora se esté usando un componente reutilizable el problema que tenía mos del ver detalles sigue estando.
+
+![Input](./course_resources/Section_4/input_6.PNG)
+
+![Input](./course_resources/Section_4/input_6b.PNG)

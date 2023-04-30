@@ -9,6 +9,7 @@ import { HeroesComponent } from './components/heroes/heroes.component';
 import { AppRoutingModule } from './app.routes';
 import { HeroeDetailComponent } from './components/heroe-detail/heroe-detail.component';
 import { HeroesFilteredComponent } from './components/heroes-filtered/heroes-filtered.component';
+import { HeroeCardComponent } from './components/heroe-card/heroe-card.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HeroesFilteredComponent } from './components/heroes-filtered/heroes-fil
     AboutComponent,
     HeroesComponent,
     HeroeDetailComponent,
-    HeroesFilteredComponent
+    HeroesFilteredComponent,
+    HeroeCardComponent
   ],
   imports: [
     BrowserModule,

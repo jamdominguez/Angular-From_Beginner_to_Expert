@@ -1,0 +1,12 @@
+<div class="card h-100">
+    <img [src]="hero.img" class="card-img-top" [alt]="hero.nombre">
+    <div class="card-body">
+        <h5 class="card-title">{{ hero.nombre }}</h5>
+        <p class="card-text">{{ hero.bio }}</p>
+    </div>
+    <div class="card-footer">
+        <small class="text-body-secondary">{{ hero.casa }} {{ hero.aparicion }}</small>
+    </div>
+    <button (click)="goToHeroeDetail()" type="button" class="btn btn-outline-primary">Ver más...</button>
+    <!-- <a [routerLink]="['/heroe', i]" class="btn btn-outline-primary">Ver más...</a> -->
+</div>
