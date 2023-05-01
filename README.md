@@ -710,3 +710,13 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![Pipes](./course_resources/Section_5/app_1.PNG)
 
 ![Pipes](./course_resources/Section_5/app_2.PNG)
+
+- **lowercase** y **uppercase** son pipes que se usan para capitalizar strings
+- **slice** se usa para cortar strings o arrays
+- **decimal** se usa para mostrar números con más o menos decimales. La palabra clave para usarlo es **number**
+
+![Pipes](./course_resources/Section_5/app_3.PNG)
+
+![Pipes](./course_resources/Section_5/app_4.PNG)
+
+![Pipes](./course_resources/Section_5/app_4b.PNG)
