@@ -57,6 +57,41 @@
           <td> number:'.0-2' </td>
           <td> {{ PI | number:'.0-2' }} </td>
         </tr>
+        <tr>
+          <td>{{ myPercent }}</td>
+          <td> percent </td>
+          <td> {{ myPercent | percent }} </td>
+        </tr>
+        <tr>
+          <td>{{ myPercent }}</td>
+          <td> percent:'2.2-2' </td>
+          <td> {{ myPercent | percent:'2.2-2' }} </td>
+        </tr>
+        <tr>
+          <td>{{ salary }}</td>
+          <td> currency </td>
+          <td> {{ salary | currency }} </td>
+        </tr>
+        <tr>
+          <td>{{ salary }}</td>
+          <td> currency:'EUR' </td>
+          <td> {{ salary | currency:'EUR' }} </td>
+        </tr>
+        <tr>
+          <td>{{ salary }}</td>
+          <td> currency:'CAD':'symbol':'.0-0' </td>
+          <td> {{ salary | currency:'CAD':'symbol':'.0-0' }} </td>
+        </tr>
+        <tr>
+          <td>{{ salary }}</td>
+          <td> currency:'CAD':'symbol-narrow':'.0-0' </td>
+          <td> {{ salary | currency:'CAD':'symbol-narrow':'.0-0' }} </td>
+        </tr>
+        <tr>
+          <td>{{ salary }}</td>
+          <td> currency:'LMP ':'symbol':'.1-1' </td>
+          <td> {{ salary | currency:'LMP ':'symbol':'.1-1' }} </td>
+        </tr>
       </tbody>
     </table>
 

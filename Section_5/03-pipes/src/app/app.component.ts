@@ -9,4 +9,6 @@ export class AppComponent {
   name: string = 'Capitán América';
   myArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   PI: number = Math.PI;
+  myPercent: number = 0.234;
+  salary: number = 1234.5;
 }

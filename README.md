@@ -720,3 +720,12 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![Pipes](./course_resources/Section_5/app_4.PNG)
 
 ![Pipes](./course_resources/Section_5/app_4b.PNG)
+
+- **percent** se usa para mostrar porcentajes. Permite mostrar más o menos decimales.
+- **currency** se usa para aplicar una moneda determinada basandose en los código establecidos por la ISO 4217. Se puden crear monedas personalizadas (como LMP). Permite mostrar más o menos decimales.
+
+![Pipes](./course_resources/Section_5/app_5.PNG)
+
+![Pipes](./course_resources/Section_5/app_6.PNG)
+
+![Pipes](./course_resources/Section_5/app_6b.PNG)
