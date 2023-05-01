@@ -687,3 +687,26 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![Output](./course_resources/Section_4/output_8.PNG)
 
 ![Output](./course_resources/Section_4/output_9.PNG)
+
+# Section 5: Pipes
+- Ya se ha hecho una introducción anteriormente a los Pipes, pero en esta sección se tratarán en profundidad.
+- Los Pipes son funciones que reciben uno o más argumentos y lo va a procesar para cambiar su formato. No cambia el objeto que trata, sólo crea una salida formateada a partir de la entrada que recibe.
+- Para usar los Pipes (tuberías) se usa el caracter **|**.
+- Hay un número limitado y definido de pipes que se pueden usar en Angular https://angular.io/guide/pipes:
+  - DataPipe
+  - UpperCasePipe
+  - LowerCasePipe
+  - CurrencyPipe
+  - DecimalPipe
+  - PercentPipe
+- Es posible crear Pipes personalizados.
+- Se usan las Pipes normalmente
+- Para usar los pipes que vienen incluidos en Angular no hay que importar nada.
+
+## WebApp: Pipes
+- Se creará un proyecto llamado pipes con **ng new pipes** donde se trabajarán los diferentes tipos de pipes.
+- En el app component iremos añadiendo todos los tipos de pipes.
+
+![Pipes](./course_resources/Section_5/app_1.PNG)
+
+![Pipes](./course_resources/Section_5/app_2.PNG)
