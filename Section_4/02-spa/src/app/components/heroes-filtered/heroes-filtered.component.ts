@@ -20,5 +20,8 @@ export class HeroesFilteredComponent {
         this.heroes = this.heroesService.searchHeroe(this.name);
       });
   }
+  goToHeroeDetail = (index: number) => {
+    this.heroesService.goToHeroeDetail(index);
+  }
 
 }

@@ -1,21 +1,22 @@
-import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Heroe } from 'src/app/services/heroes.service';
 
 @Component({
   selector: 'app-heroe-card',
-  templateUrl: './heroe-card.component.html',
-  styleUrls: ['./heroe-card.component.css']
+  templateUrl: './heroe-card.component.html'
 })
 export class HeroeCardComponent {
 
-  @Input() hero: any = {};
+  @Input() hero: Heroe = {};
   @Input() id: number = 0;
-  index : number = 0;
 
-  constructor(private router: Router) { }
+  @Output() heroDetail: EventEmitter<number>;
 
-  goToHeroeDetail = () => {
-    this.router.navigate(['/heroe', this.id]);
+  constructor() {
+    this.heroDetail = new EventEmitter();
   }
 
+  goToHeroeDetail = () => {
+    this.heroDetail.emit(this.id);
+  }
 }

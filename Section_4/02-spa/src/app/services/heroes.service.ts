@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -58,7 +59,12 @@ export class HeroesService {
   ];
 
   
-  constructor() { }
+  constructor(private router: Router) {
+    let index = 0;
+    this.HEROES.forEach(heroe => {      
+      heroe.id = index++;
+    });
+   }
   
   getHeroes = () => this.HEROES;
   
@@ -73,6 +79,10 @@ export class HeroesService {
     });
     return filteredHeroes;
   }
+
+  goToHeroeDetail = (index: number) => {
+    this.router.navigate(['/heroe', index]);
+  }
 }
 
 export interface Heroe {
@@ -80,5 +90,6 @@ export interface Heroe {
   bio?: string,
   img?: string,
   aparicion?: string,
-  casa?: string
+  casa?: string,
+  id?: number
 }

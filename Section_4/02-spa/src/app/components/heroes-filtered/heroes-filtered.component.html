@@ -10,6 +10,7 @@
 </div>
 
 <div class="row row-cols-1 row-cols-md-3 g-4">
-    <app-heroe-card *ngFor="let heroe of heroes; let i = index" [hero]="heroe" [id]="i" class="col animated fastIn fast">
+    <app-heroe-card (heroDetail)="goToHeroeDetail($event)" *ngFor="let heroe of heroes" [hero]="heroe"
+        [id]="heroe.id? heroe.id : 0" class="col animated fastIn fast">
     </app-heroe-card>
 </div>

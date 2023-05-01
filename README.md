@@ -654,8 +654,36 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 
 ![Input](./course_resources/Section_4/input_5.PNG)
 
-- Como tarea se propone utilizar del mmismo modo la reutilización de componentes en el heroes filtered. Tras hacerla, aunque ahora se esté usando un componente reutilizable el problema que tenía mos del ver detalles sigue estando.
+- Como tarea se propone utilizar del mmismo modo la reutilización de componentes en el heroes filtered. Tras hacerla, aunque ahora se esté usando un componente reutilizable el problema que teníamos al ver los detalles del hereo (index erróneo) sigue ocurriendo.
 
 ![Input](./course_resources/Section_4/input_6.PNG)
 
 ![Input](./course_resources/Section_4/input_6b.PNG)
+
+## @Output: Information from son to parent
+- Se puede utilizar la situación actual del error del indice para solventar el problema. En lugar de implementar la función goToHeroeDetail en el heroe-card, usar directamente la del padre. Para ello se usa el **@Output** que va de la mano con el **EventEmitter**. Aquí se crea una propiedad que será el evento que el padre estará escuchando, llevará el decorador Output y será de tipo EventEmitter. Al principio marcará error ya que hay que especificar el tipo de objeto / interfaz que devuelve la función asociada al evento. Además hay que inicializarlo en el constructor del componente.
+- Lo que se hace es que en la función del hijo se emite con **emit** el parametro necesario para la función que se quiere ejecutar del padre, en nuestro caso el index (id) del heroe del que se quieren ver los detalles.
+
+![Output](./course_resources/Section_4/output_1.PNG)
+
+- Lo siguiente es hacer que el padre escuche el evento enviado. Como lo que se ha hecho es crear un evento, se trata igual que cualquier otro (click, change, etc). Para recibir el parametro del evento se usa **$event**.
+
+![Output](./course_resources/Section_4/output_2.PNG)
+
+- Por ahora sólo se ha cambiado esto en el heroes pero no en el heroes filtered que es donde teníamos el error. Prosigamos a solucionarlo. La solución propuesta por Fernando (profesor) es que cuando se monta el array de heroes filtrados en el servicio añadir una propiedad a cada heroe del array que indique su indice y así posteriormente usarlo. Imagino que hace esto suponiendo un caso real en el que no pudiesemos modificar la data. Además revierte los cambios del envio de eventos. Yo mantendré el envio de evento y no modificaré la función, si no que añadiré el indice en el constructor del servicio, ya que lo veo más elegante.
+
+![Output](./course_resources/Section_4/output_3.PNG)
+
+![Output](./course_resources/Section_4/output_4.PNG)
+
+![Output](./course_resources/Section_4/output_5.PNG)
+
+- Además la función goToHeroDetail está implementada dos veces igual, una en heroes y otra en heroes filtered, habría que llevarla al heroes service, ya que ambos componentes inyectan el heroes services. Sólo tendríamos que usar el Router en el heroes services.
+
+![Output](./course_resources/Section_4/output_6.PNG)
+
+![Output](./course_resources/Section_4/output_7.PNG)
+
+![Output](./course_resources/Section_4/output_8.PNG)
+
+![Output](./course_resources/Section_4/output_9.PNG)

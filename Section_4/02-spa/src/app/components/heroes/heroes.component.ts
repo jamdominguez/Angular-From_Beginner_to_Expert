@@ -17,6 +17,6 @@ export class HeroesComponent {
   }
 
   goToHeroeDetail = (index: number) => {
-    this.router.navigate(['/heroe', index]);
+    this.heroesService.goToHeroeDetail(index);
   }
 }
