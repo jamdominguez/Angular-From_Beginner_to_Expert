@@ -1,7 +1,7 @@
 <h1 class="mt-3"> Pipes <small>Angular</small></h1>
 <hr>
 
-<div class="row">
+<div class="row  mb-5">
   <div class="col">
     <table class="table">
       <thead class="table-dark">
@@ -92,13 +92,32 @@
           <td> currency:'LMP ':'symbol':'.1-1' </td>
           <td> {{ salary | currency:'LMP ':'symbol':'.1-1' }} </td>
         </tr>
+        <tr>
+          <td>{{ valuePromiseResolve }}</td>
+          <td> async </td>
+          <td> {{ valuePromiseResolve | async }} </td>
+        </tr>
+        <tr>
+          <td>{{ valuePromiseReject }}</td>
+          <td> async </td>
+          <td> {{ valuePromiseReject | async }} </td>
+        </tr>
       </tbody>
     </table>
 
-    <h4>Slice</h4>
+    <h3>Slice</h3>
+    <hr>
     <ul>
       <li *ngFor="let item of myArray | slice:5:20">{{ item }}</li>
     </ul>
+
+    <h3>JSON <small>{{ heroe }}</small></h3>
+    <hr>
+    <div class="row md-5">
+      <div class="col">
+        <pre class="col">{{ heroe | json }}</pre>
+      </div>
+    </div>
 
   </div>
 </div>

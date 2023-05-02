@@ -11,4 +11,25 @@ export class AppComponent {
   PI: number = Math.PI;
   myPercent: number = 0.234;
   salary: number = 1234.5;
+  heroe = {
+    name: 'Logan',
+    key: 'Wolverine',
+    age: '500',
+    direction: {
+      addres: 'Primera',
+      number: 20
+    }
+  };
+
+  valuePromiseResolve = new Promise<string>(resolve => {
+    setTimeout(() => {
+      resolve('Data reponse!');
+    }, 4000);
+  });
+
+  valuePromiseReject = new Promise<string>((resolve, reject) => {
+    // setTimeout(() => {
+    //   reject('Response rejected!!!');
+    // }, 2000);
+  });
 }

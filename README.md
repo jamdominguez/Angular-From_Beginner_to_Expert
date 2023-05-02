@@ -729,3 +729,12 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![Pipes](./course_resources/Section_5/app_6.PNG)
 
 ![Pipes](./course_resources/Section_5/app_6b.PNG)
+
+- **JSON** se usa para ver en formato JSON un objeto (no el tipico [object Object]). Este pipe puede fallar si el objeto tiene algunas funciones. Para representar un JSON se puede usar la etiqueta **pre**, que bootstrap los muestra mejor.
+- **async** no recibe ningún argumento pero si una expresión. Sirve para trabajar con datos asíncronos, y saber lo que response cuando se resuelve o rechaza, lo único que para ver la respuesta de lo rechazado no sólo en la consola del navegador hay que capturar el error.
+
+![Pipes](./course_resources/Section_5/app_7.PNG)
+
+![Pipes](./course_resources/Section_5/app_8.PNG)
+
+![Pipes](./course_resources/Section_5/app_8b.PNG)
