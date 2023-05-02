@@ -32,4 +32,6 @@ export class AppComponent {
     //   reject('Response rejected!!!');
     // }, 2000);
   });
+
+  myDate = new Date();
 }

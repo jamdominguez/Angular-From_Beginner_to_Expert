@@ -102,6 +102,41 @@
           <td> async </td>
           <td> {{ valuePromiseReject | async }} </td>
         </tr>
+        <tr>
+          <td>{{ myDate }}</td>
+          <td> date </td>
+          <td> {{ myDate | date }} </td>
+        </tr>
+        <tr>
+          <td>{{ myDate }}</td>
+          <td> date:'medium' </td>
+          <td> {{ myDate | date:'medium' }} </td>
+        </tr>
+        <tr>
+          <td>{{ myDate }}</td>
+          <td> date:'short' </td>
+          <td> {{ myDate | date:'short' }} </td>
+        </tr>
+        <tr>
+          <td>{{ myDate }}</td>
+          <td> date:'MMMM-dd' </td>
+          <td> {{ myDate | date:'MMMM-dd' }} </td>
+        </tr>
+        <tr>
+          <td>{{ myDate }}</td>
+          <td> date:'dd-MMMM-yyyy' </td>
+          <td> {{ myDate | date:'dd-MMMM-yyyy' }} </td>
+        </tr>
+        <tr>
+          <td>{{ myDate }}</td>
+          <td> date:'dd-MM-yyyy' </td>
+          <td> {{ myDate | date:'dd-MM-yyyy' }} </td>
+        </tr>
+        <tr>
+          <td>{{ myDate }}</td>
+          <td> date:'dd/MM/yyyy' </td>
+          <td> {{ myDate | date:'dd/MM/yyyy' }} </td>
+        </tr>
       </tbody>
     </table>
 

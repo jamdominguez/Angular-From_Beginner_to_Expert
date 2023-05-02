@@ -738,3 +738,17 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![Pipes](./course_resources/Section_5/app_8.PNG)
 
 ![Pipes](./course_resources/Section_5/app_8b.PNG)
+
+- **date** es un pipe para trabajar con fechas y posee muchas configuraciones. En la página de Angular se pueden en contrar todas y es aconsejable echarle un ojo.
+
+![Pipes](./course_resources/Section_5/app_10b.PNG)
+
+- Existe un paquete para localizar la aplicación, se puede añadir con **ng add @angular/localize**. Tras ello hay que hacer los imports en el app.module.ts, crearse una función y añadir en los providers el *LOCALE_ID* con valor *es*. Tras ello los formatos del pipe **date** cambiarán a la localización especificada, en nuestro caso España, y no sólo eso, incluso traducirá el mes. Este paquete afecta incluso a los formatos de las monedas (ahora el tipo de moneda se ve al final del importe, no al princpio).
+
+![Pipes](./course_resources/Section_5/app_9.PNG)
+
+![Pipes](./course_resources/Section_5/app_11.PNG)
+
+![Pipes](./course_resources/Section_5/app_11b.PNG)
+
+![Pipes](./course_resources/Section_5/app_11bb.PNG)
