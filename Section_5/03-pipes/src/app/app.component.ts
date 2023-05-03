@@ -23,6 +23,8 @@ export class AppComponent {
   };
   language: string = 'es';
   videoLink = 'https://www.youtube.com/embed/CPUKGFVrQvE';
+  
+  activePassword = false;
 
   valuePromiseResolve = new Promise<string>(resolve => {
     setTimeout(() => {
@@ -36,10 +38,15 @@ export class AppComponent {
     // }, 2000);
   });
 
-  
+
   myDate = new Date();
 
-  setLanguage = (lang : string) => {
+  setLanguage = (lang: string) => {
     this.language = lang;
   }
+
+  switchPsw = () => {
+    this.activePassword = !this.activePassword
+  }
+
 }

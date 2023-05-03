@@ -827,3 +827,20 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![Custom Pipe](./course_resources/Section_5/custom_pipe_12.PNG)
 
 ![Custom Pipe](./course_resources/Section_5/custom_pipe_12b.PNG)
+
+## Pipes Task
+- Se propone hacer una tarea en la que hay que hacer un pipe password y en la pantalla añadir un botón que active / desactive muestre o no oculto el campo name, por medio de \*, tantos como longitud del name. Me he tomado un poco de libertad en la resolución haciendo que el botón cambio según la password esté activa o no.
+
+![Pipe Task](./course_resources/Section_5/pipe_task_1.PNG)
+
+![Pipe Task](./course_resources/Section_5/pipe_task_2.PNG)
+
+![Pipe Task](./course_resources/Section_5/pipe_task_3.PNG)
+
+![Pipe Task](./course_resources/Section_5/pipe_task_4.PNG)
+
+![Pipe Task](./course_resources/Section_5/pipe_task_4b.PNG)
+
+![Pipe Task](./course_resources/Section_5/pipe_task_4bb.PNG)
+
+- La resolución de Fernando (profesor) usa la función **repeat** para montar la palabra encriptada con \* además de una ternaria. Yo usé un bucle for para montar la palabra encriptada ya que desconocía esta función, ahora ya la conozco =D. El no creo función para el evento click del botón, niega directamente la variable, esta es la opción rápida, pero como yo hice 2 botones preferí hacer una función que hiciera esto, además que prefiero tener la mayor lógica posible fuera del HTML.

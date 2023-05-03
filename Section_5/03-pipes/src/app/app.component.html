@@ -43,6 +43,15 @@
           <td> {{ name | slice:0:3 }} </td>
         </tr>
         <tr>
+          <td>{{ name }}</td>
+          <td> password:{{ activePassword }} 
+          <br>
+          <button *ngIf="!activePassword" class="btn btn-success" (click)="switchPsw()">Activar</button>
+          <button *ngIf="activePassword" class="btn btn-danger" (click)="switchPsw()">Desactivar</button>
+          </td>
+          <td> {{ name | password:activePassword }} </td>
+        </tr>
+        <tr>
           <td>{{ myArray }}</td>
           <td> slice:1:5 </td>
           <td> {{ myArray | slice:1:5 }} </td>
