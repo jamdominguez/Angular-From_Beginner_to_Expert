@@ -775,3 +775,55 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![Pipes](./course_resources/Section_5/app_16.PNG)
 
 ![Pipes](./course_resources/Section_5/app_16b.PNG)
+
+## Custom Pipes
+### Capitalize
+- Es posible crear pipes personalizados y en este punto se va a crear uno para capitalizar palabras.
+- Crear un pipe es muy fácil usando AngularCLI con **ng g p pipes/capitalize**, normalmente se crean en la carpeta pipes. Tras ejecutar el comando se crea un TS y un TS de testing para el pipe creado, además se actualiza el app.module.ts que lo añade automaticamnete a los **declarations**. En el TS del pipe se puede ver como tiene el decorative @Pipe, implementea PipeTransform y además tiene una función transform que es la que es llamda cuando se usa el pipe.
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_1.PNG)
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_2.PNG)
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_3.PNG)
+
+- Ahora hay que trabajar con el pipe para indicar que se quiere hacer. Haciendo un pequeño cambio, sólo indicando que el pipe devuelve un string fijo (Hello World).
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_4.PNG)
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_5.PNG)
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_5b.PNG)
+
+- Modificando enteramente lo que queremos que haga el pipe
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_6.PNG)
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_7.PNG)
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_7b.PNG)
+
+### SecureDom
+- Se va a crear un pipe que verifique que al añadir un URL externo a la aplicación, éste sea seguro. Antes que nada, intentar usar un link externo a la aplicación, por ejemplo un link de youtube, se puede ver que el navegador muestra muchos errores debido a la incrustación de este enlace, pero aún así, la aplicación carga sin problemas y se puede ver el video.
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_8.PNG)
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_8b.PNG)
+
+- Conviritendo la URL del video en una pripiedad e insertandola en el HTML, Angular retorna un error NG0904: unsafe value used y no muestra el video incrustado.
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_9.PNG)
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_10.PNG)
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_10b.PNG)
+
+- Para poder mostrar este tipo de enlaces / recursos en la aplicación sin que Angular los bloquee es necesario crear un pipe para ello. En este caso lo llamaremos **securedom**. En el pipe se usará el **DomSanitizer** para poder verificar el recurso. Con los cambios, se mostrará el recursos, aunque los errores del browser volverán a aparecer ya que está bloqueando peticiones de esa URL incrustada.
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_13.PNG)
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_11.PNG)
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_12.PNG)
+
+![Custom Pipe](./course_resources/Section_5/custom_pipe_12b.PNG)

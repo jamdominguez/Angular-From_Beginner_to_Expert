@@ -1,7 +1,7 @@
 <h1 class="mt-3"> Pipes <small>Angular</small></h1>
 <hr>
 
-<div class="row  mb-5">
+<div class="row">
   <div class="col">
     <table class="table">
       <thead class="table-dark">
@@ -12,6 +12,16 @@
         </tr>
       </thead>
       <tbody>
+        <tr>
+          <td>{{ author }}</td>
+          <td> capitalize:true </td>
+          <td> {{ author | capitalize:true }}</td>
+        </tr>
+        <tr>
+          <td>{{ author }}</td>
+          <td> capitalize:false </td>
+          <td> {{ author | capitalize:false }}</td>
+        </tr>
         <tr>
           <td>{{ name }}</td>
           <td> uppercase </td>
@@ -132,9 +142,9 @@
           <td> date:'MMMM - dd':'':'en' </td>
           <td> {{ myDate | date:'MMMM - dd':'':'fr' }} </td>
         </tr>
-        <tr class="alert alert-primary" role="alert">          
+        <tr class="alert alert-primary" role="alert">
           <td>{{ myDate }}</td>
-          <td> date:'MMMM - dd':'':'{{ language }}' 
+          <td> date:'MMMM - dd':'':'{{ language }}'
             <br>
             <button (click)="setLanguage(esButton.value)" class="m-1 btn btn-warning" value="es" #esButton>ES</button>
             <button (click)="setLanguage(enButton.value)" class="m-1 btn btn-danger" value="en" #enButton>EN</button>
@@ -174,5 +184,16 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<h3 class="mt-4">SecureDom</h3>
+<hr>
+<div class="row mb-5">
+  <div class="col">
+    <iframe width="560" height="315" [src]="videoLink | securedom" title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
   </div>
 </div>
