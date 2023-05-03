@@ -3,9 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { registerLocaleData } from '@angular/common';
 import localEs from '@angular/common/locales/es'
+import localFr from '@angular/common/locales/fr'
 
 // the second parameter is optional
 registerLocaleData(localEs);
+registerLocaleData(localFr);
 
 import { AppComponent } from './app.component';
 

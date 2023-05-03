@@ -124,6 +124,26 @@
         </tr>
         <tr>
           <td>{{ myDate }}</td>
+          <td> date:'MMMM - dd':'':'en' </td>
+          <td> {{ myDate | date:'MMMM - dd':'':'en' }} </td>
+        </tr>
+        <tr>
+          <td>{{ myDate }}</td>
+          <td> date:'MMMM - dd':'':'en' </td>
+          <td> {{ myDate | date:'MMMM - dd':'':'fr' }} </td>
+        </tr>
+        <tr class="alert alert-primary" role="alert">          
+          <td>{{ myDate }}</td>
+          <td> date:'MMMM - dd':'':'{{ language }}' 
+            <br>
+            <button (click)="setLanguage(esButton.value)" class="m-1 btn btn-warning" value="es" #esButton>ES</button>
+            <button (click)="setLanguage(enButton.value)" class="m-1 btn btn-danger" value="en" #enButton>EN</button>
+            <button (click)="setLanguage(frButton.value)" class="m-1 btn btn-primary" value="fr" #frButton>FR</button>
+          </td>
+          <td> {{ myDate | date:'MMMM - dd':'':language }} </td>
+        </tr>
+        <tr>
+          <td>{{ myDate }}</td>
           <td> date:'dd-MMMM-yyyy' </td>
           <td> {{ myDate | date:'dd-MMMM-yyyy' }} </td>
         </tr>

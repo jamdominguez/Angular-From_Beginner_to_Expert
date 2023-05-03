@@ -20,6 +20,7 @@ export class AppComponent {
       number: 20
     }
   };
+  language: string = 'es'
 
   valuePromiseResolve = new Promise<string>(resolve => {
     setTimeout(() => {
@@ -33,5 +34,10 @@ export class AppComponent {
     // }, 2000);
   });
 
+  
   myDate = new Date();
+
+  setLanguage = (lang : string) => {
+    this.language = lang;
+  }
 }

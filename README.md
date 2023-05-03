@@ -752,3 +752,26 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![Pipes](./course_resources/Section_5/app_11b.PNG)
 
 ![Pipes](./course_resources/Section_5/app_11bb.PNG)
+
+- El paquete **localize** instala todos los idiomas en la máquina pero no están disponibles en la aplicación hasta que no se registran. Esto se hace en el app.module.ts. Cuando importamos el idioma lo tenemos disponible, y cuando lo configuramos en el providers del app.module.ts lo establecemos como idioma por defecto.
+- Se puede indicar el idioma de la fecha según se quiera. Por ejemplo se puede serleccionar que la fecha aparezca en ingés (**en**).
+
+![Pipes](./course_resources/Section_5/app_12.PNG)
+
+![Pipes](./course_resources/Section_5/app_12b.PNG)
+
+- Por defecto el idioma es inglés y nosotros previamente instalamos el español. Si re quiere por ejemplo el francés, sería necesario instalarlo previamente.
+
+![Pipes](./course_resources/Section_5/app_13.PNG)
+
+![Pipes](./course_resources/Section_5/app_14.PNG)
+
+![Pipes](./course_resources/Section_5/app_14b.PNG)
+
+- Intentar un ejercicio que mediante botones se pueda cambiar el idioma en el que se muestra la fecha.
+
+![Pipes](./course_resources/Section_5/app_15.PNG)
+
+![Pipes](./course_resources/Section_5/app_16.PNG)
+
+![Pipes](./course_resources/Section_5/app_16b.PNG)
