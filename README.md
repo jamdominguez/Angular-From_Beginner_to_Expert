@@ -844,3 +844,32 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![Pipe Task](./course_resources/Section_5/pipe_task_4bb.PNG)
 
 - La resolución de Fernando (profesor) usa la función **repeat** para montar la palabra encriptada con \* además de una ternaria. Yo usé un bucle for para montar la palabra encriptada ya que desconocía esta función, ahora ya la conozco =D. El no creo función para el evento click del botón, niega directamente la variable, esta es la opción rápida, pero como yo hice 2 botones preferí hacer una función que hiciera esto, además que prefiero tener la mayor lógica posible fuera del HTML.
+
+# Section 6: SpotiApp
+- Se va a crear una aplicación usando la API de Spotify, usando sobre todo el módulo HTTP. Otra cosa interesante será el tratamiento de los datos que se reciben de un servicio y la persistencia de los mismos en la navegación entre páginas.
+- Los servicios de Spotify se pueden ver en https://beta.developer.spotify.com/console/ y en esta página se indica en la sección *Getting started* los pasos para obtener las credenciales para poder llamar a los servicios. Es recomendable hacer login con su cuenta de Spotify.
+
+![Spoti API](./course_resources/Section_6/spoty_api_1.PNG);
+
+- Crear la aplicación de angular **spotiapp** y en ella para comenzar algunos componetentes, home, search, artist y la navbar en shared, sin fichero de pruebas y con el estilo integrado en el TS. Como es posible que la manera de declarar los atributos cambien en versiones posteriores de Angular (como me ha pasado a mi desde que el curso se creó), se pueden consultar los atributos aquí https://angular.io/cli/generate#component-command. 
+
+![Sopti API](./course_resources/Section_6/app_1.PNG);
+
+- De los recursos de la sección copiar la carpeta img en assets y el fichero de estilos style.css remplazando el existente por defecto. Además de esto, importar Bootstrap tal y como se ha hecho en secciones anteriores (con CDN que es la maera más rápida y simple en el index.html)
+
+![Sopti API](./course_resources/Section_6/app_2.PNG);
+
+-  Acceder al dashboard en la página de Spotify y acceder los terminos.
+
+![Spoti API](./course_resources/Section_6/spoty_api_2.PNG);
+
+- Una vez aquí se puede crear la aplicación que se enlazará con nuestra aplicación de Angular.
+
+![Spoti API](./course_resources/Section_6/spoty_api_3.PNG);
+
+![Spoti API](./course_resources/Section_6/spoty_api_4.PNG);
+
+- Una vez creada, se podrá obtener el Client ID y el Client Secret, ambas van a ser necesarias para obtener un token. En el momento de crear yo la cuenta de Spotify esta información estaba en *Settings*.
+
+![Spoti API](./course_resources/Section_6/spoty_api_5.PNG);
+
