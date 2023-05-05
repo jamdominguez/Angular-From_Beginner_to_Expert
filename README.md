@@ -853,11 +853,11 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 
 - Crear la aplicación de angular **spotiapp** y en ella para comenzar algunos componetentes, home, search, artist y la navbar en shared, sin fichero de pruebas y con el estilo integrado en el TS. Como es posible que la manera de declarar los atributos cambien en versiones posteriores de Angular (como me ha pasado a mi desde que el curso se creó), se pueden consultar los atributos aquí https://angular.io/cli/generate#component-command. 
 
-![Sopti API](./course_resources/Section_6/app_1.PNG);
+![SoptiApp](./course_resources/Section_6/app_1.PNG);
 
 - De los recursos de la sección copiar la carpeta img en assets y el fichero de estilos style.css remplazando el existente por defecto. Además de esto, importar Bootstrap tal y como se ha hecho en secciones anteriores (con CDN que es la maera más rápida y simple en el index.html)
 
-![Sopti API](./course_resources/Section_6/app_2.PNG);
+![SoptiApp](./course_resources/Section_6/app_2.PNG);
 
 -  Acceder al dashboard en la página de Spotify y acceder los terminos.
 
@@ -873,3 +873,36 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 
 ![Spoti API](./course_resources/Section_6/spoty_api_5.PNG);
 
+## Routing
+- En la carpeta app crear un fichero app.routes.ts para las rutas, en este, importar el **router** para usar el módulos **Routes**. Es necesarios exportar el array de rutas llamado ROUTES que será donde se almacenen todas las rutas de los componentes. Este archivo sólo contiene las rutas a usar en la aplicación, el módulo de rutas se pondrá en el app.module.ts, esto es algo diferente a como se hizo anteriormente, pero es más ordenado.
+
+![SoptiApp](./course_resources/Section_6/app_3.PNG);
+  
+## Componets develop
+- Empezar a crear la aplicación sustituyendo en el app.component.html y montado los diferentes componentes. Por ejemplo para el navbar usar el navbar de boostratp con algunos cambios.
+
+![SoptiApp](./course_resources/Section_6/app_4.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_5.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_5b.PNG);
+
+## HTTP requests
+- Para hacer un pequeño ejemplo antes de empezar a usar la API de Spotify y ver como se usan las petición HTTP en Angular, se puede usar el siguiente link https://restcountries.com/. Aquí se pueden ver endpoints de servicios como https://restcountries.com/v3.1/lang/{currency}.
+
+![SoptiApp](./course_resources/Section_6/app_6.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_7.PNG);
+
+- Con Postman (https://www.postman.com/) se puede probar la petición GET https://restcountries.com/v3.1/lang/spanish, si no, directamente en el navegador. Devuelve todos los paises de habla hispana.
+- Ya en nuestra aplicación, para poder obtener este tipo de información es necesario importar en el app.module.ts el módulo **HttpClientModule** y añadirlo a la parte de los **imports**.
+
+![SoptiApp](./course_resources/Section_6/app_8.PNG);
+
+- Para usar las herramientas de este módulo, se ha de inyectar el módulo **HttpClient** en un componente, por ejemplo el home. Y listar los países con alguna información más.
+
+![Http Introduction](./course_resources/Section_6/http_introduction_1.PNG);
+
+![Http Introduction](./course_resources/Section_6/http_introduction_2.PNG);
+
+![Http Introduction](./course_resources/Section_6/http_introduction_2b.PNG);
