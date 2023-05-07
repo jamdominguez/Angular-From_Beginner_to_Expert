@@ -924,6 +924,8 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 - Accediendo a **Postman** (tiene versión web y de escritorio), haciendo una petición POST a https://accounts.spotify.com/api/token e informando los parámetros necesarios para la llamada, se obtiene el token. Este token caduca en 1hora por lo que hay que generalo de vez en cuando para implementar la aplicación.
 - Lo primero sería tener un workspace donde hacer las petición. Una vez creado, configurar una nueva petición Http tal y como indica la web de la API de Spotify, es decir, añadiendo lso tres parámetros. El client id y el client secret se obtienen en el perfil de la web de la API de Spotify en **Settings**. En la respuesta de la petición se provee el token, en el campo **access_token** además de indicar el tiempo de expiración.
 
+![Spoti API](./course_resources/Section_6/spoty_api_9.PNG);
+
 ![Postman](./course_resources/Section_6/postman_0.PNG);
 
 ![Postman](./course_resources/Section_6/postman_1.PNG);
@@ -933,6 +935,8 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 - Una vez con el token ya se pueden hacer peticiones a la API de Spotify.
 
 - En el menú de la izquierda la documentación se pueden encontrar toda la información que podemos obtener, como por ejemplo, los nuevos lanzamientos en *Get New Releases* https://developer.spotify.com/documentation/web-api/reference/get-new-releases
+
+![Spoti API](./course_resources/Section_6/spoty_api_10.PNG);
 
 - Dentro de la aplicación Angular, siempre que se quiere acceder a un API lo ideal es crear un servicio que se encargue de ello. Podemos crear el servicio llamado spotify. El servicio se crea con el decorador **@Injectable** que lo que hace es que Angular crea una sóla instancia del servicio para toda la aplicación además ya no hace falta (desde Angular6) añadirlo al app.module.ts ya que al crearlo ya lo incluye en el **provideIn: 'root'**, por lo que no hace falta. Antes on añadía esta propiedad en el decorador y había que añadirlo en la propiedad **providers** del app.module.
 
@@ -958,3 +962,18 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![SoptiApp](./course_resources/Section_6/app_15.PNG);
 
 ![SoptiApp](./course_resources/Section_6/app_15b.PNG);
+
+## Search Component
+- Usando el componente search, se puede implementar una pagina simple de busqueda. En la Web API se busca el servicio y probando una llamada se puede ver como se monta la url, se copia y sustituye lo necesario, teniendo en cuenta que se quiere buscar artistas. La composición del HTML puede ser como en el home.
+
+![Spoti API](./course_resources/Section_6/spoty_api_11.PNG);
+
+![Spoti API](./course_resources/Section_6/spoty_api_12.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_16.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_17.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_18.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_18b.PNG);

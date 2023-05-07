@@ -6,15 +6,27 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class SpotifyService {
 
-  private TOKEN: string = 'BQAKc5ENlvElgH6oVmHdqIt9OoNrZX0G4T6GpZWifkLv2gyezusSGYdus1SPpE1FE4QqBKMWRSKN4Og1ANVs9ASuWB1yfe1ARo2ikix-1QrtLE0ofvC1';
-  
-  constructor(private http: HttpClient) { }
-  
-  getNewReleases = () => {
+  private TOKEN: string = 'BQBB542h5iwiMmhXypA3ZWQoPpHngKzZb6RdvTiIJrvLPP6ylxEuv_kjt2z3RvFwYy8YZf9RwkPAhNS-PPEGGeVhb6ucw0W3c0Q0O189pnI25UrGbwG9';
+
+  constructor(private http: HttpClient) {
+
+  }
+
+  getNewReleases() {
+    const url = 'https://api.spotify.com/v1/browse/new-releases';
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.TOKEN}`
     });
 
-    return this.http.get('https://api.spotify.com/v1/browse/new-releases', { headers });    
+    return this.http.get(url, { headers });
+  }
+
+  getArtist(artistToSearch: string) {
+    const url = `https://api.spotify.com/v1/search?q=${artistToSearch}&type=artist&limit=5&offset=0`;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.TOKEN}`
+    });
+
+    return this.http.get(url, { headers });
   }
 }
