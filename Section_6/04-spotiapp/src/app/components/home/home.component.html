@@ -1,5 +1,19 @@
-<ul>
-    <li *ngFor="let country of countries; let i = index">
-        {{ country.name.common }} - {{ country.population | number }} <small>({{ country.capital[0] }})</small>
-    </li>
-</ul>
+<div class="row row-cols-1 row-cols-md-3 g-4">
+
+    <div *ngFor="let song of newReleases" class="col">
+        <div class="card h-100">
+            <img [src]="song.images[0].url" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ song.name }}</h5>
+                <p class="card-text">
+                    <span *ngFor="let artist of song.artists" class="badge rounded-pill text-bg-light"> {{ artist.name
+                        }}</span>
+                </p>
+            </div>
+            <div class="card-footer">
+                <small class="text-body-secondary">Release date {{ song.release_date }}</small>
+            </div>
+        </div>
+    </div>
+
+</div>

@@ -887,7 +887,7 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 
 ![SoptiApp](./course_resources/Section_6/app_5b.PNG);
 
-## HTTP requests
+## HTTP requests introduction
 - Para hacer un pequeño ejemplo antes de empezar a usar la API de Spotify y ver como se usan las petición HTTP en Angular, se puede usar el siguiente link https://restcountries.com/. Aquí se pueden ver endpoints de servicios como https://restcountries.com/v3.1/lang/{currency}.
 
 ![SoptiApp](./course_resources/Section_6/app_6.PNG);
@@ -906,3 +906,55 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![Http Introduction](./course_resources/Section_6/http_introduction_2.PNG);
 
 ![Http Introduction](./course_resources/Section_6/http_introduction_2b.PNG);
+
+## Token for Spotify services
+- Para poder usar los servicios de Spotify es necesario usar un token que nos proveen. Es necesario hace una petición para obtener un token.
+- En la documentación de la web de Spotify para desarrolladores hay informaicón relacinada con las diferentes plataformas dónde se puede usar. Nosotros nos centraremos en la Web API y en ella la guía de autorización, acutalamente en https://developer.spotify.com/documentation/web-api/concepts/authorization
+
+![Spoti API](./course_resources/Section_6/spoty_api_6.PNG);
+
+- Leyendo la documentación se informa que es en la autorización donde se debe especificar los tipos de accesos que vamos a necesitar (leer una playlist, modificar tu librería o sólo escuchar). Los tipos de scope se puede encontrar aquí https://developer.spotify.com/documentation/web-api/concepts/scopes.
+- Para el proceso de autorización será necesario el ClientID y el Client secret. Aquí https://developer.spotify.com/documentation/web-api/concepts/apps se indica como generar nuevos.
+- La API de Spotify usa el standar OAuth2 que define 4 tipos/ flujos de peticiones y obtención del token de acceso. Se debe usar el que más se ajuste a la aplicación que estamos haciendo. En el curso se usa *Client credentials* (https://developer.spotify.com/documentation/web-api/tutorials/client-credentials-flow) ya que para obtener el Token se hace desde Postman. Postman monta un servidor y Spotify permite obtener un token solicitándolo desde aquí. Leyendo los diferentes flujos de peticiones, para nuestro caso, me cuadra más Authorization Code with PKCE Flow, pero leyendo como se ha de implementar requiere más trabajo. Creo que por ahora no vale la pena implementar esta manera (al terminar el curso lo haré).
+
+![Spoti API](./course_resources/Section_6/spoty_api_7.PNG);
+
+![Spoti API](./course_resources/Section_6/spoty_api_8.PNG);
+
+- Accediendo a **Postman** (tiene versión web y de escritorio), haciendo una petición POST a https://accounts.spotify.com/api/token e informando los parámetros necesarios para la llamada, se obtiene el token. Este token caduca en 1hora por lo que hay que generalo de vez en cuando para implementar la aplicación.
+- Lo primero sería tener un workspace donde hacer las petición. Una vez creado, configurar una nueva petición Http tal y como indica la web de la API de Spotify, es decir, añadiendo lso tres parámetros. El client id y el client secret se obtienen en el perfil de la web de la API de Spotify en **Settings**. En la respuesta de la petición se provee el token, en el campo **access_token** además de indicar el tiempo de expiración.
+
+![Postman](./course_resources/Section_6/postman_0.PNG);
+
+![Postman](./course_resources/Section_6/postman_1.PNG);
+
+![Postman](./course_resources/Section_6/postman_2.PNG);
+
+- Una vez con el token ya se pueden hacer peticiones a la API de Spotify.
+
+- En el menú de la izquierda la documentación se pueden encontrar toda la información que podemos obtener, como por ejemplo, los nuevos lanzamientos en *Get New Releases* https://developer.spotify.com/documentation/web-api/reference/get-new-releases
+
+- Dentro de la aplicación Angular, siempre que se quiere acceder a un API lo ideal es crear un servicio que se encargue de ello. Podemos crear el servicio llamado spotify. El servicio se crea con el decorador **@Injectable** que lo que hace es que Angular crea una sóla instancia del servicio para toda la aplicación además ya no hace falta (desde Angular6) añadirlo al app.module.ts ya que al crearlo ya lo incluye en el **provideIn: 'root'**, por lo que no hace falta. Antes on añadía esta propiedad en el decorador y había que añadirlo en la propiedad **providers** del app.module.
+
+![SoptiApp](./course_resources/Section_6/app_9.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_10.PNG);
+
+- Usando tanto el token como el endpoint se puede llamar al servicio y obtener la información. Para los servicios hay que informar el token en la cabecera en el parámetro *Authorization* e igualandolo a "Bearer " concatenado del token, y para esto se usa la clase **HttpHeaders** del HttpClientModule
+
+![SoptiApp](./course_resources/Section_6/app_10.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_11.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_12b.PNG);
+
+- Ahora que ya se ha comprobado que podemos obtener información de la API de Spotify, podemos comenzar a implementar la aplicación. Usando cards y badges de bootstrap se puede empezar a implementar el home. Aquí se podría mostrar cada album de los obtenido como una tarjeta.
+- Hay que controlar cuando se recibe la información. Por ello es que el servicio devuelva la petición y sea el home quien gestione el subscribe, así sabrá cuando llegan los datos.
+
+![SoptiApp](./course_resources/Section_6/app_13.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_14.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_15.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_15b.PNG);
