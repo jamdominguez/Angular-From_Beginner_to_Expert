@@ -14,11 +14,7 @@ export class SearchComponent {
   constructor(private spotify: SpotifyService) { }
 
   getArtist = (text: string) => {
-    if (text != '') {
-      this.spotify.getArtist(text).subscribe((resp: any) => {
-        this.artists = resp.artists.items;
-      });
-    }
+    this.spotify.getArtist(text).subscribe((resp: any) => this.artists = resp);
   }
 
 }

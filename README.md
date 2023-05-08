@@ -977,3 +977,54 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![SoptiApp](./course_resources/Section_6/app_18.PNG);
 
 ![SoptiApp](./course_resources/Section_6/app_18b.PNG);
+
+## Optimization: Map operator in observables
+- El operador map permite obtener sólo lo que se quiere de un conjunto de datos. Los observables se importan de **Reactive Extensions (rxjs)**. Usándolos en el spotify.service se puede optimizar la información a devolver de la que la API de Spotify proporciona.
+- Los map trabajan con observables, justo lo que devuelve la petición de GET del HttpClient y junto con los pipes desde el TS se puede hacer lo que estamos buscando. Tras este cambio el uso del servicio cambia por lo que también hay que modificar el home.
+
+![SoptiApp](./course_resources/Section_6/app_19.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_20.PNG);
+
+- De tarea se propone hacer lo mismo con el servicio que provee los datos al search. Tras ello y optimizar se puede quedar el código en una línea.
+
+![SoptiApp](./course_resources/Section_6/app_21.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_22.PNG);
+
+## Optimization: Centralize Spotify requests
+- Se puede crear una una función en el spotify.service para centralizar todo lo común de cada llamada a la API de Spotify (refactor) y así simplificar las funciones usadas.
+
+![SoptiApp](./course_resources/Section_6/app_23.PNG);
+
+## Optimization: Check images and pipe for them
+- En la situación actual de la aplicación se produce un error en algunas busquedas cuando no se obtiene imagen del item en cuestión.
+
+![SoptiApp](./course_resources/Section_6/app_23.PNG);
+
+- Se puede usar un pipe para manejar esta situación. Se puede crear el pipe "noimage" con la ayuda de AngularCLI y este será añadido de manera automática al **declarations** en el app.module
+
+![SoptiApp](./course_resources/Section_6/app_24.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_25.PNG);
+
+- La idea de este pipe es que valide la imagen antes de mostrarla. Para los casos de que no haya imagen se ha de mostrar el noimage.png proporcionado en los recursos del curso. Y una vez creada la pipe se puede usar tanto en el search como en el home.
+
+![SoptiApp](./course_resources/Section_6/app_26.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_27.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_28.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_28b.PNG);
+
+## Optimization: Card component
+- Tanto en el home como en el search se usa el mismo HTML para mostrar las tarjetas, con una ligera diferencia. Pero se puede crear un componente que sea reusado por ambos. Y mediante un **@Input** pasarle los datos. Quedaría de la siguiente manera:
+
+![SoptiApp](./course_resources/Section_6/app_29.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_30.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_31.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_32.PNG);
