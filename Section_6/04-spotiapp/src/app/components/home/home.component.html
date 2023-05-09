@@ -1,1 +1,2 @@
-<app-cards [cards]="newReleases"></app-cards>
+<app-loading *ngIf="loading"></app-loading>
+<app-cards *ngIf="!loading" [cards]="newReleases"></app-cards>

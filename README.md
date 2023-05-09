@@ -1028,3 +1028,31 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![SoptiApp](./course_resources/Section_6/app_31.PNG);
 
 ![SoptiApp](./course_resources/Section_6/app_32.PNG);
+
+## Loading component
+- La idea es mostrar un componente de "Cargando..." mientras se obtiene la información de la Web API. Este se usará tanto en home como en search.
+- Se puede obtener algo "bonito" de mostrar en https://fontawesome.com/, usando su css, buscando el icono refresh. Ingluir en el index lo indicado en la web. Ahora es necesario logearse para acceder a los iconos de la versión que no es la professional
+
+![SoptiApp](./course_resources/Section_6/app_33.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_34.PNG);
+
+- Se completa el HTML del loading componente quedando:
+
+![SoptiApp](./course_resources/Section_6/app_35.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_36.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_37.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_35b.PNG);
+
+- Ahora sólo queda modificar el home y search component para que tengan en cuenta cuando está cargando la información y cuando ya está cargada. Esto se puede controlar facilmente con un boolean que después se puede usar con ngIf en el HTML de cada componente. Existe la particularidad que en el search, de primeras no se carga información, por lo que no hay que mostrarlo, sólo cuando se quiera buscar algún artista.
+
+![SoptiApp](./course_resources/Section_6/app_38.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_39.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_40.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_41.PNG);
