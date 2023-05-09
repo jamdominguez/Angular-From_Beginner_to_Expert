@@ -1,6 +1,6 @@
 <div class="row row-cols-1 row-cols-md-3 g-4 m-5 animated fadeIn">
     <div *ngFor="let card of cards" class="col">
-        <div class="card h-100">
+        <div class="card h-100 puntero" (click)="goToArtist(card)">
             <img [src]="card.images | noimage" class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">{{ card.name }}</h5>
@@ -9,9 +9,6 @@
                         }}</span>
                 </p>
             </div>
-            <!-- <div class="card-footer">
-                <small class="text-body-secondary">Release date {{ card.release_date }}</small>
-            </div> -->
         </div>
     </div>
 </div>

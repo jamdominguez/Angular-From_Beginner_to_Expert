@@ -19,8 +19,9 @@ export class SearchComponent {
   getArtist = (text: string) => {
     if(text.trim() != '') {
       this.loading = true;
-      this.spotify.getArtist(text).subscribe((resp: any) => {
+      this.spotify.getArtists(text).subscribe((resp: any) => {        
         this.artists = resp;
+        // console.log(this.artists);
         this.loading = false;
       });
     }

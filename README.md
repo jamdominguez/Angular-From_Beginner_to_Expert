@@ -1056,3 +1056,47 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![SoptiApp](./course_resources/Section_6/app_40.PNG);
 
 ![SoptiApp](./course_resources/Section_6/app_41.PNG);
+
+## Artist component
+- La idea es que cuando se pulsa sobre la tarjeta de un artista, nos lleve a su página. El componente artist ya está creado, pero necesitamos diseñarlo, añadirle lógica y en el routing tener en cuenta que pasaremos el id del artista para así poder localizarlo. Este id es reportado en la información de Spotify.
+
+![SoptiApp](./course_resources/Section_6/app_42.PNG);
+
+- Para modificar el componente card, para que al clickar sobre una artista / album me lleve a la página del artista, tengo que tener en cuenta que este componente se usa en dos sitios y en cada uno la lista de datos que pinta es diferente. La propiedad type de cada elemento que devuelve en ambos casos indica el tipo de dato que devuelve, album en el home y artist en el search, por lo que podemos usarlo para saber de dode tomar el id.
+
+![SoptiApp](./course_resources/Section_6/app_43.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_44.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_45.PNG);
+
+- Una vez obtenido el id se ha de redireccionar con el **Router** desde el card component.
+- En el artist component se debe recuperar de la ruta el id usando **ActivatedRoute**.
+
+![SoptiApp](./course_resources/Section_6/app_46.PNG);
+
+- En este punto, que ya conocemos el id, se puede llamar al servicio get artist de la API de Spotify para obtener la información del artista. Para ello habrá que añadir una nueva función al servicio. En este caso no es necesario pasarlo por un pipe, ya que la información viene bastante acorde a lo que se necesita.
+
+![Spoti API](./course_resources/Section_6/spoty_api_13.PNG)
+
+![SoptiApp](./course_resources/Section_6/app_47.PNG);
+
+- Lo que si habrá que pasar por el pipe es el array de imágenes además de usar el componente loading para evitar errores.
+
+![SoptiApp](./course_resources/Section_6/app_48.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_49.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_49b.PNG);
+
+- Podemos añadir más información al componente artist usando otro servicio de spotify como top tracks, para así listar las mejores canciones del mismo. En este servicio si que conviene usar una pipe para devolver sólo el listado de canciones.
+
+![Spoti API](./course_resources/Section_6/spoty_api_14.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_50.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_51.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_52.PNG);
+
+![SoptiApp](./course_resources/Section_6/app_52b.PNG);
