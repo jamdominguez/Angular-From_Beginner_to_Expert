@@ -1133,3 +1133,23 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![Widget](./course_resources/Section_6/widget_8.PNG);
 
 ![Widget](./course_resources/Section_6/widget_8b.PNG);
+
+## Errors managements
+- Hay muchas maneras de manejar los errores en la parte visual (un div, notificaciones, un componente, etc). Para el ejemplo se va a usar un div que muestre un mensaje de error con la clase alert de Bootstrap y con un boolean se controlará si se muestra o no.
+- Para reproducir un posible error se puede eliminar algún caracter del token por lo que la petición en el hombe mostrará un error por la consola del navegador y el loading permanecerá en pantalla.
+
+![Errors](./course_resources/Section_6/errors_1.PNG);
+
+- Para probar el manejo del error, en el home, se puede pintar la div que muestra el error y en el ts controlar la función a ejecutar cuando el subscribe recibe un error.
+
+![Errors](./course_resources/Section_6/errors_2.PNG);
+
+![Errors](./course_resources/Section_6/errors_2b.PNG);
+
+- Hay que usar la directiva ngIf para mostrar o no la div. Además se puede añadir información del error recibido, guarándolo en una variable del componente.
+
+![Errors](./course_resources/Section_6/errors_3.PNG);
+
+![Errors](./course_resources/Section_6/errors_4.PNG);
+
+![Errors](./course_resources/Section_6/errors_4b.PNG);
