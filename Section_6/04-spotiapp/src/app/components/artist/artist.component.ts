@@ -40,4 +40,9 @@ export class ArtistComponent {
       this.loading = false;
     });
   }
+
+  getTrakSpotifyUrl = (trackId: string) => {
+    console.log(trackId);
+    return `https://open.spotify.com/embed/track/${trackId}?utm_source=generator&theme=0`;
+  }
 }

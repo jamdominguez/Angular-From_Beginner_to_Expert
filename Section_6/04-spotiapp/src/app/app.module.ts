@@ -15,6 +15,7 @@ import { CardsComponent } from './components/cards/cards.component';
 import { ROUTES } from './app.routes';
 import { NoimagePipe } from './pipes/noimage.pipe';
 import { LoadingComponent } from './components/shared/loading/loading.component';
+import { SecuredomPipe } from './pipes/securedom.pipe';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
     NavbarComponent,
     NoimagePipe,
     CardsComponent,
-    LoadingComponent
+    LoadingComponent,
+    SecuredomPipe,
   ],
   imports: [
     BrowserModule,

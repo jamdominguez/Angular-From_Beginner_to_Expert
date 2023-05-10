@@ -1100,3 +1100,36 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![SoptiApp](./course_resources/Section_6/app_52.PNG);
 
 ![SoptiApp](./course_resources/Section_6/app_52b.PNG);
+
+## Spotify Widget
+- En este punto se quiere cambiar el elemento audio de HTML por un widget de Spotify. La manera de obtener los widgets ha cambiado desde la creación del curso. Antes se podían obtener de la docuemntación en la sección Widgets, ahora podemos tobar de la web app de Spotify cualquier elemento que nos interese clicando con botón derecha y seleccionando "share > embed xxxx", depende de lo que se busque el codigo generado será diferente y habrá que adaptarlo a nuestr aplicación.
+
+![Widget](./course_resources/Section_6/widget_1.PNG);
+
+![Widget](./course_resources/Section_6/widget_2.PNG);
+
+![Widget](./course_resources/Section_6/widget_3.PNG);
+
+- Tras copiar el código del widget, se puede pegar donde teníamos el elemento audio. Modificar el tamaño del iframe para que se ajuste a nuestro gusto. Lo que queda hacer es identificar el Id del track en la url y sustituirlo por la track que se está listando en el componente.
+
+![Widget](./course_resources/Section_6/widget_4.PNG);
+
+![Widget](./course_resources/Section_6/widget_4b.PNG);
+
+- Pero hay que tener en cuenta si se quiere modificar el src es que Angular bloqueará el dominio al insertar el valor del src, por lo que habría que crear una pipe como se hizo en la sección de las pipes.
+
+![Widget](./course_resources/Section_6/widget_5.PNG);
+
+![Widget](./course_resources/Section_6/widget_6.PNG);
+
+![Widget](./course_resources/Section_6/widget_6b.PNG);
+
+- La idea es calcular la url con una función y que está sea invocada para obtener el src. Por lo que ejecutar **ng g p pipes/securedom --skip-tests** e implementarlo de la misma manera que se hizo en la otra sección.
+
+![Widget](./course_resources/Section_6/widget_6.PNG);
+
+![Widget](./course_resources/Section_6/widget_7.PNG);
+
+![Widget](./course_resources/Section_6/widget_8.PNG);
+
+![Widget](./course_resources/Section_6/widget_8b.PNG);
