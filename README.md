@@ -1156,6 +1156,7 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 
 
 # Section 7: Mobile App with IONIC
+- Se quiere crear una aplicación donde gestionar tareas hechas y por hacer. La aplicación se debe crear en Angular para usar en dispositivo móvil.
 - Aprovechando los conocimientos de Angular, es posible usar IONIC y Apache Cordova para transformar una aplicación Angular en móvil.
 - IONIC es una librería al estilo CSS que se usa para que los componentes se adapten responsivamente a la pantalla.
 - Apache Cordova es una herramienta que transforma una aplicación con HTML en móvil para Android o IOs, sin necesidad de conocer los lenguajes usados para ello.
@@ -1235,3 +1236,17 @@ ionic serve
 
 - Se puede ver como se usa el llamado lazy load para la carga de modulos según la ruta, con la palabra clave **loadChildren**. Esto no es algo necesario, sino una optimización.
 
+## Service and classes
+- AL trabajar con ionic, no hace falta usar los comandos de Angular con ng para crear componentes y servicios, se pueden usar los comandos propios de IONIC. Lo hacemos para crear el servicio todo. Este servicio se va a usar para crear las listas de las tareas.
+
+```
+ionic g s sercices/todo
+```
+
+- Ya que estamos avanzados en el curso, es buna práctica no trabajar con objetos any y si crear nuestras propias clases e interfaces, estas se suelen guardar en la carpeta llamada "models". Los models son, como su nombre indica, modelos de datos con los que se van a trabajar. Para definirlo se usan clases (no interfaces) ya que estos modelos de datos van a poseer constructor y métodos. Se ha de crear un modelo para los items de la listas y otro para las listas en si. Como se vió en otra sección, los servicio, con la dicoración @Injectable son singletons, es decir, que se instancian sólo una vez para toda la aplicación. Podemos inyectar este servicio en tab1 y tab2, y comprobar como sólo se llama al constructor una sólo vez al navegar por la aplicación.
+
+![App](./course_resources/Section_7/app_5.PNG);
+
+![App](./course_resources/Section_7/app_6.PNG);
+
+![App](./course_resources/Section_7/app_7.PNG);
