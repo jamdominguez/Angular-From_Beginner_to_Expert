@@ -1153,3 +1153,85 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ![Errors](./course_resources/Section_6/errors_4.PNG);
 
 ![Errors](./course_resources/Section_6/errors_4b.PNG);
+
+
+# Section 7: Mobile App with IONIC
+- Aprovechando los conocimientos de Angular, es posible usar IONIC y Apache Cordova para transformar una aplicación Angular en móvil.
+- IONIC es una librería al estilo CSS que se usa para que los componentes se adapten responsivamente a la pantalla.
+- Apache Cordova es una herramienta que transforma una aplicación con HTML en móvil para Android o IOs, sin necesidad de conocer los lenguajes usados para ello.
+- La clave es tomar la aplicación Angular creada y montar un Webview que corre igualmente en Android o IOs.
+- Hasta 2020 era posible usar una herramienta de desarrollo de IONIC para probar rapidamente la aplicación en un dispositivo real (ionic DevApp), pero la retiraron y ahora sólo es posible hacer esto con otra herramienta pero usando código nativo para aplicaciones móviles.
+
+## 7.1 Building App structure
+- Lo primero es acceder a la web de IONIC https://ionicframework.com/
+
+![IONIC](./course_resources/Section_7/ionic_1.PNG);
+  
+- Instalar el command line interface con:
+
+```
+npm i -g @ionic/cli
+```
+
+- Si al instalar IONIC CLI se obtiene algún error, se puede deber a que había una versión anterior instalada, puedes desinstalar ésta y volver a instalar
+
+```
+npm uninstall -g ionic
+```
+- Tras la instalación en la web de IONIC pulsar el botón **Get started**. Se requiere registro. Una vez aquí aparecen varias opciones que ofrece IONIC, una de ellas es crear una aplicación y para ello provee algunas templates. Para la aplicación de esta sección se usará la template "Tabs". Como se va a crear una aplicación de deseos o cosas por hacer, la llamaremos **todos**.
+
+![IONIC](./course_resources/Section_7/ionic_2.PNG);
+
+![IONIC](./course_resources/Section_7/ionic_3.PNG);
+
+- La manera que provee la Web de IONIC sirver para crear directamente un repositorio con la aplicación, pero si no queremos hacer esto o al menos no aún como es mi caso, ejecutar el siguiente comando en la carpeta donde se quiera crear el proyecto.
+
+```
+ionic start todos tabs
+```
+
+- En la instalación preguntará para que framework queremos crear la aplicación, elegid Angular
+- En la instalación preguntará si queremos crear la aplicación con NgModules o Standalone, elegid NgModules.
+- Al terminar habrá creado una carpeta con el nombre del proyecto y dentro todos los archivos como en un proyecto de Angular. Esto demora varios minutos.
+
+![App](./course_resources/Section_7/app_1.PNG);
+
+- Para levantar la aplicación, en lugar de usar el comnado ng serve, se usa:
+
+```
+ng serve
+```
+
+Se usa:
+
+```
+ionic serve
+```
+
+- Una vez levantada la aplicación, en las herramientas de desarrollo, seleccionar la vista de dispositivo móvil para observar como se vería la aplicación en un dispositivo.
+
+![App](./course_resources/Section_7/app_2.PNG);
+
+- Si empezamos a ver la estructura de la aplicación, dentro de la carpeta app existe una carpeta por tab, es decir un componente.
+- Si se abre el tab1 html se puede ver que hay etiquetas no vistas anteriormente, son propias de IONIC. Se puede modificar algo del contenido para comprobar que la aplicación funciona.
+
+![App](./course_resources/Section_7/app_3.PNG);
+
+
+- Para comnenzar a modificar la aplicación se puede cambiar para usar sólo 2 tabs. Las tabs son usadas en el componente tabs y modificando este podemos cambiar lo que vemos en el navegador.
+- Existe una web para consultar los iconos de IONIC https://ionic.io/ionicons. Estos iconos ya están preparados para ser usados. Buscando un icono y clickando en él, aparece un pop up con el tag que se debe usar.
+
+![IONIC](./course_resources/Section_7/ionic_4.PNG);
+
+![IONIC](./course_resources/Section_7/ionic_5.PNG);
+
+- Personalmente he usado las siguientes:
+
+![App](./course_resources/Section_7/app_4.PNG);
+
+![App](./course_resources/Section_7/app_4b.PNG);
+
+- La estructuración de carpetas no es la adecuada, habría que crear una carpeta pages que contenga todas las tabs. Si hacemos esto y movemos las tabs (la tab3 la podemos elminar porque no se va a usar), la aplicación dejará de correr y dará error, ya que se habrá perdido la referencia en importaciones. Se ha de arreglar el app-routing.module.ts para poner bien la ruta de importación del tabs. En el tabs-routing.module.ts hay que eliminar la referencia a tab3 ya que hemos eliminado este componente. En mi versión de IONIC además, se crea un componente llamado explore-container y este es usado en cada componente tab (tab1 y tab2), ya que lo importa. Hay que arreglar esta ruta ya que la mover los componentes tabs, la referencia en la impoertación está mal.
+
+- Se puede ver como se usa el llamado lazy load para la carga de modulos según la ruta, con la palabra clave **loadChildren**. Esto no es algo necesario, sino una optimización.
+
