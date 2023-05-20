@@ -1250,3 +1250,21 @@ ionic g s sercices/todo
 ![App](./course_resources/Section_7/app_6.PNG);
 
 ![App](./course_resources/Section_7/app_7.PNG);
+
+## Pending tasks page
+- En el servicio todo se pueden crear un par de listas para trabajar con ellas, y así visualizarlas en el tab1.
+- Para la visualización de elementos se puede revisar la documentación en la web de IONIC https://ionicframework.com/docs, como el ion-list.
+
+![IONIC](./course_resources/Section_7/ionic_6.PNG);
+
+- Usando ese elemento se puede mostrar el listado de listas pendientes en la tab1. Además en el fichero variable.scss que crea el IONIC CLI automaticamente ya proporciona varios estilos para poder aplicar, como el *dark*.
+
+![App](./course_resources/Section_7/app_8.PNG);
+
+![App](./course_resources/Section_7/app_8b.PNG);
+
+- Se puede modificar el estilo tocando el global.css. Por ejemplo el background de los ion-list en dark también y si se revisa el DOM de la aplicación, se puede ver como la tab activa tiene una clase llamada tab-selected, si se asigna en un estilo a esta clase todo se verá mejor
+
+![App](./course_resources/Section_7/app_9.PNG);
+
+![App](./course_resources/Section_7/app_9b.PNG);

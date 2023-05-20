@@ -8,6 +8,9 @@ import { TodoService } from 'src/app/sercices/todo.service';
 })
 export class Tab1Page {
 
-  constructor(private todoService: TodoService) {}
+
+  constructor(public todoService: TodoService) {
+
+  }
 
 }
