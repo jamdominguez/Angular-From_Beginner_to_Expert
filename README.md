@@ -1268,3 +1268,33 @@ ionic g s sercices/todo
 ![App](./course_resources/Section_7/app_9.PNG);
 
 ![App](./course_resources/Section_7/app_9b.PNG);
+
+## Page to agregate lists and navigation
+- IONIC posse un comando para crear nuevas páginas. Este comando ya agrega un módulo, que ayuda a hacer el *lazy load* de los componentes.
+```
+ionic g page pages/add
+```
+
+![App](./course_resources/Section_7/app_10.PNG);
+
+- La nueva página ya está creada pero aun no la estamos viendo, sería necesario crear la navegación a ella. Desde versiones superiores de IONIC 4, éste usa el routing de Angular. Si accedemos al app-routing.module.ts que es el fichero principal de rutas de la aplicación, ya se añadió automáticamente la ruta de la página creada. Lo que se indica con *loadChildren* es que cuando se ponga esa ruta, se debe cargar todo lo de ese módulo (**AddPageModule**) que es el que hemos creado. Esto es el *lazy load*. Por lo que si se escribe "add" en la ruta, se debería ver esta página.
+
+![App](./course_resources/Section_7/app_11.PNG);
+
+![App](./course_resources/Section_7/app_12.PNG);
+
+![App](./course_resources/Section_7/app_12b.PNG);
+
+- Pero como se puede ver, ya no se tienen los tabs, por lo que no podemos navegar, esto es porque la ruta (**add**) está indicada fuera del módulo de los tabs (**TabsPageModule**). Hay que indicar que queremos que esta página se cargue en ese módulo también, por lo que habrá que modificar el routing. Hay que añadir al routing de la tab1 la nueva ruta para el add, ya que queremos que sea hija de esta.
+
+![App](./course_resources/Section_7/app_13.PNG);
+
+![App](./course_resources/Section_7/app_16.PNG);
+
+- Para la navegación se va a añadir un botón que haga que naveguemos a la otra página (ion-fab), este llamará a unoa función que con el Router navegará a la ruta hija que hemos configurado.
+
+![App](./course_resources/Section_7/app_14.PNG);
+
+![App](./course_resources/Section_7/app_15.PNG);
+
+![App](./course_resources/Section_7/app_16.PNG);
