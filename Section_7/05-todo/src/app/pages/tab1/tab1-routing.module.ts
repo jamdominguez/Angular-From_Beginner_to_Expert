@@ -8,8 +8,8 @@ const routes: Routes = [
     component: Tab1Page,
   },
   {
-    path: 'add',
-    loadChildren: () => import('../add/add.module').then( m => m.AddPageModule)
+    path: 'add/:listId',
+    loadChildren: () => import('../add/add.module').then(m => m.AddPageModule)
   }
 ];
 
@@ -17,4 +17,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class Tab1PageRoutingModule {}
+export class Tab1PageRoutingModule { }

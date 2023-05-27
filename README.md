@@ -1341,3 +1341,33 @@ ionic g page pages/add
 
 ![App](./course_resources/Section_7/app_22b.PNG);
 
+## Add list page functionalities
+- Usando el id asignado a cada lista que se hace de manera automática, se puede recuperar los detalles de cada lista.
+- En al tab1 routing habría que añadir al path el id.
+- Ahora desde el tab1 cuando se agrega la lista, se puede hacer directamente la redirección a la página donde se añadiran los items de la lista. Para obtener el id de la lista se puede hacer que la función de crear lista además de crearla, retorne el id de dicha lista. Con ello se puede modificar la tab1 para que se navege a la add page.
+
+![App](./course_resources/Section_7/app_23.PNG);
+
+![App](./course_resources/Section_7/app_24.PNG);
+
+![App](./course_resources/Section_7/app_24b.PNG);
+
+![App](./course_resources/Section_7/app_24bb.PNG);
+
+- Ahora habría que crear un metodo en el todo service para obtener la lista a partir del id.
+
+![App](./course_resources/Section_7/app_25.PNG);
+
+![App](./course_resources/Section_7/app_26.PNG);
+
+- En este punto hay que preparar add page para que cada vez que se escribe un nuevo item, lo agregue a la lista. Para relacionar el input del nuevo item entre el HTML y el TS se usa **ngModel**, que se encarga de emitir y escuchar eventos. En **ngModel** es usado para la interacción entre inputs y propiedades del componente.
+
+![App](./course_resources/Section_7/app_27.PNG);
+
+![App](./course_resources/Section_7/app_28.PNG);
+
+![App](./course_resources/Section_7/app_28b.PNG);
+
+- El problema aquí es que la información de los items no se está persistiendo. Como en JS los objetos se pasan por referencia, se puede invocar el save del todo service tras añadir cada item para que quede almacenado.
+
+![App](./course_resources/Section_7/app_29.PNG);

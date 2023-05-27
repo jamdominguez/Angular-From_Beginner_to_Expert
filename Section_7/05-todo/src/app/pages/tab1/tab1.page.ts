@@ -41,8 +41,8 @@ export class Tab1Page {
           handler: (data) => {
             console.log(data);
             if (data.listTitle.length === 0) return;
-            this.todoService.createList(data.listTitle);
-            // this.router.navigateByUrl('/tabs/tab1/add');
+            const newListId = this.todoService.createList(data.listTitle);
+            this.router.navigateByUrl(`/tabs/tab1/add/${newListId}`);
           }
         }
       ] 
