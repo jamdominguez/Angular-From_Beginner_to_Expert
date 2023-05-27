@@ -1298,3 +1298,46 @@ ionic g page pages/add
 ![App](./course_resources/Section_7/app_15.PNG);
 
 ![App](./course_resources/Section_7/app_16.PNG);
+
+
+## Add list page
+- A la nueva página hay que añadirle el mismo estilo "dark" que al resto de la aplicación y crear la navegación para poder volver. IONIC tiene un componente especializado para esta tarea e **ion-back-button**. Este botón aparece cuando hay una ruta a la que volver, pero se puede forzar que apareza siempre y que vuelva a una ruta por defecto si no hay ruta a la que volver.
+
+![App](./course_resources/Section_7/app_17.PNG);
+
+![App](./course_resources/Section_7/app_17b.PNG);
+
+- Ahora hay que introducir inputs para poder agregar las listas deseadas. Los inputs se ponen dentro de un **ion-list** para poder hacer scroll si fuese necesario. Y también un **ion-list**.
+
+![App](./course_resources/Section_7/app_18.PNG);
+
+![App](./course_resources/Section_7/app_18b.PNG);
+
+- Lo que se requiere es que al pulsar el botón + aparezca una ventana / dialogo / promt donde introducir la lista, para ello se va a usar el **ion-alert**. Para ello hay que inyectar el servicio **AlertController** en el tab1. La función del alert controler **create**, trabaja con promesas, y con el **await** esperamos que el código esté preparado pero sólo está preparado dentro de una función asincrona (promesa), por ello, delante de la función ponermos **async**. Los **handler** son funciones que se ejecutan cuando se pulsa el botón y la **data** son los datos del formulario (de los inputs introducidos)
+
+![App](./course_resources/Section_7/app_19.PNG);
+
+![App](./course_resources/Section_7/app_19b.PNG);
+
+![App](./course_resources/Section_7/app_19bb.PNG);
+
+- Ahora usando el todo.service podemos crear una función para añadir una lista. Esta función deber recibir un titulo y crear un List para agregarlo al array de List que ya tiene.
+
+![App](./course_resources/Section_7/app_20.PNG);
+
+![App](./course_resources/Section_7/app_21.PNG);
+
+![App](./course_resources/Section_7/app_21b.PNG);
+
+## Store information
+- En el punto pasado se consiguió agregar listas, pero no hay persistencia, si la aplicación se recarga, se pierden las nuevas listas añadidas. Para poder añadir esta persistencia, existen tres opciones (en nuestro caso):
+  - Local Storage: Se graba información pero en formato de string. Se puede visualizar la información sin encriptar.
+  - Session Storage: Se graba información pero en formato de string. La información añadida desaparece al cerrar el navegador completamente. Es usado para mantener la sesión de usuario.
+  - Storage: Propio de IONIC: En aplicaciones de IONIC es útil usar el plugin STORAGE
+
+- En el todo service se debería crear dos métodos, uno para guardar en el storage y otro para cargar del storage. El de guardar debería llamarse siempre que se crea una lista. En nuestro ejemplo usaremos el localstorage.
+
+![App](./course_resources/Section_7/app_22.PNG);
+
+![App](./course_resources/Section_7/app_22b.PNG);
+

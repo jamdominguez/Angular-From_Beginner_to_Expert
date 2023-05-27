@@ -17,5 +17,20 @@ export class TodoService {
     list2.items = [new ListItem('Captain America'), new ListItem('Iron Man'), new ListItem('Hulk')]
 
     this.lists.push(list1, list2);
+    this.load();
+  }
+
+  createList(listTitle: string) {
+    this.lists.push(new List(listTitle));
+    this.save();
+  }
+
+  save() {
+    localStorage.setItem('todoLists', JSON.stringify(this.lists));
+  }
+
+  load() {
+    const todoLists = localStorage.getItem('todoLists');
+    if (todoLists) this.lists = JSON.parse(todoLists);
   }
 }
