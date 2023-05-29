@@ -12,7 +12,7 @@ import { TodoService } from 'src/app/sercices/todo.service';
 export class AddPage implements OnInit {
 
   list: List;
-  itemName : string = '';
+  itemName: string = '';
 
   constructor(private todoService: TodoService, private route: ActivatedRoute) {
     const listId = this.route.snapshot.paramMap.get('listId');
@@ -29,6 +29,25 @@ export class AddPage implements OnInit {
     this.list.items.push(newItem);
     this.itemName = '';
 
+    this.todoService.save();
+  }
+
+  changeCheck(item: ListItem) {    
+    const pendingTasks = this.list.items.filter(item => !item.completed);
+
+    if (pendingTasks.length === 0) {
+      this.list.completed = true;
+      this.list.completedAt = new Date();
+    } else {
+      this.list.completed = false;
+      delete this.list.completedAt;
+    }
+
+    this.todoService.save();
+  }
+
+  removeItem(i: number) {
+    this.list.items.splice(i, 1); //remove 1 element from i position.
     this.todoService.save();
   }
 

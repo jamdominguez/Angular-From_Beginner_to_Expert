@@ -1371,3 +1371,33 @@ ionic g page pages/add
 - El problema aquí es que la información de los items no se está persistiendo. Como en JS los objetos se pasan por referencia, se puede invocar el save del todo service tras añadir cada item para que quede almacenado.
 
 ![App](./course_resources/Section_7/app_29.PNG);
+
+- En este punto se va a modificar la estética de crear lista y agregar tareas, add page en el proyecto. Para ello se usaran las clases proporcionadas den el fichero animated.txt de recursos del curso y se añadirán al global.scss del proyecto. A cada item se le puede agregar las clases *animated fadeInDown* para que haga la animación de aparecer de arriba a abajo. También hay que hacer persistente el cambio en el check de los items.
+
+![App](./course_resources/Section_7/app_30.PNG);
+
+![App](./course_resources/Section_7/app_31.PNG);
+
+![App](./course_resources/Section_7/app_30b.PNG);
+
+- Lo único que se debe hacer para la persistencia es guardar en el local storage usando la función save del todo service. Se puede ver en las imágenes anteriores como el valor del campo se actualizar según se cambia el check, esto es gracias al **ngModel**.
+
+![App](./course_resources/Section_7/app_32.PNG);
+
+![App](./course_resources/Section_7/app_32b.PNG);
+
+- Además habría que tener en cuenta que en caso de que se quite el check de algún item cambiar el estado de la lista a no completado.
+
+![App](./course_resources/Section_7/app_33.PNG);
+
+![App](./course_resources/Section_7/app_33b.PNG);
+
+- Ahora se va a añadir la funcionalidad de eliminar items de la lista. Para ello se quiere que se pueda desplazar el item hacia una la izquierda aparezca el botón de borrar. Se usará el **ion-item-sliding** de https://ionicframework.com/docs/api/item-sliding. Este elemento de IONIC ha de envolver a cda ion-item y además añade opciones de qué hacer con el item en cuestión. A nosotros sólo nos iteresa eliminarlo. Además, tras eliminar el elemento, habría que volver a revisar la lista si está completa o no, ya que este elemento ya no contaría para verificar si está completa. Para poder eliminarlo vamos a usar el indice del item. El side="end" en el HTML determina como desplazar el elemento para que salga el icono, en nuestro caso al final desplazando hacia la izquierda.
+
+![App](./course_resources/Section_7/app_34.PNG);
+
+![App](./course_resources/Section_7/app_35.PNG);
+
+![App](./course_resources/Section_7/app_36.PNG);
+
+![App](./course_resources/Section_7/app_36b.PNG);
