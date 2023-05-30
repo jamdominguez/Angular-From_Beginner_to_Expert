@@ -8,13 +8,7 @@
 
 <ion-content color="dark">
 
-  <ion-list color="dark">
-
-    <ion-item *ngFor="let list of todoService.lists" detail color="dark">
-      <ion-label>{{ list.title }}</ion-label>
-    </ion-item>
-
-  </ion-list>
+  <app-lists [showCompleted]="false"></app-lists>
 
   <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="toAddListPage()">
     <ion-fab-button color="tertiary">

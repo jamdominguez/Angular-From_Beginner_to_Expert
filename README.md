@@ -1401,3 +1401,68 @@ ionic g page pages/add
 ![App](./course_resources/Section_7/app_36.PNG);
 
 ![App](./course_resources/Section_7/app_36b.PNG);
+
+## Edit list created
+- Se va a añadir el poder modificar una lista ya creada. Accediendo desde tab1. Además se puede añadir con **ion-note** información sobre los items que contiene la lista.
+
+![App](./course_resources/Section_7/app_37.PNG);
+
+![App](./course_resources/Section_7/app_38.PNG);
+
+![App](./course_resources/Section_7/app_38b.PNG);
+
+![App](./course_resources/Section_7/app_38bb.PNG);
+
+## Modules
+- Una aplicación de Angular, en si, es un módulo. El decorador @NgModule nos siver para declarar un módulo y también informar de todo lo que contiene la aplicación.
+
+![App](./course_resources/Section_7/app_39.PNG);
+
+- En la aplicación la tab2 es la de las tareas completadas, que basicamente es la misma que la tab1 pero con las tareas completadas en lugar de las pendientes. Para crear este componente se va a hacer mediante un módulo. En esta caso en lugar de usar angular (ng) haremos lo propio con IONIC:
+
+```
+ionic g m components
+```
+
+![App](./course_resources/Section_7/app_40.PNG);
+
+- Esto crea un múdlo donde se ve que importa NgModule del core de Angular y CommomModule del common de Angular. Un módulo funciona simmilar a una librería de componentes.
+  - declarations: Es donde se declaran los componentes que se usan en el módulo.
+  - imports: Es donde se declaran los módulos que necesita este módulo
+  - exports: Es donde se declaran los componentes que se pueden usar en otros módulos que importen este
+
+- Ahora dentro del módulo components creamos el componente listas y se ha de añadir al módulo.
+
+```
+ionic g c components/lists
+```
+
+![App](./course_resources/Section_7/app_41.PNG);
+
+- Ahora para poder usar el lists, se debe importar el módulo dentro del tab1 o declarar la clase, si no al intentar usar el componente lists que se declarara en él, se obtendrá error.
+
+![App](./course_resources/Section_7/app_42.PNG);
+
+![App](./course_resources/Section_7/app_43.PNG);
+
+![App](./course_resources/Section_7/app_44.PNG);
+
+![App](./course_resources/Section_7/app_46.PNG);
+
+![App](./course_resources/Section_7/app_45.PNG);
+
+![App](./course_resources/Section_7/app_45b.PNG);
+
+- Si fuesemos al módulo del tab2 y declarasemos allí también la lista, nos daría error indicando que se está declarando en 2 módulos y que la declarasemos en un módulo superior (al menos en el curos), a mi no me pasa con mi versión de Angular. Habría que importar el módulo em ambos módulos en lugar de declarar el componente.
+- En este punto lo que se tiene que hacer es pasar la lógica de las listas  al componente lists y así poder utilizarlo en ambas tabs. Hay que tener en cuenta que para usar los componentes de Angular se debe importar el módulo **IonicModule** en el módulo components. La diferencia en ambas tabs es las listas a mostrar, esto se puede indicar con un **@Input** para indicar cuales mostar o no, pero para usar las propiedades pasadas por Inputs se debe unar en la f unción **ngOnInit()**, en el constructor aun se desconocen. Además para la navegación hacia "atrás" hay que modificar para que no viaje a pendientes. En este punto se tocan muchas cosas en varios ficheros, para no cargar de imágenes, mejor revisar el código.
+
+## Remove lists
+- Al igual que se tiene la característica de eliminar un item de una lista, vamos a extender esto a eliminar una lista completa. Por lo que habrá que envolver el bucler for en un sliding como se hizo anteriormente, pero esta vez en el HTML del lists component. Eliminar la lista será más fiable que el item, ya que esta tiene un id y lo usaremos para eliminarla.
+
+![App](./course_resources/Section_7/app_47.PNG);
+
+![App](./course_resources/Section_7/app_48.PNG);
+
+![App](./course_resources/Section_7/app_49.PNG);
+
+![App](./course_resources/Section_7/app_49b.PNG);

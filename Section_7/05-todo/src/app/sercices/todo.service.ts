@@ -27,6 +27,11 @@ export class TodoService {
     return newList.id;
   }
 
+  removeList(listId: number) {
+    this.lists = this.lists.filter(list => list.id !== listId);
+    this.save();
+  }
+
   getList(id: string | number) { // can string or number
     return this.lists.find(list => list.id === Number(id));
   }
