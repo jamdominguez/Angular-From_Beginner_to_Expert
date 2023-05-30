@@ -11,13 +11,13 @@ import { TodoService } from 'src/app/sercices/todo.service';
 export class ListsComponent implements OnInit {
 
   @Input() showCompleted?: boolean;
-  lists: List[] = [];
+  // lists: List[] = [];
 
   constructor(private router: Router, public todoService: TodoService) {    
   }
   
   ngOnInit() {
-    this.updateLists();
+    // this.updateLists();
   }
 
   navigateAddPage(newListId: number) {
@@ -27,12 +27,11 @@ export class ListsComponent implements OnInit {
 
   removeList(listId: number) {    
     this.todoService.removeList(listId);    
-    this.updateLists();
+    // this.updateLists();
   }
 
-  updateLists() {
-    this.todoService.load();    
-    this.lists = this.todoService.lists.filter(list => list.completed === this.showCompleted);    
-  }
+  // updateLists() {
+  //   this.lists = this.todoService.lists.filter(list => list.completed === this.showCompleted);    
+  // }
 
 }

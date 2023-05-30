@@ -1,6 +1,6 @@
 <ion-list color="dark">
 
-  <ion-item-sliding *ngFor="let list of lists">
+  <ion-item-sliding *ngFor="let list of todoService.lists | completedFilter:showCompleted">
     <ion-item color="dark" (click)="navigateAddPage(list.id)" detail>
       <label>
         <ion-label>{{ list.title }}</ion-label>

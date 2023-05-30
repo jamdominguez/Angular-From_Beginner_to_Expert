@@ -1466,3 +1466,24 @@ ionic g c components/lists
 ![App](./course_resources/Section_7/app_49.PNG);
 
 ![App](./course_resources/Section_7/app_49b.PNG);
+
+## Impure Pipes
+- El filtrado de listas a mostrar en cada tab se puede hacer en lugar de como está hecho actualmente (teniendo listas diferentes cargadas en cada caso), usando pipes para no tocar los datos y sólo mostrar lo que se desea.
+- Habría que crear un módulo para usar el pipe y poder usarlo en varios sitios. Y exportar los pipes creados que se quieran usar.
+
+```
+ionic g m pipes
+ionic g pipe pipes/completedFilter
+```
+- Hay que tener en cuenta que si cosas cambian fuera del componente donde está el Pipe, Angular en su ciclo de detección de cambios no se da cuenta, por lo que hay que indicarle al Pipe que fuerce esta comprobación. Para ello hay que poner la propiedad del Pipe **pure:false**
+
+![App](./course_resources/Section_7/app_50.PNG);
+
+![App](./course_resources/Section_7/app_51.PNG);
+
+![App](./course_resources/Section_7/app_52.PNG);
+
+![App](./course_resources/Section_7/app_53.PNG);
+
+![App](./course_resources/Section_7/app_53b.PNG);
+![App](./course_resources/Section_7/app_53bb.PNG);
