@@ -17,11 +17,10 @@ export class Tab1Page {
     private alertCtrl: AlertController
   ) { }
 
-  async toAddListPage() {    
-    // this.router.navigateByUrl('/tabs/tab1/add');
+  async toAddListPage() {
     const alert = await this.alertCtrl.create({
       header: 'New List',
-      inputs:[
+      inputs: [
         {
           name: 'listTitle',
           type: 'text',
@@ -45,7 +44,7 @@ export class Tab1Page {
             this.router.navigateByUrl(`/tabs/tab1/add/${newListId}`);
           }
         }
-      ] 
+      ]
     });
     alert.present();
   }

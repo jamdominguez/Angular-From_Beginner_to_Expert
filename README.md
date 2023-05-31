@@ -1487,3 +1487,31 @@ ionic g pipe pipes/completedFilter
 
 ![App](./course_resources/Section_7/app_53b.PNG);
 ![App](./course_resources/Section_7/app_53bb.PNG);
+
+## Change name List
+- Aquí se requiere una tarea que consiste en:
+  - Al deslizar el nombre de una lista hacia la derecha aparecera el icono de crear / pencil-outline
+  - Al pulsar el icono debe salir el dialogo de creación de nueva lista con el nombre de la lista seleccionada
+  - El dialogo servirá para modificar el nombre de la lista y también debería modificar el storage
+
+- Una vez implementado, se puede optimizar haciendo que se oculte el icono de editar tras hacerlo. Para ello se usa el **@ViewChild** asignandole el **IonList** que es el elemento principal en el list HTML. Esta es la manera que se tiene de acceder a elementos del HTML desde el TS. Si tuviesemos varios IonList habría que crear una referencia local con #name y usarla en el ViewChild entre comillas.
+
+```
+@ViewChild(IonList) list: IonList
+```
+
+```
+@ViewChild('name') list: IonList
+```
+
+- Se hace así porque los IonList tienen un método que permite cerrar los slidingItems. Otra pequeña mejora es también cerrarlo si se cancela el alert
+
+![App](./course_resources/Section_7/app_54.PNG);
+
+![App](./course_resources/Section_7/app_55.PNG);
+
+![App](./course_resources/Section_7/app_55b.PNG);
+
+![App](./course_resources/Section_7/app_55bb.PNG);
+
+![App](./course_resources/Section_7/app_55bbb.PNG);
