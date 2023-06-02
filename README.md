@@ -1515,3 +1515,94 @@ ionic g pipe pipes/completedFilter
 ![App](./course_resources/Section_7/app_55bb.PNG);
 
 ![App](./course_resources/Section_7/app_55bbb.PNG);
+
+
+# Section 8: Components, attributes directives, component life cicle and more
+- En esta sección no se hará ninguna aplicación en particular, sino que se crearan pequeñas utilidades para entender conceptos de Angular que será aplicados en el futuro del curso.
+- Se proporcionan recuros al curso conmo la librería Font Awesome.
+
+## Create a new proyect with external libraries
+- Creamos un proyecto Angular llamado miscellaneous
+
+```
+ng new miscellaneous
+
+```
+
+- Tras ello vamos a incluir librerías de terceros pero sin usar el instalador de Angular. Estas serán font awesome, bootstrap, jquery y tether. Para ellos crear una carpeta dentro de assets.
+
+- Ahora, hay que indicar a Angular que las use. Para ello, si recordamos, se debe modificar el fichero **angular.json**.
+  
+![App](./course_resources/Section_8/app_01.PNG);
+
+- Para verificar que todo está funcionando se puede camibar el código por defecto del app component html para usar algo de font awesome.
+
+![App](./course_resources/Section_8/app_02.PNG);
+
+![App](./course_resources/Section_8/app_02b.PNG);
+
+## ngStyle
+- El **ngStyle** permite aplicar estilos a elementos "en caliente", usando variables del componente (https://angular.io/api/common/NgStyle). En este momento se puede crear un componente
+
+```
+ng g c components/ngStyle
+```
+
+- Vamos a trabajar sólo con el TS, teniendo el HTML y el CSS en el mismo archivo (inline), por ello después de crear se pueden eliminar y modificar el TS o hacer esto directamente en la instrucción de creación. Y aquí vamos a empezar a usar el ngStyle, por ejemplo tomando el tamaño de fuente de una propiedad del componente.
+
+![App](./course_resources/Section_8/app_03.PNG);
+
+![App](./course_resources/Section_8/app_04.PNG);
+
+![App](./course_resources/Section_8/app_04b.PNG);
+
+- Añadiendo un par de botones que modifiquen la propiedad size, se verá a tiempo real como se refresca el estilo del elemento. Aquí se está indicando que se va a modificar el **style**, la propiedad **fontSize** (font-size) y que el valor irá en **px**.
+
+![App](./course_resources/Section_8/app_05.PNG);
+
+![App](./course_resources/Section_8/app_05b.PNG);
+
+![App](./course_resources/Section_8/app_05bb.PNG);
+
+- También se podría modifcar otra propiedad del style, pero para ello habría que mandar un objeto y no una sola propiedad, por ejemplo, para el color del texto.
+
+![App](./course_resources/Section_8/app_06.PNG);
+
+## Apply CSS to one component
+- Esta funcionalidad de Angular es bastante útil aunque rara vez usada. Ya que puede aplicar un CSS en particular a un sólo componente en particular. Para probar esto crear un nuevo componente llamado css que trabajaremos inline.
+- A este componente se le añade un estilo y se incluye en el app.component, además al app.component añadir un párrafo para comprar la difernecia, quedando tal:
+
+![App](./course_resources/Section_8/app_07.PNG);
+
+![App](./course_resources/Section_8/app_08.PNG);
+
+![App](./course_resources/Section_8/app_08b.PNG);
+
+- Aquí Angular internamente, crea un scope para aplicar el CSS sólo a ese componente. Esto funciona igual que si en lugar de aplicar el estilo inline, se hace incluyendo un fichero de estilo. Además el estilo aplicado al componente se sobrepone al estilo del padre que lo contiene. La única manera de afectar globalmente es con el style.css global del proyecto.
+
+## ngClass Adding classes and styles
+- **ngClass** se usa para algo similar al ngStyle, pero es más común de usar que éste último. Se usa para cambiar el CSS de un elemento (https://angular.io/api/common/NgClass). Al igual que el ngSytle, tiene varios modos de utilizarlos.
+- Creemos un nuevo componente para trabajar con esto (classes). Para probarlo usaremos los alert de bootstrap.
+
+![App](./course_resources/Section_8/app_09.PNG);
+
+![App](./course_resources/Section_8/app_09b.PNG);
+
+- Basicamente, lo que hace Angular, es un append a el class del elemento, con lo que tiene ngClass.
+- Lo potente es poder crear propiedades con las clases y aplicarlas dinamicamente (ojo que cuando se usa propiedad no va entre **''**, al igual que pasaba con el ngStyle).
+
+![App](./course_resources/Section_8/app_10.PNG);
+
+- Aplicando cambios tras pulsar un botón
+
+![App](./course_resources/Section_8/app_11.PNG);
+
+![App](./course_resources/Section_8/app_11b.PNG);
+
+- Usando un objeto
+
+![App](./course_resources/Section_8/app_12.PNG);
+
+![App](./course_resources/Section_8/app_12b.PNG);
+
+![App](./course_resources/Section_8/app_12bb.PNG);
