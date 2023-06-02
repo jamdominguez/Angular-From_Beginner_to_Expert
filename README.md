@@ -25,7 +25,7 @@ This course was published several years ago (Angular 7, currently versoin 15), f
 - Para compilar código TS y generar el JS, usar el comando **tsc app.ts**, donde app.ts es el fichero TS a compilar.
 - Para crear una **función anónima autoinvocada** (base del **patrón módulo** de JS):
   ``` 
-  (function(){ ... })();
+  (function(){ ... })()
   ```
 ## 2.1 TypeScript configuration file
 - Existe un fichero para configurar todo lo necesario en TS (esto Angular lo hace automáticamente). Con el comando **tsc --init**, esto crea el fichero de configuración **tsconfig.json**. Con este fichero ya creado, para compilar los TS existentes sólo hace falta ejecutar el comando **tsc -w**. The esta manera, TS se queda en modo "watcher", esto significa que, cada vez que se guarden cambios en un fichero TS, se compilarán generando / actualizando en JS correspondiente. Con "Ctrl+C" se pararía el servicio de autocompilación"
@@ -849,310 +849,310 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 - Se va a crear una aplicación usando la API de Spotify, usando sobre todo el módulo HTTP. Otra cosa interesante será el tratamiento de los datos que se reciben de un servicio y la persistencia de los mismos en la navegación entre páginas.
 - Los servicios de Spotify se pueden ver en https://beta.developer.spotify.com/console/ y en esta página se indica en la sección *Getting started* los pasos para obtener las credenciales para poder llamar a los servicios. Es recomendable hacer login con su cuenta de Spotify.
 
-![Spoti API](./course_resources/Section_6/spoty_api_1.PNG);
+![Spoti API](./course_resources/Section_6/spoty_api_1.PNG)
 
 - Crear la aplicación de angular **spotiapp** y en ella para comenzar algunos componetentes, home, search, artist y la navbar en shared, sin fichero de pruebas y con el estilo integrado en el TS. Como es posible que la manera de declarar los atributos cambien en versiones posteriores de Angular (como me ha pasado a mi desde que el curso se creó), se pueden consultar los atributos aquí https://angular.io/cli/generate#component-command. 
 
-![SoptiApp](./course_resources/Section_6/app_1.PNG);
+![SoptiApp](./course_resources/Section_6/app_1.PNG)
 
 - De los recursos de la sección copiar la carpeta img en assets y el fichero de estilos style.css remplazando el existente por defecto. Además de esto, importar Bootstrap tal y como se ha hecho en secciones anteriores (con CDN que es la maera más rápida y simple en el index.html)
 
-![SoptiApp](./course_resources/Section_6/app_2.PNG);
+![SoptiApp](./course_resources/Section_6/app_2.PNG)
 
 -  Acceder al dashboard en la página de Spotify y acceder los terminos.
 
-![Spoti API](./course_resources/Section_6/spoty_api_2.PNG);
+![Spoti API](./course_resources/Section_6/spoty_api_2.PNG)
 
 - Una vez aquí se puede crear la aplicación que se enlazará con nuestra aplicación de Angular.
 
-![Spoti API](./course_resources/Section_6/spoty_api_3.PNG);
+![Spoti API](./course_resources/Section_6/spoty_api_3.PNG)
 
-![Spoti API](./course_resources/Section_6/spoty_api_4.PNG);
+![Spoti API](./course_resources/Section_6/spoty_api_4.PNG)
 
 - Una vez creada, se podrá obtener el Client ID y el Client Secret, ambas van a ser necesarias para obtener un token. En el momento de crear yo la cuenta de Spotify esta información estaba en *Settings*.
 
-![Spoti API](./course_resources/Section_6/spoty_api_5.PNG);
+![Spoti API](./course_resources/Section_6/spoty_api_5.PNG)
 
 ## Routing
 - En la carpeta app crear un fichero app.routes.ts para las rutas, en este, importar el **router** para usar el módulos **Routes**. Es necesarios exportar el array de rutas llamado ROUTES que será donde se almacenen todas las rutas de los componentes. Este archivo sólo contiene las rutas a usar en la aplicación, el módulo de rutas se pondrá en el app.module.ts, esto es algo diferente a como se hizo anteriormente, pero es más ordenado.
 
-![SoptiApp](./course_resources/Section_6/app_3.PNG);
+![SoptiApp](./course_resources/Section_6/app_3.PNG)
   
 ## Componets develop
 - Empezar a crear la aplicación sustituyendo en el app.component.html y montado los diferentes componentes. Por ejemplo para el navbar usar el navbar de boostratp con algunos cambios.
 
-![SoptiApp](./course_resources/Section_6/app_4.PNG);
+![SoptiApp](./course_resources/Section_6/app_4.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_5.PNG);
+![SoptiApp](./course_resources/Section_6/app_5.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_5b.PNG);
+![SoptiApp](./course_resources/Section_6/app_5b.PNG)
 
 ## HTTP requests introduction
 - Para hacer un pequeño ejemplo antes de empezar a usar la API de Spotify y ver como se usan las petición HTTP en Angular, se puede usar el siguiente link https://restcountries.com/. Aquí se pueden ver endpoints de servicios como https://restcountries.com/v3.1/lang/{currency}.
 
-![SoptiApp](./course_resources/Section_6/app_6.PNG);
+![SoptiApp](./course_resources/Section_6/app_6.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_7.PNG);
+![SoptiApp](./course_resources/Section_6/app_7.PNG)
 
 - Con Postman (https://www.postman.com/) se puede probar la petición GET https://restcountries.com/v3.1/lang/spanish, si no, directamente en el navegador. Devuelve todos los paises de habla hispana.
 - Ya en nuestra aplicación, para poder obtener este tipo de información es necesario importar en el app.module.ts el módulo **HttpClientModule** y añadirlo a la parte de los **imports**.
 
-![SoptiApp](./course_resources/Section_6/app_8.PNG);
+![SoptiApp](./course_resources/Section_6/app_8.PNG)
 
 - Para usar las herramientas de este módulo, se ha de inyectar el módulo **HttpClient** en un componente, por ejemplo el home. Y listar los países con alguna información más.
 
-![Http Introduction](./course_resources/Section_6/http_introduction_1.PNG);
+![Http Introduction](./course_resources/Section_6/http_introduction_1.PNG)
 
-![Http Introduction](./course_resources/Section_6/http_introduction_2.PNG);
+![Http Introduction](./course_resources/Section_6/http_introduction_2.PNG)
 
-![Http Introduction](./course_resources/Section_6/http_introduction_2b.PNG);
+![Http Introduction](./course_resources/Section_6/http_introduction_2b.PNG)
 
 ## Token for Spotify services
 - Para poder usar los servicios de Spotify es necesario usar un token que nos proveen. Es necesario hace una petición para obtener un token.
 - En la documentación de la web de Spotify para desarrolladores hay informaicón relacinada con las diferentes plataformas dónde se puede usar. Nosotros nos centraremos en la Web API y en ella la guía de autorización, acutalamente en https://developer.spotify.com/documentation/web-api/concepts/authorization
 
-![Spoti API](./course_resources/Section_6/spoty_api_6.PNG);
+![Spoti API](./course_resources/Section_6/spoty_api_6.PNG)
 
 - Leyendo la documentación se informa que es en la autorización donde se debe especificar los tipos de accesos que vamos a necesitar (leer una playlist, modificar tu librería o sólo escuchar). Los tipos de scope se puede encontrar aquí https://developer.spotify.com/documentation/web-api/concepts/scopes.
 - Para el proceso de autorización será necesario el ClientID y el Client secret. Aquí https://developer.spotify.com/documentation/web-api/concepts/apps se indica como generar nuevos.
 - La API de Spotify usa el standar OAuth2 que define 4 tipos/ flujos de peticiones y obtención del token de acceso. Se debe usar el que más se ajuste a la aplicación que estamos haciendo. En el curso se usa *Client credentials* (https://developer.spotify.com/documentation/web-api/tutorials/client-credentials-flow) ya que para obtener el Token se hace desde Postman. Postman monta un servidor y Spotify permite obtener un token solicitándolo desde aquí. Leyendo los diferentes flujos de peticiones, para nuestro caso, me cuadra más Authorization Code with PKCE Flow, pero leyendo como se ha de implementar requiere más trabajo. Creo que por ahora no vale la pena implementar esta manera (al terminar el curso lo haré).
 
-![Spoti API](./course_resources/Section_6/spoty_api_7.PNG);
+![Spoti API](./course_resources/Section_6/spoty_api_7.PNG)
 
-![Spoti API](./course_resources/Section_6/spoty_api_8.PNG);
+![Spoti API](./course_resources/Section_6/spoty_api_8.PNG)
 
 - Accediendo a **Postman** (tiene versión web y de escritorio), haciendo una petición POST a https://accounts.spotify.com/api/token e informando los parámetros necesarios para la llamada, se obtiene el token. Este token caduca en 1hora por lo que hay que generalo de vez en cuando para implementar la aplicación.
 - Lo primero sería tener un workspace donde hacer las petición. Una vez creado, configurar una nueva petición Http tal y como indica la web de la API de Spotify, es decir, añadiendo lso tres parámetros. El client id y el client secret se obtienen en el perfil de la web de la API de Spotify en **Settings**. En la respuesta de la petición se provee el token, en el campo **access_token** además de indicar el tiempo de expiración.
 
-![Spoti API](./course_resources/Section_6/spoty_api_9.PNG);
+![Spoti API](./course_resources/Section_6/spoty_api_9.PNG)
 
-![Postman](./course_resources/Section_6/postman_0.PNG);
+![Postman](./course_resources/Section_6/postman_0.PNG)
 
-![Postman](./course_resources/Section_6/postman_1.PNG);
+![Postman](./course_resources/Section_6/postman_1.PNG)
 
-![Postman](./course_resources/Section_6/postman_2.PNG);
+![Postman](./course_resources/Section_6/postman_2.PNG)
 
 - Una vez con el token ya se pueden hacer peticiones a la API de Spotify.
 
 - En el menú de la izquierda la documentación se pueden encontrar toda la información que podemos obtener, como por ejemplo, los nuevos lanzamientos en *Get New Releases* https://developer.spotify.com/documentation/web-api/reference/get-new-releases
 
-![Spoti API](./course_resources/Section_6/spoty_api_10.PNG);
+![Spoti API](./course_resources/Section_6/spoty_api_10.PNG)
 
 - Dentro de la aplicación Angular, siempre que se quiere acceder a un API lo ideal es crear un servicio que se encargue de ello. Podemos crear el servicio llamado spotify. El servicio se crea con el decorador **@Injectable** que lo que hace es que Angular crea una sóla instancia del servicio para toda la aplicación además ya no hace falta (desde Angular6) añadirlo al app.module.ts ya que al crearlo ya lo incluye en el **provideIn: 'root'**, por lo que no hace falta. Antes on añadía esta propiedad en el decorador y había que añadirlo en la propiedad **providers** del app.module.
 
-![SoptiApp](./course_resources/Section_6/app_9.PNG);
+![SoptiApp](./course_resources/Section_6/app_9.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_10.PNG);
+![SoptiApp](./course_resources/Section_6/app_10.PNG)
 
 - Usando tanto el token como el endpoint se puede llamar al servicio y obtener la información. Para los servicios hay que informar el token en la cabecera en el parámetro *Authorization* e igualandolo a "Bearer " concatenado del token, y para esto se usa la clase **HttpHeaders** del HttpClientModule
 
-![SoptiApp](./course_resources/Section_6/app_10.PNG);
+![SoptiApp](./course_resources/Section_6/app_10.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_11.PNG);
+![SoptiApp](./course_resources/Section_6/app_11.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_12b.PNG);
+![SoptiApp](./course_resources/Section_6/app_12b.PNG)
 
 - Ahora que ya se ha comprobado que podemos obtener información de la API de Spotify, podemos comenzar a implementar la aplicación. Usando cards y badges de bootstrap se puede empezar a implementar el home. Aquí se podría mostrar cada album de los obtenido como una tarjeta.
 - Hay que controlar cuando se recibe la información. Por ello es que el servicio devuelva la petición y sea el home quien gestione el subscribe, así sabrá cuando llegan los datos.
 
-![SoptiApp](./course_resources/Section_6/app_13.PNG);
+![SoptiApp](./course_resources/Section_6/app_13.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_14.PNG);
+![SoptiApp](./course_resources/Section_6/app_14.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_15.PNG);
+![SoptiApp](./course_resources/Section_6/app_15.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_15b.PNG);
+![SoptiApp](./course_resources/Section_6/app_15b.PNG)
 
 ## Search Component
 - Usando el componente search, se puede implementar una pagina simple de busqueda. En la Web API se busca el servicio y probando una llamada se puede ver como se monta la url, se copia y sustituye lo necesario, teniendo en cuenta que se quiere buscar artistas. La composición del HTML puede ser como en el home.
 
-![Spoti API](./course_resources/Section_6/spoty_api_11.PNG);
+![Spoti API](./course_resources/Section_6/spoty_api_11.PNG)
 
-![Spoti API](./course_resources/Section_6/spoty_api_12.PNG);
+![Spoti API](./course_resources/Section_6/spoty_api_12.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_16.PNG);
+![SoptiApp](./course_resources/Section_6/app_16.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_17.PNG);
+![SoptiApp](./course_resources/Section_6/app_17.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_18.PNG);
+![SoptiApp](./course_resources/Section_6/app_18.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_18b.PNG);
+![SoptiApp](./course_resources/Section_6/app_18b.PNG)
 
 ## Optimization: Map operator in observables
 - El operador map permite obtener sólo lo que se quiere de un conjunto de datos. Los observables se importan de **Reactive Extensions (rxjs)**. Usándolos en el spotify.service se puede optimizar la información a devolver de la que la API de Spotify proporciona.
 - Los map trabajan con observables, justo lo que devuelve la petición de GET del HttpClient y junto con los pipes desde el TS se puede hacer lo que estamos buscando. Tras este cambio el uso del servicio cambia por lo que también hay que modificar el home.
 
-![SoptiApp](./course_resources/Section_6/app_19.PNG);
+![SoptiApp](./course_resources/Section_6/app_19.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_20.PNG);
+![SoptiApp](./course_resources/Section_6/app_20.PNG)
 
 - De tarea se propone hacer lo mismo con el servicio que provee los datos al search. Tras ello y optimizar se puede quedar el código en una línea.
 
-![SoptiApp](./course_resources/Section_6/app_21.PNG);
+![SoptiApp](./course_resources/Section_6/app_21.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_22.PNG);
+![SoptiApp](./course_resources/Section_6/app_22.PNG)
 
 ## Optimization: Centralize Spotify requests
 - Se puede crear una una función en el spotify.service para centralizar todo lo común de cada llamada a la API de Spotify (refactor) y así simplificar las funciones usadas.
 
-![SoptiApp](./course_resources/Section_6/app_23.PNG);
+![SoptiApp](./course_resources/Section_6/app_23.PNG)
 
 ## Optimization: Check images and pipe for them
 - En la situación actual de la aplicación se produce un error en algunas busquedas cuando no se obtiene imagen del item en cuestión.
 
-![SoptiApp](./course_resources/Section_6/app_23.PNG);
+![SoptiApp](./course_resources/Section_6/app_23.PNG)
 
 - Se puede usar un pipe para manejar esta situación. Se puede crear el pipe "noimage" con la ayuda de AngularCLI y este será añadido de manera automática al **declarations** en el app.module
 
-![SoptiApp](./course_resources/Section_6/app_24.PNG);
+![SoptiApp](./course_resources/Section_6/app_24.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_25.PNG);
+![SoptiApp](./course_resources/Section_6/app_25.PNG)
 
 - La idea de este pipe es que valide la imagen antes de mostrarla. Para los casos de que no haya imagen se ha de mostrar el noimage.png proporcionado en los recursos del curso. Y una vez creada la pipe se puede usar tanto en el search como en el home.
 
-![SoptiApp](./course_resources/Section_6/app_26.PNG);
+![SoptiApp](./course_resources/Section_6/app_26.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_27.PNG);
+![SoptiApp](./course_resources/Section_6/app_27.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_28.PNG);
+![SoptiApp](./course_resources/Section_6/app_28.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_28b.PNG);
+![SoptiApp](./course_resources/Section_6/app_28b.PNG)
 
 ## Optimization: Card component
 - Tanto en el home como en el search se usa el mismo HTML para mostrar las tarjetas, con una ligera diferencia. Pero se puede crear un componente que sea reusado por ambos. Y mediante un **@Input** pasarle los datos. Quedaría de la siguiente manera:
 
-![SoptiApp](./course_resources/Section_6/app_29.PNG);
+![SoptiApp](./course_resources/Section_6/app_29.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_30.PNG);
+![SoptiApp](./course_resources/Section_6/app_30.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_31.PNG);
+![SoptiApp](./course_resources/Section_6/app_31.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_32.PNG);
+![SoptiApp](./course_resources/Section_6/app_32.PNG)
 
 ## Loading component
 - La idea es mostrar un componente de "Cargando..." mientras se obtiene la información de la Web API. Este se usará tanto en home como en search.
 - Se puede obtener algo "bonito" de mostrar en https://fontawesome.com/, usando su css, buscando el icono refresh. Ingluir en el index lo indicado en la web. Ahora es necesario logearse para acceder a los iconos de la versión que no es la professional
 
-![SoptiApp](./course_resources/Section_6/app_33.PNG);
+![SoptiApp](./course_resources/Section_6/app_33.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_34.PNG);
+![SoptiApp](./course_resources/Section_6/app_34.PNG)
 
 - Se completa el HTML del loading componente quedando:
 
-![SoptiApp](./course_resources/Section_6/app_35.PNG);
+![SoptiApp](./course_resources/Section_6/app_35.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_36.PNG);
+![SoptiApp](./course_resources/Section_6/app_36.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_37.PNG);
+![SoptiApp](./course_resources/Section_6/app_37.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_35b.PNG);
+![SoptiApp](./course_resources/Section_6/app_35b.PNG)
 
 - Ahora sólo queda modificar el home y search component para que tengan en cuenta cuando está cargando la información y cuando ya está cargada. Esto se puede controlar facilmente con un boolean que después se puede usar con ngIf en el HTML de cada componente. Existe la particularidad que en el search, de primeras no se carga información, por lo que no hay que mostrarlo, sólo cuando se quiera buscar algún artista.
 
-![SoptiApp](./course_resources/Section_6/app_38.PNG);
+![SoptiApp](./course_resources/Section_6/app_38.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_39.PNG);
+![SoptiApp](./course_resources/Section_6/app_39.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_40.PNG);
+![SoptiApp](./course_resources/Section_6/app_40.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_41.PNG);
+![SoptiApp](./course_resources/Section_6/app_41.PNG)
 
 ## Artist component
 - La idea es que cuando se pulsa sobre la tarjeta de un artista, nos lleve a su página. El componente artist ya está creado, pero necesitamos diseñarlo, añadirle lógica y en el routing tener en cuenta que pasaremos el id del artista para así poder localizarlo. Este id es reportado en la información de Spotify.
 
-![SoptiApp](./course_resources/Section_6/app_42.PNG);
+![SoptiApp](./course_resources/Section_6/app_42.PNG)
 
 - Para modificar el componente card, para que al clickar sobre una artista / album me lleve a la página del artista, tengo que tener en cuenta que este componente se usa en dos sitios y en cada uno la lista de datos que pinta es diferente. La propiedad type de cada elemento que devuelve en ambos casos indica el tipo de dato que devuelve, album en el home y artist en el search, por lo que podemos usarlo para saber de dode tomar el id.
 
-![SoptiApp](./course_resources/Section_6/app_43.PNG);
+![SoptiApp](./course_resources/Section_6/app_43.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_44.PNG);
+![SoptiApp](./course_resources/Section_6/app_44.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_45.PNG);
+![SoptiApp](./course_resources/Section_6/app_45.PNG)
 
 - Una vez obtenido el id se ha de redireccionar con el **Router** desde el card component.
 - En el artist component se debe recuperar de la ruta el id usando **ActivatedRoute**.
 
-![SoptiApp](./course_resources/Section_6/app_46.PNG);
+![SoptiApp](./course_resources/Section_6/app_46.PNG)
 
 - En este punto, que ya conocemos el id, se puede llamar al servicio get artist de la API de Spotify para obtener la información del artista. Para ello habrá que añadir una nueva función al servicio. En este caso no es necesario pasarlo por un pipe, ya que la información viene bastante acorde a lo que se necesita.
 
 ![Spoti API](./course_resources/Section_6/spoty_api_13.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_47.PNG);
+![SoptiApp](./course_resources/Section_6/app_47.PNG)
 
 - Lo que si habrá que pasar por el pipe es el array de imágenes además de usar el componente loading para evitar errores.
 
-![SoptiApp](./course_resources/Section_6/app_48.PNG);
+![SoptiApp](./course_resources/Section_6/app_48.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_49.PNG);
+![SoptiApp](./course_resources/Section_6/app_49.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_49b.PNG);
+![SoptiApp](./course_resources/Section_6/app_49b.PNG)
 
 - Podemos añadir más información al componente artist usando otro servicio de spotify como top tracks, para así listar las mejores canciones del mismo. En este servicio si que conviene usar una pipe para devolver sólo el listado de canciones.
 
-![Spoti API](./course_resources/Section_6/spoty_api_14.PNG);
+![Spoti API](./course_resources/Section_6/spoty_api_14.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_50.PNG);
+![SoptiApp](./course_resources/Section_6/app_50.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_51.PNG);
+![SoptiApp](./course_resources/Section_6/app_51.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_52.PNG);
+![SoptiApp](./course_resources/Section_6/app_52.PNG)
 
-![SoptiApp](./course_resources/Section_6/app_52b.PNG);
+![SoptiApp](./course_resources/Section_6/app_52b.PNG)
 
 ## Spotify Widget
 - En este punto se quiere cambiar el elemento audio de HTML por un widget de Spotify. La manera de obtener los widgets ha cambiado desde la creación del curso. Antes se podían obtener de la docuemntación en la sección Widgets, ahora podemos tobar de la web app de Spotify cualquier elemento que nos interese clicando con botón derecha y seleccionando "share > embed xxxx", depende de lo que se busque el codigo generado será diferente y habrá que adaptarlo a nuestr aplicación.
 
-![Widget](./course_resources/Section_6/widget_1.PNG);
+![Widget](./course_resources/Section_6/widget_1.PNG)
 
-![Widget](./course_resources/Section_6/widget_2.PNG);
+![Widget](./course_resources/Section_6/widget_2.PNG)
 
-![Widget](./course_resources/Section_6/widget_3.PNG);
+![Widget](./course_resources/Section_6/widget_3.PNG)
 
 - Tras copiar el código del widget, se puede pegar donde teníamos el elemento audio. Modificar el tamaño del iframe para que se ajuste a nuestro gusto. Lo que queda hacer es identificar el Id del track en la url y sustituirlo por la track que se está listando en el componente.
 
-![Widget](./course_resources/Section_6/widget_4.PNG);
+![Widget](./course_resources/Section_6/widget_4.PNG)
 
-![Widget](./course_resources/Section_6/widget_4b.PNG);
+![Widget](./course_resources/Section_6/widget_4b.PNG)
 
 - Pero hay que tener en cuenta si se quiere modificar el src es que Angular bloqueará el dominio al insertar el valor del src, por lo que habría que crear una pipe como se hizo en la sección de las pipes.
 
-![Widget](./course_resources/Section_6/widget_5.PNG);
+![Widget](./course_resources/Section_6/widget_5.PNG)
 
-![Widget](./course_resources/Section_6/widget_6.PNG);
+![Widget](./course_resources/Section_6/widget_6.PNG)
 
-![Widget](./course_resources/Section_6/widget_6b.PNG);
+![Widget](./course_resources/Section_6/widget_6b.PNG)
 
 - La idea es calcular la url con una función y que está sea invocada para obtener el src. Por lo que ejecutar **ng g p pipes/securedom --skip-tests** e implementarlo de la misma manera que se hizo en la otra sección.
 
-![Widget](./course_resources/Section_6/widget_6.PNG);
+![Widget](./course_resources/Section_6/widget_6.PNG)
 
-![Widget](./course_resources/Section_6/widget_7.PNG);
+![Widget](./course_resources/Section_6/widget_7.PNG)
 
-![Widget](./course_resources/Section_6/widget_8.PNG);
+![Widget](./course_resources/Section_6/widget_8.PNG)
 
-![Widget](./course_resources/Section_6/widget_8b.PNG);
+![Widget](./course_resources/Section_6/widget_8b.PNG)
 
 ## Errors managements
 - Hay muchas maneras de manejar los errores en la parte visual (un div, notificaciones, un componente, etc). Para el ejemplo se va a usar un div que muestre un mensaje de error con la clase alert de Bootstrap y con un boolean se controlará si se muestra o no.
 - Para reproducir un posible error se puede eliminar algún caracter del token por lo que la petición en el hombe mostrará un error por la consola del navegador y el loading permanecerá en pantalla.
 
-![Errors](./course_resources/Section_6/errors_1.PNG);
+![Errors](./course_resources/Section_6/errors_1.PNG)
 
 - Para probar el manejo del error, en el home, se puede pintar la div que muestra el error y en el ts controlar la función a ejecutar cuando el subscribe recibe un error.
 
-![Errors](./course_resources/Section_6/errors_2.PNG);
+![Errors](./course_resources/Section_6/errors_2.PNG)
 
-![Errors](./course_resources/Section_6/errors_2b.PNG);
+![Errors](./course_resources/Section_6/errors_2b.PNG)
 
 - Hay que usar la directiva ngIf para mostrar o no la div. Además se puede añadir información del error recibido, guarándolo en una variable del componente.
 
-![Errors](./course_resources/Section_6/errors_3.PNG);
+![Errors](./course_resources/Section_6/errors_3.PNG)
 
-![Errors](./course_resources/Section_6/errors_4.PNG);
+![Errors](./course_resources/Section_6/errors_4.PNG)
 
-![Errors](./course_resources/Section_6/errors_4b.PNG);
+![Errors](./course_resources/Section_6/errors_4b.PNG)
 
 
 # Section 7: Mobile App with IONIC
@@ -1166,7 +1166,7 @@ En esta sección se va a realiar las primera aplicación Angular ("Hello World")
 ## 7.1 Building App structure
 - Lo primero es acceder a la web de IONIC https://ionicframework.com/
 
-![IONIC](./course_resources/Section_7/ionic_1.PNG);
+![IONIC](./course_resources/Section_7/ionic_1.PNG)
   
 - Instalar el command line interface con:
 
@@ -1181,9 +1181,9 @@ npm uninstall -g ionic
 ```
 - Tras la instalación en la web de IONIC pulsar el botón **Get started**. Se requiere registro. Una vez aquí aparecen varias opciones que ofrece IONIC, una de ellas es crear una aplicación y para ello provee algunas templates. Para la aplicación de esta sección se usará la template "Tabs". Como se va a crear una aplicación de deseos o cosas por hacer, la llamaremos **todos**.
 
-![IONIC](./course_resources/Section_7/ionic_2.PNG);
+![IONIC](./course_resources/Section_7/ionic_2.PNG)
 
-![IONIC](./course_resources/Section_7/ionic_3.PNG);
+![IONIC](./course_resources/Section_7/ionic_3.PNG)
 
 - La manera que provee la Web de IONIC sirver para crear directamente un repositorio con la aplicación, pero si no queremos hacer esto o al menos no aún como es mi caso, ejecutar el siguiente comando en la carpeta donde se quiera crear el proyecto.
 
@@ -1195,7 +1195,7 @@ ionic start todos tabs
 - En la instalación preguntará si queremos crear la aplicación con NgModules o Standalone, elegid NgModules.
 - Al terminar habrá creado una carpeta con el nombre del proyecto y dentro todos los archivos como en un proyecto de Angular. Esto demora varios minutos.
 
-![App](./course_resources/Section_7/app_1.PNG);
+![App](./course_resources/Section_7/app_1.PNG)
 
 - Para levantar la aplicación, en lugar de usar el comnado ng serve, se usa:
 
@@ -1211,26 +1211,26 @@ ionic serve
 
 - Una vez levantada la aplicación, en las herramientas de desarrollo, seleccionar la vista de dispositivo móvil para observar como se vería la aplicación en un dispositivo.
 
-![App](./course_resources/Section_7/app_2.PNG);
+![App](./course_resources/Section_7/app_2.PNG)
 
 - Si empezamos a ver la estructura de la aplicación, dentro de la carpeta app existe una carpeta por tab, es decir un componente.
 - Si se abre el tab1 html se puede ver que hay etiquetas no vistas anteriormente, son propias de IONIC. Se puede modificar algo del contenido para comprobar que la aplicación funciona.
 
-![App](./course_resources/Section_7/app_3.PNG);
+![App](./course_resources/Section_7/app_3.PNG)
 
 
 - Para comnenzar a modificar la aplicación se puede cambiar para usar sólo 2 tabs. Las tabs son usadas en el componente tabs y modificando este podemos cambiar lo que vemos en el navegador.
 - Existe una web para consultar los iconos de IONIC https://ionic.io/ionicons. Estos iconos ya están preparados para ser usados. Buscando un icono y clickando en él, aparece un pop up con el tag que se debe usar.
 
-![IONIC](./course_resources/Section_7/ionic_4.PNG);
+![IONIC](./course_resources/Section_7/ionic_4.PNG)
 
-![IONIC](./course_resources/Section_7/ionic_5.PNG);
+![IONIC](./course_resources/Section_7/ionic_5.PNG)
 
 - Personalmente he usado las siguientes:
 
-![App](./course_resources/Section_7/app_4.PNG);
+![App](./course_resources/Section_7/app_4.PNG)
 
-![App](./course_resources/Section_7/app_4b.PNG);
+![App](./course_resources/Section_7/app_4b.PNG)
 
 - La estructuración de carpetas no es la adecuada, habría que crear una carpeta pages que contenga todas las tabs. Si hacemos esto y movemos las tabs (la tab3 la podemos elminar porque no se va a usar), la aplicación dejará de correr y dará error, ya que se habrá perdido la referencia en importaciones. Se ha de arreglar el app-routing.module.ts para poner bien la ruta de importación del tabs. En el tabs-routing.module.ts hay que eliminar la referencia a tab3 ya que hemos eliminado este componente. En mi versión de IONIC además, se crea un componente llamado explore-container y este es usado en cada componente tab (tab1 y tab2), ya que lo importa. Hay que arreglar esta ruta ya que la mover los componentes tabs, la referencia en la impoertación está mal.
 
@@ -1245,29 +1245,29 @@ ionic g s sercices/todo
 
 - Ya que estamos avanzados en el curso, es buna práctica no trabajar con objetos any y si crear nuestras propias clases e interfaces, estas se suelen guardar en la carpeta llamada "models". Los models son, como su nombre indica, modelos de datos con los que se van a trabajar. Para definirlo se usan clases (no interfaces) ya que estos modelos de datos van a poseer constructor y métodos. Se ha de crear un modelo para los items de la listas y otro para las listas en si. Como se vió en otra sección, los servicio, con la dicoración @Injectable son singletons, es decir, que se instancian sólo una vez para toda la aplicación. Podemos inyectar este servicio en tab1 y tab2, y comprobar como sólo se llama al constructor una sólo vez al navegar por la aplicación.
 
-![App](./course_resources/Section_7/app_5.PNG);
+![App](./course_resources/Section_7/app_5.PNG)
 
-![App](./course_resources/Section_7/app_6.PNG);
+![App](./course_resources/Section_7/app_6.PNG)
 
-![App](./course_resources/Section_7/app_7.PNG);
+![App](./course_resources/Section_7/app_7.PNG)
 
 ## Pending tasks page
 - En el servicio todo se pueden crear un par de listas para trabajar con ellas, y así visualizarlas en el tab1.
 - Para la visualización de elementos se puede revisar la documentación en la web de IONIC https://ionicframework.com/docs, como el ion-list.
 
-![IONIC](./course_resources/Section_7/ionic_6.PNG);
+![IONIC](./course_resources/Section_7/ionic_6.PNG)
 
 - Usando ese elemento se puede mostrar el listado de listas pendientes en la tab1. Además en el fichero variable.scss que crea el IONIC CLI automaticamente ya proporciona varios estilos para poder aplicar, como el *dark*.
 
-![App](./course_resources/Section_7/app_8.PNG);
+![App](./course_resources/Section_7/app_8.PNG)
 
-![App](./course_resources/Section_7/app_8b.PNG);
+![App](./course_resources/Section_7/app_8b.PNG)
 
 - Se puede modificar el estilo tocando el global.css. Por ejemplo el background de los ion-list en dark también y si se revisa el DOM de la aplicación, se puede ver como la tab activa tiene una clase llamada tab-selected, si se asigna en un estilo a esta clase todo se verá mejor
 
-![App](./course_resources/Section_7/app_9.PNG);
+![App](./course_resources/Section_7/app_9.PNG)
 
-![App](./course_resources/Section_7/app_9b.PNG);
+![App](./course_resources/Section_7/app_9b.PNG)
 
 ## Page to agregate lists and navigation
 - IONIC posse un comando para crear nuevas páginas. Este comando ya agrega un módulo, que ayuda a hacer el *lazy load* de los componentes.
@@ -1275,59 +1275,59 @@ ionic g s sercices/todo
 ionic g page pages/add
 ```
 
-![App](./course_resources/Section_7/app_10.PNG);
+![App](./course_resources/Section_7/app_10.PNG)
 
 - La nueva página ya está creada pero aun no la estamos viendo, sería necesario crear la navegación a ella. Desde versiones superiores de IONIC 4, éste usa el routing de Angular. Si accedemos al app-routing.module.ts que es el fichero principal de rutas de la aplicación, ya se añadió automáticamente la ruta de la página creada. Lo que se indica con *loadChildren* es que cuando se ponga esa ruta, se debe cargar todo lo de ese módulo (**AddPageModule**) que es el que hemos creado. Esto es el *lazy load*. Por lo que si se escribe "add" en la ruta, se debería ver esta página.
 
-![App](./course_resources/Section_7/app_11.PNG);
+![App](./course_resources/Section_7/app_11.PNG)
 
-![App](./course_resources/Section_7/app_12.PNG);
+![App](./course_resources/Section_7/app_12.PNG)
 
-![App](./course_resources/Section_7/app_12b.PNG);
+![App](./course_resources/Section_7/app_12b.PNG)
 
 - Pero como se puede ver, ya no se tienen los tabs, por lo que no podemos navegar, esto es porque la ruta (**add**) está indicada fuera del módulo de los tabs (**TabsPageModule**). Hay que indicar que queremos que esta página se cargue en ese módulo también, por lo que habrá que modificar el routing. Hay que añadir al routing de la tab1 la nueva ruta para el add, ya que queremos que sea hija de esta.
 
-![App](./course_resources/Section_7/app_13.PNG);
+![App](./course_resources/Section_7/app_13.PNG)
 
-![App](./course_resources/Section_7/app_16.PNG);
+![App](./course_resources/Section_7/app_16.PNG)
 
 - Para la navegación se va a añadir un botón que haga que naveguemos a la otra página (ion-fab), este llamará a unoa función que con el Router navegará a la ruta hija que hemos configurado.
 
-![App](./course_resources/Section_7/app_14.PNG);
+![App](./course_resources/Section_7/app_14.PNG)
 
-![App](./course_resources/Section_7/app_15.PNG);
+![App](./course_resources/Section_7/app_15.PNG)
 
-![App](./course_resources/Section_7/app_16.PNG);
+![App](./course_resources/Section_7/app_16.PNG)
 
 
 ## Add list page
 - A la nueva página hay que añadirle el mismo estilo "dark" que al resto de la aplicación y crear la navegación para poder volver. IONIC tiene un componente especializado para esta tarea e **ion-back-button**. Este botón aparece cuando hay una ruta a la que volver, pero se puede forzar que apareza siempre y que vuelva a una ruta por defecto si no hay ruta a la que volver.
 
-![App](./course_resources/Section_7/app_17.PNG);
+![App](./course_resources/Section_7/app_17.PNG)
 
-![App](./course_resources/Section_7/app_17b.PNG);
+![App](./course_resources/Section_7/app_17b.PNG)
 
 - Ahora hay que introducir inputs para poder agregar las listas deseadas. Los inputs se ponen dentro de un **ion-list** para poder hacer scroll si fuese necesario. Y también un **ion-list**.
 
-![App](./course_resources/Section_7/app_18.PNG);
+![App](./course_resources/Section_7/app_18.PNG)
 
-![App](./course_resources/Section_7/app_18b.PNG);
+![App](./course_resources/Section_7/app_18b.PNG)
 
 - Lo que se requiere es que al pulsar el botón + aparezca una ventana / dialogo / promt donde introducir la lista, para ello se va a usar el **ion-alert**. Para ello hay que inyectar el servicio **AlertController** en el tab1. La función del alert controler **create**, trabaja con promesas, y con el **await** esperamos que el código esté preparado pero sólo está preparado dentro de una función asincrona (promesa), por ello, delante de la función ponermos **async**. Los **handler** son funciones que se ejecutan cuando se pulsa el botón y la **data** son los datos del formulario (de los inputs introducidos)
 
-![App](./course_resources/Section_7/app_19.PNG);
+![App](./course_resources/Section_7/app_19.PNG)
 
-![App](./course_resources/Section_7/app_19b.PNG);
+![App](./course_resources/Section_7/app_19b.PNG)
 
-![App](./course_resources/Section_7/app_19bb.PNG);
+![App](./course_resources/Section_7/app_19bb.PNG)
 
 - Ahora usando el todo.service podemos crear una función para añadir una lista. Esta función deber recibir un titulo y crear un List para agregarlo al array de List que ya tiene.
 
-![App](./course_resources/Section_7/app_20.PNG);
+![App](./course_resources/Section_7/app_20.PNG)
 
-![App](./course_resources/Section_7/app_21.PNG);
+![App](./course_resources/Section_7/app_21.PNG)
 
-![App](./course_resources/Section_7/app_21b.PNG);
+![App](./course_resources/Section_7/app_21b.PNG)
 
 ## Store information
 - En el punto pasado se consiguió agregar listas, pero no hay persistencia, si la aplicación se recarga, se pierden las nuevas listas añadidas. Para poder añadir esta persistencia, existen tres opciones (en nuestro caso):
@@ -1337,86 +1337,86 @@ ionic g page pages/add
 
 - En el todo service se debería crear dos métodos, uno para guardar en el storage y otro para cargar del storage. El de guardar debería llamarse siempre que se crea una lista. En nuestro ejemplo usaremos el localstorage.
 
-![App](./course_resources/Section_7/app_22.PNG);
+![App](./course_resources/Section_7/app_22.PNG)
 
-![App](./course_resources/Section_7/app_22b.PNG);
+![App](./course_resources/Section_7/app_22b.PNG)
 
 ## Add list page functionalities
 - Usando el id asignado a cada lista que se hace de manera automática, se puede recuperar los detalles de cada lista.
 - En al tab1 routing habría que añadir al path el id.
 - Ahora desde el tab1 cuando se agrega la lista, se puede hacer directamente la redirección a la página donde se añadiran los items de la lista. Para obtener el id de la lista se puede hacer que la función de crear lista además de crearla, retorne el id de dicha lista. Con ello se puede modificar la tab1 para que se navege a la add page.
 
-![App](./course_resources/Section_7/app_23.PNG);
+![App](./course_resources/Section_7/app_23.PNG)
 
-![App](./course_resources/Section_7/app_24.PNG);
+![App](./course_resources/Section_7/app_24.PNG)
 
-![App](./course_resources/Section_7/app_24b.PNG);
+![App](./course_resources/Section_7/app_24b.PNG)
 
-![App](./course_resources/Section_7/app_24bb.PNG);
+![App](./course_resources/Section_7/app_24bb.PNG)
 
 - Ahora habría que crear un metodo en el todo service para obtener la lista a partir del id.
 
-![App](./course_resources/Section_7/app_25.PNG);
+![App](./course_resources/Section_7/app_25.PNG)
 
-![App](./course_resources/Section_7/app_26.PNG);
+![App](./course_resources/Section_7/app_26.PNG)
 
 - En este punto hay que preparar add page para que cada vez que se escribe un nuevo item, lo agregue a la lista. Para relacionar el input del nuevo item entre el HTML y el TS se usa **ngModel**, que se encarga de emitir y escuchar eventos. En **ngModel** es usado para la interacción entre inputs y propiedades del componente.
 
-![App](./course_resources/Section_7/app_27.PNG);
+![App](./course_resources/Section_7/app_27.PNG)
 
-![App](./course_resources/Section_7/app_28.PNG);
+![App](./course_resources/Section_7/app_28.PNG)
 
-![App](./course_resources/Section_7/app_28b.PNG);
+![App](./course_resources/Section_7/app_28b.PNG)
 
 - El problema aquí es que la información de los items no se está persistiendo. Como en JS los objetos se pasan por referencia, se puede invocar el save del todo service tras añadir cada item para que quede almacenado.
 
-![App](./course_resources/Section_7/app_29.PNG);
+![App](./course_resources/Section_7/app_29.PNG)
 
 - En este punto se va a modificar la estética de crear lista y agregar tareas, add page en el proyecto. Para ello se usaran las clases proporcionadas den el fichero animated.txt de recursos del curso y se añadirán al global.scss del proyecto. A cada item se le puede agregar las clases *animated fadeInDown* para que haga la animación de aparecer de arriba a abajo. También hay que hacer persistente el cambio en el check de los items.
 
-![App](./course_resources/Section_7/app_30.PNG);
+![App](./course_resources/Section_7/app_30.PNG)
 
-![App](./course_resources/Section_7/app_31.PNG);
+![App](./course_resources/Section_7/app_31.PNG)
 
-![App](./course_resources/Section_7/app_30b.PNG);
+![App](./course_resources/Section_7/app_30b.PNG)
 
 - Lo único que se debe hacer para la persistencia es guardar en el local storage usando la función save del todo service. Se puede ver en las imágenes anteriores como el valor del campo se actualizar según se cambia el check, esto es gracias al **ngModel**.
 
-![App](./course_resources/Section_7/app_32.PNG);
+![App](./course_resources/Section_7/app_32.PNG)
 
-![App](./course_resources/Section_7/app_32b.PNG);
+![App](./course_resources/Section_7/app_32b.PNG)
 
 - Además habría que tener en cuenta que en caso de que se quite el check de algún item cambiar el estado de la lista a no completado.
 
-![App](./course_resources/Section_7/app_33.PNG);
+![App](./course_resources/Section_7/app_33.PNG)
 
-![App](./course_resources/Section_7/app_33b.PNG);
+![App](./course_resources/Section_7/app_33b.PNG)
 
 - Ahora se va a añadir la funcionalidad de eliminar items de la lista. Para ello se quiere que se pueda desplazar el item hacia una la izquierda aparezca el botón de borrar. Se usará el **ion-item-sliding** de https://ionicframework.com/docs/api/item-sliding. Este elemento de IONIC ha de envolver a cda ion-item y además añade opciones de qué hacer con el item en cuestión. A nosotros sólo nos iteresa eliminarlo. Además, tras eliminar el elemento, habría que volver a revisar la lista si está completa o no, ya que este elemento ya no contaría para verificar si está completa. Para poder eliminarlo vamos a usar el indice del item. El side="end" en el HTML determina como desplazar el elemento para que salga el icono, en nuestro caso al final desplazando hacia la izquierda.
 
-![App](./course_resources/Section_7/app_34.PNG);
+![App](./course_resources/Section_7/app_34.PNG)
 
-![App](./course_resources/Section_7/app_35.PNG);
+![App](./course_resources/Section_7/app_35.PNG)
 
-![App](./course_resources/Section_7/app_36.PNG);
+![App](./course_resources/Section_7/app_36.PNG)
 
-![App](./course_resources/Section_7/app_36b.PNG);
+![App](./course_resources/Section_7/app_36b.PNG)
 
 ## Edit list created
 - Se va a añadir el poder modificar una lista ya creada. Accediendo desde tab1. Además se puede añadir con **ion-note** información sobre los items que contiene la lista.
 
-![App](./course_resources/Section_7/app_37.PNG);
+![App](./course_resources/Section_7/app_37.PNG)
 
-![App](./course_resources/Section_7/app_38.PNG);
+![App](./course_resources/Section_7/app_38.PNG)
 
-![App](./course_resources/Section_7/app_38b.PNG);
+![App](./course_resources/Section_7/app_38b.PNG)
 
-![App](./course_resources/Section_7/app_38bb.PNG);
+![App](./course_resources/Section_7/app_38bb.PNG)
 
 ## Modules
 - Una aplicación de Angular, en si, es un módulo. El decorador @NgModule nos siver para declarar un módulo y también informar de todo lo que contiene la aplicación.
 
-![App](./course_resources/Section_7/app_39.PNG);
+![App](./course_resources/Section_7/app_39.PNG)
 
 - En la aplicación la tab2 es la de las tareas completadas, que basicamente es la misma que la tab1 pero con las tareas completadas en lugar de las pendientes. Para crear este componente se va a hacer mediante un módulo. En esta caso en lugar de usar angular (ng) haremos lo propio con IONIC:
 
@@ -1424,7 +1424,7 @@ ionic g page pages/add
 ionic g m components
 ```
 
-![App](./course_resources/Section_7/app_40.PNG);
+![App](./course_resources/Section_7/app_40.PNG)
 
 - Esto crea un múdlo donde se ve que importa NgModule del core de Angular y CommomModule del common de Angular. Un módulo funciona simmilar a una librería de componentes.
   - declarations: Es donde se declaran los componentes que se usan en el módulo.
@@ -1437,21 +1437,21 @@ ionic g m components
 ionic g c components/lists
 ```
 
-![App](./course_resources/Section_7/app_41.PNG);
+![App](./course_resources/Section_7/app_41.PNG)
 
 - Ahora para poder usar el lists, se debe importar el módulo dentro del tab1 o declarar la clase, si no al intentar usar el componente lists que se declarara en él, se obtendrá error.
 
-![App](./course_resources/Section_7/app_42.PNG);
+![App](./course_resources/Section_7/app_42.PNG)
 
-![App](./course_resources/Section_7/app_43.PNG);
+![App](./course_resources/Section_7/app_43.PNG)
 
-![App](./course_resources/Section_7/app_44.PNG);
+![App](./course_resources/Section_7/app_44.PNG)
 
-![App](./course_resources/Section_7/app_46.PNG);
+![App](./course_resources/Section_7/app_46.PNG)
 
-![App](./course_resources/Section_7/app_45.PNG);
+![App](./course_resources/Section_7/app_45.PNG)
 
-![App](./course_resources/Section_7/app_45b.PNG);
+![App](./course_resources/Section_7/app_45b.PNG)
 
 - Si fuesemos al módulo del tab2 y declarasemos allí también la lista, nos daría error indicando que se está declarando en 2 módulos y que la declarasemos en un módulo superior (al menos en el curos), a mi no me pasa con mi versión de Angular. Habría que importar el módulo em ambos módulos en lugar de declarar el componente.
 - En este punto lo que se tiene que hacer es pasar la lógica de las listas  al componente lists y así poder utilizarlo en ambas tabs. Hay que tener en cuenta que para usar los componentes de Angular se debe importar el módulo **IonicModule** en el módulo components. La diferencia en ambas tabs es las listas a mostrar, esto se puede indicar con un **@Input** para indicar cuales mostar o no, pero para usar las propiedades pasadas por Inputs se debe unar en la f unción **ngOnInit()**, en el constructor aun se desconocen. Además para la navegación hacia "atrás" hay que modificar para que no viaje a pendientes. En este punto se tocan muchas cosas en varios ficheros, para no cargar de imágenes, mejor revisar el código.
@@ -1459,13 +1459,13 @@ ionic g c components/lists
 ## Remove lists
 - Al igual que se tiene la característica de eliminar un item de una lista, vamos a extender esto a eliminar una lista completa. Por lo que habrá que envolver el bucler for en un sliding como se hizo anteriormente, pero esta vez en el HTML del lists component. Eliminar la lista será más fiable que el item, ya que esta tiene un id y lo usaremos para eliminarla.
 
-![App](./course_resources/Section_7/app_47.PNG);
+![App](./course_resources/Section_7/app_47.PNG)
 
-![App](./course_resources/Section_7/app_48.PNG);
+![App](./course_resources/Section_7/app_48.PNG)
 
-![App](./course_resources/Section_7/app_49.PNG);
+![App](./course_resources/Section_7/app_49.PNG)
 
-![App](./course_resources/Section_7/app_49b.PNG);
+![App](./course_resources/Section_7/app_49b.PNG)
 
 ## Impure Pipes
 - El filtrado de listas a mostrar en cada tab se puede hacer en lugar de como está hecho actualmente (teniendo listas diferentes cargadas en cada caso), usando pipes para no tocar los datos y sólo mostrar lo que se desea.
@@ -1477,16 +1477,16 @@ ionic g pipe pipes/completedFilter
 ```
 - Hay que tener en cuenta que si cosas cambian fuera del componente donde está el Pipe, Angular en su ciclo de detección de cambios no se da cuenta, por lo que hay que indicarle al Pipe que fuerce esta comprobación. Para ello hay que poner la propiedad del Pipe **pure:false**
 
-![App](./course_resources/Section_7/app_50.PNG);
+![App](./course_resources/Section_7/app_50.PNG)
 
-![App](./course_resources/Section_7/app_51.PNG);
+![App](./course_resources/Section_7/app_51.PNG)
 
-![App](./course_resources/Section_7/app_52.PNG);
+![App](./course_resources/Section_7/app_52.PNG)
 
-![App](./course_resources/Section_7/app_53.PNG);
+![App](./course_resources/Section_7/app_53.PNG)
 
-![App](./course_resources/Section_7/app_53b.PNG);
-![App](./course_resources/Section_7/app_53bb.PNG);
+![App](./course_resources/Section_7/app_53b.PNG)
+![App](./course_resources/Section_7/app_53bb.PNG)
 
 ## Change name List
 - Aquí se requiere una tarea que consiste en:
@@ -1506,15 +1506,15 @@ ionic g pipe pipes/completedFilter
 
 - Se hace así porque los IonList tienen un método que permite cerrar los slidingItems. Otra pequeña mejora es también cerrarlo si se cancela el alert
 
-![App](./course_resources/Section_7/app_54.PNG);
+![App](./course_resources/Section_7/app_54.PNG)
 
-![App](./course_resources/Section_7/app_55.PNG);
+![App](./course_resources/Section_7/app_55.PNG)
 
-![App](./course_resources/Section_7/app_55b.PNG);
+![App](./course_resources/Section_7/app_55b.PNG)
 
-![App](./course_resources/Section_7/app_55bb.PNG);
+![App](./course_resources/Section_7/app_55bb.PNG)
 
-![App](./course_resources/Section_7/app_55bbb.PNG);
+![App](./course_resources/Section_7/app_55bbb.PNG)
 
 
 # Section 8: Components, attributes directives, component life cicle and more
@@ -1533,13 +1533,13 @@ ng new miscellaneous
 
 - Ahora, hay que indicar a Angular que las use. Para ello, si recordamos, se debe modificar el fichero **angular.json**.
   
-![App](./course_resources/Section_8/app_01.PNG);
+![App](./course_resources/Section_8/app_01.PNG)
 
 - Para verificar que todo está funcionando se puede camibar el código por defecto del app component html para usar algo de font awesome.
 
-![App](./course_resources/Section_8/app_02.PNG);
+![App](./course_resources/Section_8/app_02.PNG)
 
-![App](./course_resources/Section_8/app_02b.PNG);
+![App](./course_resources/Section_8/app_02b.PNG)
 
 ## ngStyle
 - El **ngStyle** permite aplicar estilos a elementos "en caliente", usando variables del componente (https://angular.io/api/common/NgStyle). En este momento se puede crear un componente
@@ -1550,33 +1550,33 @@ ng g c components/ngStyle
 
 - Vamos a trabajar sólo con el TS, teniendo el HTML y el CSS en el mismo archivo (inline), por ello después de crear se pueden eliminar y modificar el TS o hacer esto directamente en la instrucción de creación. Y aquí vamos a empezar a usar el ngStyle, por ejemplo tomando el tamaño de fuente de una propiedad del componente.
 
-![App](./course_resources/Section_8/app_03.PNG);
+![App](./course_resources/Section_8/app_03.PNG)
 
-![App](./course_resources/Section_8/app_04.PNG);
+![App](./course_resources/Section_8/app_04.PNG)
 
-![App](./course_resources/Section_8/app_04b.PNG);
+![App](./course_resources/Section_8/app_04b.PNG)
 
 - Añadiendo un par de botones que modifiquen la propiedad size, se verá a tiempo real como se refresca el estilo del elemento. Aquí se está indicando que se va a modificar el **style**, la propiedad **fontSize** (font-size) y que el valor irá en **px**.
 
-![App](./course_resources/Section_8/app_05.PNG);
+![App](./course_resources/Section_8/app_05.PNG)
 
-![App](./course_resources/Section_8/app_05b.PNG);
+![App](./course_resources/Section_8/app_05b.PNG)
 
-![App](./course_resources/Section_8/app_05bb.PNG);
+![App](./course_resources/Section_8/app_05bb.PNG)
 
 - También se podría modifcar otra propiedad del style, pero para ello habría que mandar un objeto y no una sola propiedad, por ejemplo, para el color del texto.
 
-![App](./course_resources/Section_8/app_06.PNG);
+![App](./course_resources/Section_8/app_06.PNG)
 
 ## Apply CSS to one component
 - Esta funcionalidad de Angular es bastante útil aunque rara vez usada. Ya que puede aplicar un CSS en particular a un sólo componente en particular. Para probar esto crear un nuevo componente llamado css que trabajaremos inline.
 - A este componente se le añade un estilo y se incluye en el app.component, además al app.component añadir un párrafo para comprar la difernecia, quedando tal:
 
-![App](./course_resources/Section_8/app_07.PNG);
+![App](./course_resources/Section_8/app_07.PNG)
 
-![App](./course_resources/Section_8/app_08.PNG);
+![App](./course_resources/Section_8/app_08.PNG)
 
-![App](./course_resources/Section_8/app_08b.PNG);
+![App](./course_resources/Section_8/app_08b.PNG)
 
 - Aquí Angular internamente, crea un scope para aplicar el CSS sólo a ese componente. Esto funciona igual que si en lugar de aplicar el estilo inline, se hace incluyendo un fichero de estilo. Además el estilo aplicado al componente se sobrepone al estilo del padre que lo contiene. La única manera de afectar globalmente es con el style.css global del proyecto.
 
@@ -1584,37 +1584,37 @@ ng g c components/ngStyle
 - **ngClass** se usa para algo similar al ngStyle, pero es más común de usar que éste último. Se usa para cambiar el CSS de un elemento (https://angular.io/api/common/NgClass). Al igual que el ngSytle, tiene varios modos de utilizarlos.
 - Creemos un nuevo componente para trabajar con esto (classes). Para probarlo usaremos los alert de bootstrap.
 
-![App](./course_resources/Section_8/app_09.PNG);
+![App](./course_resources/Section_8/app_09.PNG)
 
-![App](./course_resources/Section_8/app_09b.PNG);
+![App](./course_resources/Section_8/app_09b.PNG)
 
 - Basicamente, lo que hace Angular, es un append a el class del elemento, con lo que tiene ngClass.
 - Lo potente es poder crear propiedades con las clases y aplicarlas dinamicamente (ojo que cuando se usa propiedad no va entre **''**, al igual que pasaba con el ngStyle).
 
-![App](./course_resources/Section_8/app_10.PNG);
+![App](./course_resources/Section_8/app_10.PNG)
 
 - Aplicando cambios tras pulsar un botón
 
-![App](./course_resources/Section_8/app_11.PNG);
+![App](./course_resources/Section_8/app_11.PNG)
 
-![App](./course_resources/Section_8/app_11b.PNG);
+![App](./course_resources/Section_8/app_11b.PNG)
 
 - Usando un objeto
 
-![App](./course_resources/Section_8/app_12.PNG);
+![App](./course_resources/Section_8/app_12.PNG)
 
-![App](./course_resources/Section_8/app_12b.PNG);
+![App](./course_resources/Section_8/app_12b.PNG)
 
-![App](./course_resources/Section_8/app_12bb.PNG);
+![App](./course_resources/Section_8/app_12bb.PNG)
 
 ## Async process
 - Jugando con el ngClass y lo que sabemos se pueden hacer cosas funcionales realmente elegantes, como el siguiente ejemplo que simula salvar datos y mientras que no haya respuesta el botón está deshabilitado, cambia la animación del icono y el label mostrado.
 
-![App](./course_resources/Section_8/app_13.PNG);
+![App](./course_resources/Section_8/app_13.PNG)
 
-![App](./course_resources/Section_8/app_13b.PNG);
+![App](./course_resources/Section_8/app_13b.PNG)
 
-![App](./course_resources/Section_8/app_13bb.PNG);
+![App](./course_resources/Section_8/app_13bb.PNG)
 
 ## Custom directives
 - Si queremos añadir un comportamiento determinado a algún elemento HTML o componente, añadimos directivas como **ngIf**, **ngFor**, etc. Es posible crear directivas personalizadas. Para crear una directiva podemos aprovechar Angular CLI como para el resto de elementos de Angular. Crearemos una directiva que lo que haga es que resalte el elemento. Comentar que las directivas que se crean tienen que ser declaradas en al modulo (en nuestro caso app.module). Usando Angular CLI esto es automático.
@@ -1623,22 +1623,49 @@ ng g c components/ngStyle
 ng g d directives/highlighted
 ```
 
-![App](./course_resources/Section_8/app_14.PNG);
+![App](./course_resources/Section_8/app_14.PNG)
 
-![App](./course_resources/Section_8/app_15.PNG);
+![App](./course_resources/Section_8/app_15.PNG)
 
 - Para aplicar la directiva, el selector de la misma se usa como atributo en el elemento. Y para trabajar con el elemento en el que se está usando la directiva, dentro de la directiva hay que usar el módulo **ElementRef**
 
-![App](./course_resources/Section_8/app_16.PNG);
+![App](./course_resources/Section_8/app_16.PNG)
 
-![App](./course_resources/Section_8/app_16b.PNG);
+![App](./course_resources/Section_8/app_16b.PNG)
 
 - Para deterctar qué pasa con el elemento, es necesario incluir otro módulo / paquete, el **HostListener**.
 
-![App](./course_resources/Section_8/app_17.PNG);
+![App](./course_resources/Section_8/app_17.PNG)
 
 - Es posible que se quiera hacer la directiva más personalizable pudiendo pasarle parámetros, por ejemplo el color. Para ello, se necesitaría otro módulo **Input**. Con su decorador se ha de indicar que la variable viene de fuera de la directiva y nombre de la variable. Además se debe soportar que la directiva se use con parámetro de entrada y sin él.
 
-![App](./course_resources/Section_8/app_18.PNG);
+![App](./course_resources/Section_8/app_18.PNG)
 
-![App](./course_resources/Section_8/app_19.PNG);
+![App](./course_resources/Section_8/app_19.PNG)
+
+## ngSwitch multiple options with one decission
+- ngSwitch es otra directiva de Angular (https://angular.io/api/common/NgSwitch) que por ahora no hemos utilizado, es mucho más eficiente que usar ngIf. Para ello vamos a crear nuevo  componente.
+
+```
+ng g c components/gnSwitch
+```
+
+- Una vez creado con la extensión de snippet de Angular es fácil montar el ngSwitch. 
+
+![App](./course_resources/Section_8/app_20.PNG)
+
+![App](./course_resources/Section_8/app_21.PNG)
+
+![App](./course_resources/Section_8/app_22.PNG)
+
+![App](./course_resources/Section_8/app_22b.PNG)
+
+- Y tras ello podemos implementar algunas cosas para probarlo.
+
+![App](./course_resources/Section_8/app_23.PNG)
+
+![App](./course_resources/Section_8/app_23b.PNG)
+
+![App](./course_resources/Section_8/app_23bb.PNG)
+
+![App](./course_resources/Section_8/app_23bbb.PNG)
