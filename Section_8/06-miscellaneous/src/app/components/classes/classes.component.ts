@@ -13,4 +13,14 @@ export class ClassesComponent {
     danger: true
   }
 
+  loading: boolean = false;
+
+  execute() {
+    this.loading = true;
+
+    setTimeout(() => {
+      this.loading = false;
+    }, 3000);
+  }
+
 }

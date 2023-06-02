@@ -1606,3 +1606,12 @@ ng g c components/ngStyle
 ![App](./course_resources/Section_8/app_12b.PNG);
 
 ![App](./course_resources/Section_8/app_12bb.PNG);
+
+## Async process
+- Jugando con el ngClass y lo que sabemos se pueden hacer cosas funcionales realmente elegantes, como el siguiente ejemplo que simula salvar datos y mientras que no haya respuesta el botón está deshabilitado, cambia la animación del icono y el label mostrado.
+
+![App](./course_resources/Section_8/app_13.PNG);
+
+![App](./course_resources/Section_8/app_13b.PNG);
+
+![App](./course_resources/Section_8/app_13bb.PNG);
