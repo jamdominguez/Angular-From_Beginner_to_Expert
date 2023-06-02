@@ -1615,3 +1615,30 @@ ng g c components/ngStyle
 ![App](./course_resources/Section_8/app_13b.PNG);
 
 ![App](./course_resources/Section_8/app_13bb.PNG);
+
+## Custom directives
+- Si queremos añadir un comportamiento determinado a algún elemento HTML o componente, añadimos directivas como **ngIf**, **ngFor**, etc. Es posible crear directivas personalizadas. Para crear una directiva podemos aprovechar Angular CLI como para el resto de elementos de Angular. Crearemos una directiva que lo que haga es que resalte el elemento. Comentar que las directivas que se crean tienen que ser declaradas en al modulo (en nuestro caso app.module). Usando Angular CLI esto es automático.
+
+```
+ng g d directives/highlighted
+```
+
+![App](./course_resources/Section_8/app_14.PNG);
+
+![App](./course_resources/Section_8/app_15.PNG);
+
+- Para aplicar la directiva, el selector de la misma se usa como atributo en el elemento. Y para trabajar con el elemento en el que se está usando la directiva, dentro de la directiva hay que usar el módulo **ElementRef**
+
+![App](./course_resources/Section_8/app_16.PNG);
+
+![App](./course_resources/Section_8/app_16b.PNG);
+
+- Para deterctar qué pasa con el elemento, es necesario incluir otro módulo / paquete, el **HostListener**.
+
+![App](./course_resources/Section_8/app_17.PNG);
+
+- Es posible que se quiera hacer la directiva más personalizable pudiendo pasarle parámetros, por ejemplo el color. Para ello, se necesitaría otro módulo **Input**. Con su decorador se ha de indicar que la variable viene de fuera de la directiva y nombre de la variable. Además se debe soportar que la directiva se use con parámetro de entrada y sin él.
+
+![App](./course_resources/Section_8/app_18.PNG);
+
+![App](./course_resources/Section_8/app_19.PNG);
