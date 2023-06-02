@@ -1669,3 +1669,78 @@ ng g c components/gnSwitch
 ![App](./course_resources/Section_8/app_23bb.PNG)
 
 ![App](./course_resources/Section_8/app_23bbb.PNG)
+
+## Routes and child routes
+- El manego de rutas en Angular, a priori, es algo simple. Como se ha visto anteriormente, se suele crear un fichero / módulo para routing, donde se definen las rutas y los componentes que se asocian a cada una. Además, este módulo hay que importarlo en el module dónde se esté utilzando.
+- Vamos a empezar creando el componente home y en el se guardará todo lo que llevamos avanzado en la sección (el código en el app.component.html)
+
+```
+ng g c components/home --inline-style --inline-template
+```
+![App](./course_resources/Section_8/app_24.PNG)
+
+![App](./course_resources/Section_8/app_25.PNG)
+
+- Cuando cree el proyecto yo ya indiqué que quería routing, por lo que Angular CLI ya creo el fichero que sirve para organizar las rutas (app-routing.module.ts). Si no se crea al principio, toca crearlo a mano (con snippet ng-router es rápido). Yo voy a borrar el contenido de mi app-routing y usar el snippet ya que este monta unas cuantas rutas por defecto y eso me ahorra trabajo. Verificad que está importado elen el app.module.
+
+![App](./course_resources/Section_8/app_26.PNG)
+
+![App](./course_resources/Section_8/app_27.PNG)
+
+![App](./course_resources/Section_8/app_28.PNG)
+
+- Para renderizar el routing, se usar **router-outlet** en el app.component.html.
+
+![App](./course_resources/Section_8/app_29.PNG)
+
+![App](./course_resources/Section_8/app_29b.PNG)
+
+- Ahora podemos compenzar a crear componentes, por ejemplo, el user y dentro de este el newUser, para indicar que es un new user. El atributlo **--flat** se usa para indicar que no cree una carpeta para almacenar el componente. También para editar el usuario y para ver detalles
+
+```
+ng g c components/user
+ng g c components/user/newUser --inline-style --inline-template --flat
+ng g c components/user/editUser --inline-style --inline-template --flat
+ng g c components/user/detailsUser --inline-style --inline-template --flat
+```
+
+- Hay que incluir una barra de navegación para poder navegar con el router. Para ello craar el conmponente navbar.
+
+```
+ng g c components/navbar
+```
+
+- En este punto es añadir un navbar de bootstrap, configurarlo al gusto y usar las herramientas para el routing de Angular (routerLink y routerLinkActive), además de añadir la ruta user al routing. El navbar se usa en el app.component.html.
+
+![App](./course_resources/Section_8/app_30.PNG)
+
+![App](./course_resources/Section_8/app_31.PNG)
+
+![App](./course_resources/Section_8/app_32.PNG)
+
+![App](./course_resources/Section_8/app_32b.PNG)
+
+![App](./course_resources/Section_8/app_32bb.PNG)
+
+- Pero imaginemos que queremos consultar el usuario 10, las rutas serían algo como lo siguiente. Para ello necesitaríamos configurar rutas hijas.
+
+```
+localhost:4200/user/10/edit
+localhost:4200/user/10/details
+```
+
+- Se debe añadir algún tipo de navegación interna, button group de bootstrap por ejemplo.
+
+![App](./course_resources/Section_8/app_33.PNG)
+
+![App](./course_resources/Section_8/app_33b.PNG)
+
+- Modificar el routing para añadir las rutas hijas. Para ello, se usa el atributo **children** dentro de la ruta a la que se quiera añadir rutas hijas, también una ruta por defecto al cargar (que se redireccionará a edit). Tras ello, hay que añadir el **router-outlet** donde se quiera que se renderice esta navegación, en nuestro caso, en el user.component.html. Como hemos añadido un id a la ruta del user, para testear habría que pasar el el routerLink que lleva al user, también un id (10 por ejemplo). Lo que quedaría sería añadir los routerLinks a los botones del user component.
+
+![App](./course_resources/Section_8/app_34.PNG)
+
+![App](./course_resources/Section_8/app_35.PNG)
+
+![App](./course_resources/Section_8/app_36.PNG)
+
+![App](./course_resources/Section_8/app_36b.PNG)
