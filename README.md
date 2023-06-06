@@ -1744,3 +1744,17 @@ localhost:4200/user/10/details
 ![App](./course_resources/Section_8/app_36.PNG)
 
 ![App](./course_resources/Section_8/app_36b.PNG)
+
+- Se suele estructurar las rutas y no tenerlas todas en el mismo fichero para ayudar al mantenimiento. En nuestro caso como tenemos varias rutas hijas del user, se podría crear un modulo de rutas para user y poner allí estas rutas. Dentro de la carpeta user crear el fichero user.routes.ts. Una vez creado con la instrucción ng-router-appmodule (con el snippet de Angular) se crea el esqueleto del módulo de rutas y a partir de este podemos limpiar hasta quedarnos con lo que hace falta. Este nuevo fichero no exportara módulo alguno, sólo el array de rutas. El módulo de rutas seguirá siendo el app-routing.module.ts, que habrá que actualizar con el cambio hecho, quedando:
+
+![App](./course_resources/Section_8/app_37.PNG)
+
+![App](./course_resources/Section_8/app_38.PNG)
+
+- Lo que queda pendiente es la obtención del parámetro id para saber que usuario se está consultando. Se puede obtener de la misma manera que sabemos (con ActivatedRouter) desde el componente hijo revisando los params del padre.
+
+![App](./course_resources/Section_8/app_39.PNG)
+
+![App](./course_resources/Section_8/app_40.PNG)
+
+![App](./course_resources/Section_8/app_40b.PNG)
