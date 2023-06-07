@@ -1758,3 +1758,33 @@ localhost:4200/user/10/details
 ![App](./course_resources/Section_8/app_40.PNG)
 
 ![App](./course_resources/Section_8/app_40b.PNG)
+
+## Components Lifecycle
+- Un componente, pasa por varios estados según su ciclo de vida. Aquí se enumeran, se explican y se resaltan los más importantes / usados (https://angular.io/guide/lifecycle-hooks).
+
+| Estado | Descripción |
+|--------|-------------|
+**constructor** | Se dispara cuando el componente es creado. En este punto se inicializan propiedaes del mismo y se inyectan servicios
+**ngOnInit** | Se dispara cuando el componente se está inicializando, después del primer ngOnChanges, tras el constructor. En este punto es donde se puede trabajar con variables externas pasadas por @Input por ejemplo |
+**ngOnChanges** | Se dispara cuando los datos / propiedades del componente cambian
+ngDoCheck | Se dispara cada vez que se hace un checkeo para la detección de cambios
+ngAfterContentInit | Se dispara después de insertar algún tipo de contenido
+ngAfterContentChecked | Se dispara después después de la revisión del contenido insertado
+ngAfterViewInit | Se dispara después de la inicialización del componente o componentes hijos
+ngAfterViewChecked | Se dispara después de la revisión de los componentes hijos
+**ngOnDestroy** | Se dispara cuando el componente es destruido, por ejemplo al moverse de vista o al usar un ngIf en el componente
+
+- Para llamar a estas funciones se hace sin el prefijo **ng**, pero para implementarlas si que se usa. Es decir:
+
+```
+onChanges(); // llamada
+
+ngOnchanges() { } // implementación
+
+```
+
+- Usando de ejemplo el component home, se puede ver los estados del ciclo de vida del componente. Se puede interacturar con los diferentes componentes para ver como se lanzan las funciones.
+
+![App](./course_resources/Section_8/app_41.PNG)
+
+
