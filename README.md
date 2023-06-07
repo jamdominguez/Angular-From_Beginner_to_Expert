@@ -1788,3 +1788,5 @@ ngOnchanges() { } // implementación
 ![App](./course_resources/Section_8/app_41.PNG)
 
 
+# Section 9: Application with Authentication (Auth0)
+En esta sección se va a implementar una aplicación que requiera login. El login servirá para poder limitar que rutas son accesibles por el visitante de la aplicación. Para ello nos basaremos en Auth0 en Angular 2, autentificación con Facebook, Twitter, Goolge, entre otros.
