@@ -1789,4 +1789,34 @@ ngOnchanges() { } // implementación
 
 
 # Section 9: Application with Authentication (Auth0)
-En esta sección se va a implementar una aplicación que requiera login. El login servirá para poder limitar que rutas son accesibles por el visitante de la aplicación. Para ello nos basaremos en Auth0 en Angular 2, autentificación con Facebook, Twitter, Goolge, entre otros.
+En esta sección se va a implementar una aplicación que requiera login. El login servirá para poder limitar que rutas son accesibles por el visitante de la aplicación. Para ello nos basaremos en Auth0 (sitema de autenticación / login https://auth0.com/) en Angular 2, autentificación con Facebook, Twitter, Goolge, entre otros.
+
+## Auth0
+- Nos facilita crear la autenticación de la aplicación. La librería proporciona un método de autenticación que si lo implementasemos nosotros nos llevaría bastante tiempo. Además sigue ciertas certificaciones. Tiene versión gratuita que permite hata 7000 usuarios simultáneos.
+- Logear / crear una cuenta. Una vez informado lo necesario y haber tenido un primer contacto, se llegará al panel de usuario de AuthO.
+
+![Auth0](./course_resources/Section_9/auth0_01.PNG)
+
+
+## Init App
+- Una vez tomado contacto con Auth0, crear una nueva aplicación con el nombre *authapp*, tras crearla, renombrar la carpeta a "07-authapp".
+
+```
+ng new authapp
+```
+- Eliminar todo el contenido del html principal (app.component.html) y levantar el servidor.
+
+## Creating UI
+- La aplicación va a ser simple ya que el fin de la misma es trabajar con la autenticación. Aun así, se va a usar bootstrap para darle un aspecto mejor. Para esta ocasión se va a usar el CDN, por lo que se importa de manera similiar a otros ejemplos usados anteriormente en el curso. Esta importación se ha de hacer el index.html.
+
+![App](./course_resources/Section_9/app_01.PNG)
+
+
+- Tras ello crear varios componentes dentro de /components. Serán navbar, home, protected, prices. Para el navbar usar un elemento de bootstrap. Para aplicar estilo dark al navbar usar **data-bs-theme="dark"**
+- Por otro lado hay que añadir las rutas en el app-routing.module.ts.
+
+![App](./course_resources/Section_9/app_02.PNG)
+
+![App](./course_resources/Section_9/app_03.PNG)
+
+![App](./course_resources/Section_9/app_03b.PNG)
