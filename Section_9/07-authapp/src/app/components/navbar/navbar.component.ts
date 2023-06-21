@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from '@auth0/auth0-angular';
+
 
 @Component({
   selector: 'app-navbar',
@@ -7,4 +9,14 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  constructor(public auth: AuthService) {
+  }
+
+  login() {
+    this.auth.loginWithRedirect().subscribe(resp => console.log(resp));
+  }
+
+  logout() {
+    this.auth.logout().subscribe(resp => console.log(resp));
+  }
 }

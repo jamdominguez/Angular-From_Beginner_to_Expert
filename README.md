@@ -1795,9 +1795,6 @@ En esta sección se va a implementar una aplicación que requiera login. El logi
 - Nos facilita crear la autenticación de la aplicación. La librería proporciona un método de autenticación que si lo implementasemos nosotros nos llevaría bastante tiempo. Además sigue ciertas certificaciones. Tiene versión gratuita que permite hata 7000 usuarios simultáneos.
 - Logear / crear una cuenta. Una vez informado lo necesario y haber tenido un primer contacto, se llegará al panel de usuario de AuthO.
 
-![Auth0](./course_resources/Section_9/auth0_01.PNG)
-
-
 ## Init App
 - Una vez tomado contacto con Auth0, crear una nueva aplicación con el nombre *authapp*, tras crearla, renombrar la carpeta a "07-authapp".
 
@@ -1820,3 +1817,134 @@ ng new authapp
 ![App](./course_resources/Section_9/app_03.PNG)
 
 ![App](./course_resources/Section_9/app_03b.PNG)
+
+## Auth0 Integration
+- Este es el momento de usar auth0 en la aplicación. Para ello, dentro de la web de auth0, si no se dio opción de crear una aplicación en en la toma de contacto habrá que crear una. Será una single page web application, en Angular.
+
+![Auth0](./course_resources/Section_9/auth0_01.PNG)
+
+- Tras ello hay que configurar la login box. Si tehemos logo podemos poner uno, si no dejarlo como default y elegir los logins permitidos. En mi caso dejaré Google y Facebook. El layout al gusto y la parte de user ID and password la dejaré pero a priori no la usaré.
+
+![Auth0](./course_resources/Section_9/auth0_02.PNG)
+
+- Al finalizar, permite descargar una aplicación de ejemplo con las características que le hemos indicado. Algo que nos va a pedir auth0 es regresar a la web tras la autenticación, esto se indica en la url del callback (Allowed Callback URLs), en mi caso indica correctamente el dominio y el puerto que es dónde levanto mi aplicación de Angular (http://localhost:4200).
+
+![Auth0](./course_resources/Section_9/auth0_03.PNG)
+
+- Una vez terminado el proceso, en el menú de la izquierda podemos ver la sección Applications, y dentro de ella aparecerá la uqe acabamos de crear. Pulsando el botón de la derecha accedemos a las opciones / características de la aplicación. Aprovecharé para cambiarle el nombre a *Auth0-Angular15* en settings.
+
+![Auth0](./course_resources/Section_9/auth0_04.PNG)
+
+- Dentro de settings, más información que se puede ver es el Domain, Client ID, Client Secret y en la parte de Allowed Callback URLs es dónde indicamos la redirección del login. Cómo dijimos anteriormente a http://localhost:4200, aunque añadiremos la ruta /callback para ello, en esta ruta es dónde habrá que colocar código proporcionado por auth0. En Allowed Web Origins y Allowed Logout URLs también pondremos lo mismo pero sin el /callback. Y "save changes".
+
+![Auth0](./course_resources/Section_9/auth0_05.PNG)
+
+
+- En este punto, para saber cómo usar la aplicación de autenticación que acabamos de crear y configurar, hay que seguir los pasos que se explican en el tab "Quick Start". Si se va leyendo, vemos cosas que ya tenemos, y nos tocaría "Install the Auth0 Abngular SDK", ejecutar el comando.
+
+![Auth0](./course_resources/Section_9/auth0_06.PNG)
+
+![Auth0](./course_resources/Section_9/auth0_07.PNG)
+
+```
+npm install @auth0/auth0-angular
+```
+
+- Siguiendo las instrucciones se puede leer que auth0 exporta el módulo **AuthModule** y que este debemos importarlo en el app.module.ts y añadirlo a la aplicación e indicar el forRoot con los datos de la aplicación. Los datos de *domain* y *clientId* son propios de la aplicación de autenticación y se obtienen en settings de la aplicación de auth0. La propiedad *redirect_uri* es la que permite a Auth0 redireccionar después de una autenticación correcta
+
+![App](./course_resources/Section_9/app_04.PNG)
+
+- Ahora sólo quedaría añadir el login a nuestra aplicación de Angular. Para ello, nuestro botón de login debe usar el método **loginWithRedirect()** del **AuthService** de tu aplicación auth0. En nuestro caso, debemos inyectar este servicio en el navbar y usar el método en el botón creado a la derecha. Cuando el curso se creó este servicio lo teníamos que implementar nosotros con la ayuda de la guía, pero ahora ya viene proveido en el packete de auth0.
+
+![App](./course_resources/Section_9/app_05.PNG)
+
+![App](./course_resources/Section_9/app_06.PNG)
+
+![App](./course_resources/Section_9/app_06b.PNG)
+
+![App](./course_resources/Section_9/app_06bb.PNG)
+
+![App](./course_resources/Section_9/app_06bbb.PNG)
+
+- La guía también proporciona información de como realizar el logout. Para ello vemos en la documentación que hay que usar el método **logout()** y para saber si estamos autenticados la variables **isAuthenticated$**. Nótese que esta variable es un Observable (por ello se usa el caracter $ en el nombre, ya que es un standar) y por tanto no se trabaja igual que cuando se hizo el curso (que era otra variable y además booleana). Otra manera es usar la pipe **async**
+
+![App](./course_resources/Section_9/app_07.PNG)
+
+![App](./course_resources/Section_9/app_08.PNG)
+
+![App](./course_resources/Section_9/app_08b.PNG)
+
+- Debemos implementar el componente que responda como Allowed Callback URLs, que si vemos en la configuración de la aplicación de auth0 creada, tenía la ruta de la aplicación de angular concatenando /callback al final. Ademas, habrá que añadirlo al routing.
+
+- El AuthService también proporciona información sobre el usuario logeado. *TODO
+- Esta sección del curso sólo sirve de introducción a Auth0 y da un poco la base. No se puede usar de guía ya que la manera de integrar Auth0 en la aplicación Angular a cambiado. El curso se hizo con la versión 1.2.1 y yo estoy usando la 2.1. De todos modos, con la documentación proporcionada por Auth0 más la información proporcionada en el curso intentaré dejar la aplicación montada.
+
+## Errors and problems found and solved
+- Por ahora estoy obteniendo el problema de que tras logear, que el panel de login levanta correctamente, al redireccionar a mi aplicación Angular parece que no estoy identificado aun. Se puede ver en el log que cuando se construye el navbar, que es quien inyecta el servicio, tras la vuelta de la redirección obtiene un 401 al llamar a un servicio *token* de Auth0.
+
+![App](./course_resources/Section_9/app_09.PNG)
+
+- El problema se resuelve cambiando Authentication Methods en la pestaña Credentials a **None**, por defecto está a **Client Secret (Post)**.
+
+![App](./course_resources/Section_9/app_10.PNG)
+
+![App](./course_resources/Section_9/app_11.PNG)
+
+![App](./course_resources/Section_9/app_12.PNG)
+
+- Con el problema resuelto, hay que añadir el comportamiento deseado a la apliación
+
+## Task for app
+### Show buttons login and logout correctly
+- Poniendo el botón de login dentro de un **ng-template** se puede añadir al condicionante de la pipe **async** usada para evaluar si el usuario está autenticado. Si está autenticado puestra el logout, y si no, muestra el login (logged template).
+
+![App](./course_resources/Section_9/app_13.PNG)
+
+- También se ha añadido el condicionante para mostra Protected en el navbar sólo en el caso de estar logeado.
+
+![App](./course_resources/Section_9/app_13b.PNG)
+
+![App](./course_resources/Section_9/app_13bb.PNG)
+
+
+### Let show Protected page when user is authenticated
+- Con lo hecho en el punto anterior, que también se añadió el condicionante de autenticado al link de Protected, se controla la visualización en el navbar de esa parte de la aplicación. Pero si se pone la ruta directamente en el navegador, aunque no se esté logeado, se muestra Protected. Por lo que hay que añadir algo más además del condicionante en el navbar.
+
+![App](./course_resources/Section_9/app_14.PNG)
+
+- Para controlar el acceso a zonas restringidas de la aplicación vamos a crear un servicio (al igual que se hace en el curso). Para controlar el acceso a rutas, Angular CLI provee un componente llamado **guard**. Ejecutamos el comnado:
+
+```
+ng g guard services/auth
+```
+- Se pregunta cómo se quiere crear el guard dando varias opciones, dependiendo de la versión de Angular. Esto no deja de ser autocreación de métodos que se pueden hacer manualmente. Nosotros usaremos CanActivate que es para cuando no se trabaja con lazy load.
+
+![App](./course_resources/Section_9/app_14.PNG)
+
+- Viendo la documentación de Angular tras crear el guard, podemos comprobar que la interfaz CanActivate está deprecada. Por ahora lo voy a dejar a no ser que de problemas, para así seguir el curso.
+- Se puede observar que la funcion canActivate tiene dos parámetros, uno es la ruta a la que ir (next) y otro es el state en el que se puede ir. Este state puede ser de varios tipos (observable, promesa o booleano). En nuestro caso, la propiedad que vamos a usar para permitir mostrar esta ruta es el auth.isAuthenticated que es un observable, por tanto dejamos sólo seta opción. Por tanto, para esto, deberemos inyectar el servicio y usar la propiedad.
+
+![App](./course_resources/Section_9/app_15.PNG)
+
+- Ahora sólo hay que asignar al guard a la ruta que queremos. Para ello, en el routing de la aplicación, en la ruta deseada, se añade la propiedad **canActivate** que es un array con todos los guards aplicables a la ruta. Ahora con esto, sin estar logeado, aunque se escriba la ruta, no la muestra.
+
+![App](./course_resources/Section_9/app_16.PNG)
+
+
+### Protected page must show user information from Auth0
+- Para poder usar la información del usuario, es necsario inyectar el servicio en el componente protected. En el curso, la propiedad con la información deseada es profile, pero en mi versión es user. De hecho, estoy logeando esta información en el navbar en el caso de que el usuario esté logeado. Voy a mover esta lógica al protected, así podre ver el objeto ecuando vaya a la pagina.
+
+![App](./course_resources/Section_9/app_18.PNG)
+
+![App](./course_resources/Section_9/app_17.PNG)
+
+![App](./course_resources/Section_9/app_17b.PNG)
+
+- Para ver la información en pantalla del objeto se puede hacer lo siguiente. En las propiedades se puestra una proiedad **sub**, que es el identificador único de Auth0 para saber qué usuario es. Como comentario, en el curso, se necesitaba una configuración extra para que al refrescar la web mantuviese la autenticación con redes sociales (Restore Login State When App Reloads). Yo no he experimentado esa incidencia por lo que supongo que el equipo de Auth0 lo ha solventado.
+
+![App](./course_resources/Section_9/app_19.PNG)
+
+![App](./course_resources/Section_9/app_19b.PNG)
+
+- Tan sólo quedaría maquetar esta página usando bootstrap. Yo usaré un card de bootstrap en formato horizontal.
+

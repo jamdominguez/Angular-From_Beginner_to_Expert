@@ -14,13 +14,18 @@
                     <a class="nav-link" aria-current="page" [routerLink]="[ 'prices' ]"
                         routerLinkActive="active">Prices</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" *ngIf="auth.isAuthenticated$ | async">
                     <a class="nav-link" aria-current="page" [routerLink]="[ 'protected' ]"
                         routerLinkActive="active">Protected</a>
                 </li>
             </ul>
             <span class="d-flex" role="search">
-                <button class="btn btn-primary" type="submit">Login</button>
+
+                <ng-template #logged>
+                    <button class="btn btn-primary" (click)="login()">Login</button>
+                </ng-template>
+                <button *ngIf="auth.isAuthenticated$ | async; else logged" class="btn btn-danger" (click)="logout()">Logout</button>
+                
             </span>
         </div>
     </div>
