@@ -1974,3 +1974,47 @@ ng g guard services/auth
 - La estructura del proyecto es la que venimos usando durante el curso, app/pages para las páginas, un módulo de rutas y los componentes principales app. Todas las importaciones están hechas en el index.html, salvo la del fontawasome que hay que añadir.
 
 - En esta sección se hará una primera toma de contacto con formularios y validaciones.
+
+## User model
+- Se creará un modelo para el manejo de usuarios. Para ello se crea una simple clase app/models/user.model.ts al estilo de un bean de Java.
+
+![App](./course_resources/Section_10/app_03.PNG)
+
+- En una instancia de este modelo se guardaran los datos del usuario actual. En el component registro, se va a utilizar e inicializar en el ngOnInit.
+- Es muy útil en este tipo de aplicaciones usar el ngModel, que es una directiva de Angular que enlaza una propiedad del componente con un elemento HTML. Pero para poder usarlo, es necesario importar el módulo de formularios de Angular, se hará en el app.module.ts. El ngModel se encarga de actualizar propiedad/elemento HTML, ya se modifique uno u otro, de manera bidireccional.
+
+![App](./course_resources/Section_10/app_04.PNG)
+
+![App](./course_resources/Section_10/app_05.PNG)
+
+![App](./course_resources/Section_10/app_06.PNG)
+
+- Habrá que añadir el ngModel a los otros inputs del formulario (name y password). Además en la etiqueta form del HTML habrá que añadir un **ngSubmit** para indicar que se deben enviar los datos del formulario.
+
+![App](./course_resources/Section_10/app_07.PNG)
+
+![App](./course_resources/Section_10/app_08.PNG)
+
+## Validate before send form
+- En la siguiente sección se verán los formularios en profunidad, pero por ahora, se debe hacer una validación de los campos que tenemos.
+- Si no se especifica el formulario que estamos usando, Angular por defecto la aproximación de formulario que hace es a **template**. Las validaciones se hacen en el HTML, que es lo que hace el tipo template.
+- Para que las validaciones (por ahora required e email) usadas en el HTML funcionen correctamente, hay que decirle a Angular que el formulario es un **ngForm**, para ello se puede crear una referencia al formulario y asignarle este valor. Esta referencia también hay que pasarla a la función de submit. Si borramos el valor del email y pulsamos enter (submit), veremos la información del formulario y dentro de *controls* estará información de los campos del mismo (el nombre de las propiedades es el mismo que el name de cada elemento).
+
+![App](./course_resources/Section_10/app_09.PNG)
+
+![App](./course_resources/Section_10/app_10.PNG)
+
+- Si se mira la propiedad *valid* del formulario, se podrá ver que es false. Esto es así porque se indicó que el email era requerido, y no se está cumpliendo. Aunque yo lo informe, si no tiene forma de email, seguirá dando false, ya que también se indico la validacon email.
+- Una propiedad útil de los controles y del form es *pristine*, que indica si el control/form está con sus valores por defecto, es decir, no se modificó.
+- Terminemos de añadir validaciones a los campos, como al nombre que será required y minlength de 2 carácteres y el password que le cambiaremos el nombre de pass a password, será required y minlength de 6. Además se puede cambiar en el TS que sólo se imprima la información en el caso de que el formulario sea válido.
+
+![App](./course_resources/Section_10/app_11.PNG)
+
+
+## Show validation messages to user
+- En este punto que tenemos la información del usuario, si algo no se cumple para hacer el submit, habría que informar al usuario de que input no cumple los requisitos.
+- El HTML del registro ya contiene unos span con el mensaje de error de cada campo, lo que hay que hacer es asociarlo a un campo para mostrarlo cuando se deba. Esto es tan fácil cómo añadir un ngIf para checkear la propiedad de ese control.
+
+![App](./course_resources/Section_10/app_12.PNG)
+
+![App](./course_resources/Section_10/app_13.PNG)
