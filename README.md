@@ -2018,3 +2018,17 @@ ng g guard services/auth
 ![App](./course_resources/Section_10/app_12.PNG)
 
 ![App](./course_resources/Section_10/app_13.PNG)
+
+## Login page
+- La puerta de entrada a la aplicación será registro, pero en el HTML tenemos un link de "ya tienes cuenta / ingresar" este nos debe llevar al login. Por lo que habrá que adaptarlo a angular (routerLink)
+
+![App](./course_resources/Section_10/app_14.PNG)
+
+- En la pantalla de login añadir una animación de css para que no sea tan brusco el cambio.
+- En el login component tendremos que hacer algo similar al del registro, es decir, servirnos del user model para guardar la información del usuario, enlazar los inputs a las propiedades con el ngModel, crear las validaciones y el submit del formulario.
+
+![App](./course_resources/Section_10/app_15.PNG)
+
+![App](./course_resources/Section_10/app_16.PNG)
+
+![App](./course_resources/Section_10/app_17.PNG)
