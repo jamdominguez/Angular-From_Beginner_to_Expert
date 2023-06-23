@@ -218,7 +218,7 @@ This course was published several years ago (Angular 7, currently versoin 15), f
 ![Imports](./course_resources/Section_2/importer_1.PNG)
 
 
-- Para arrancar la aplicación se usa **npm start**. Lo que hace este "start" viene definido en el package.json, que en este caso, ejecuta **webpack-dev-server --open --port=8080**, es decir, arranca la apliación en el webpack (servidor), puerto 8080 y abre el navegador. Probablemente obtengas un error al intetar ejecutar este comando ya que este curso tiene ya algunos años y la versiones más modernas de Node son incompatibles con este webpack.He podido solventar el problema abriendo una consola de CMD (Windows) y añadiendo la siguente variable de entorno NODE_OPTIONS con el valor que se ve en la imagen. Y después ejecutando el **npm start**, pero todo ello desde el CMD y no desde la Terminal PS que abre mi IDE. Es posible que más adelante, en este curso, alla que borrar esta variable de entorno debido a que se ha añadido por la particularidad de esta sección y por ahora desconozco si generará algún conflicto con proyectos Angular.
+- Para arrancar la aplicación se usa **npm start**. Lo que hace este "start" viene definido en el package.json, que en este caso, ejecuta **webpack-dev-server --open --port=8080**, es decir, arranca la apliación en el webpack (servidor), puerto 8080 y abre el navegador. Probablemente obtengas un error al intetar ejecutar este comando ya que este curso tiene ya algunos años y la versiones más modernas de Node son incompatibles con este webpack.He podido solventar el problema abriendo una consola de CMD (Windows) y añadiendo la siguente variable de entorno NODE_OPTIONS con el valor que se ve en la imagen. Y después ejecutando el **npm start**, pero todo ello desde el CMD y no desde la Terminal PS que abre mi IDE. Es posible que más adelante, en este curso, haya que borrar esta variable de entorno debido a que se ha añadido por la particularidad de esta sección y por ahora desconozco si generará algún conflicto con proyectos Angular.
 
 ![Imports](./course_resources/Section_2/importer_2.PNG)
 
@@ -1948,3 +1948,29 @@ ng g guard services/auth
 
 - Tan sólo quedaría maquetar esta página usando bootstrap. Yo usaré un card de bootstrap en formato horizontal.
 
+# Section 10: Application with authentication
+- En esta sección se construirá una aplicación con autenticación por token tradicoinal, pero una propia, sin usar Auth0 como en la sección anterior. Para ello será necesario un backend donde tener llos usuarios y para ello usaremos Firebase.
+- En el curso se proporcionan recursos para la construcción de la aplicación. De hecho se proporcina enteramente la base de la aplicación para no tener que repetir lo que hacemos siempre. A ésta la llamamos loginApp.
+- Viendo el contenido de la aplicación se puede comprobar que no vienen los múdulos de node y que la aplicación se llama *login-app*. Para instalar los módulos del proyecto hay que ejecutar:
+  
+  ```
+  npm install
+  ``` 
+
+  ![App](./course_resources/Section_10/app_01.PNG)
+
+
+- Tras ello se podrá levantar la aplicación como siempre. Tras ello hay que comprobar que la aplicación no muestra ningún error. A mi, enla compilación me aparece error debido a la versión de webpack.r. Este problema se solventa de manera similar a como se hizo en la sección 2, **abriendo un cmd en la ruta** del proyecto seteando la variable de entorno **NODE_OPTIONS** y posteriormente levantando la aplicación.
+
+  ```
+  set NODE_OPTIONS=--openssl-legacy-provider
+  ng serve -o
+  ``` 
+
+  ![App](./course_resources/Section_10/app_02.PNG)
+
+  ![App](./course_resources/Section_10/app_02b.PNG)
+
+- La estructura del proyecto es la que venimos usando durante el curso, app/pages para las páginas, un módulo de rutas y los componentes principales app. Todas las importaciones están hechas en el index.html, salvo la del fontawasome que hay que añadir.
+
+- En esta sección se hará una primera toma de contacto con formularios y validaciones.
