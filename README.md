@@ -2157,3 +2157,92 @@ ng g s services/auth
   - Redireccionar a la pantalla de login, usando Router.
 
 ![App](./course_resources/Section_10/app_29.PNG)
+
+## User notifications
+- Aquí se va a añadir la lógica necesaria para informar al usuario de si ha habido algún problema en cualquier de las acciones que está realizando. En el curso se usa sweetalert2 (https://sweetalert2.github.io/) que basicamente lo que hace es convertir las alertas normales del navegador en otras con un look and feel más actractivo. Según la documentación, para instalar el paquete hay que ejecutar:
+
+```
+npm install sweetalert2
+```
+
+- O bien se podría añadir directamente la librería por CDN. Aunque en este caso, se instalará el paquete.
+
+![App](./course_resources/Section_10/app_30.PNG)
+
+- Empezando por la pantalla de login, hay errores que habría que notificar al usuario. Además sweetalert2 nos permite mostrar el "loading" que necesitamos. Para ello se consulta la documentación y vemos que se importa Swal de 'sweetalert2'.
+
+![App](./course_resources/Section_10/app_31.PNG)
+
+-  Aquí he encontrado el problema que al instalar sweetalert2 con el comando, se instaló la versión 11.7.12 (package.json) y esta versión no es compatible con la versión de typescript del proyecto 3.2.2. Por lo que he cambiado la versión de sweetalert a la 8.11.1 (package.json), que es la usada en el curso (según los recursos para descargar) y a priori es compatible con la versión de typescript, y he vuelto a ejecutar el comando **npm install**. Con esto, se solventa el error y es posible usar la librería.
+
+![App](./course_resources/Section_10/app_32.PNG)
+
+- Para lanzar el loading se usa la función **fire()** y se le pasa la configuración requerida para configurar que se lanza una notificación y el **showLoading()** para indicarle que tenga look and feel the loading.
+
+![App](./course_resources/Section_10/app_33.PNG)
+
+![App](./course_resources/Section_10/app_33b.PNG)
+
+- Ahora bien, habría que quitar el loading cuando se recive la respuesta, para ello se usa la función **close()**. Y en el caso de error habría que mostrar el error, para ello habrá que volver a usar fire() pero con una configuración diferente.
+
+![App](./course_resources/Section_10/app_34.PNG)
+
+![App](./course_resources/Section_10/app_34b.PNG)
+
+- Ahora habría que hacer lo mismo, pero en la parte del registro, además se puede añadir alguna propiedad más a las notificaciones.
+
+![App](./course_resources/Section_10/app_35.PNG)
+
+![App](./course_resources/Section_10/app_35b.PNG)
+
+## Navigation
+- Habría que añadir la navegación al home tanto cuando un usuario nuevo está registrado, como cuando un usuario ha logeado. Para ello se usar el Router.
+
+![App](./course_resources/Section_10/app_36.PNG)
+
+![App](./course_resources/Section_10/app_37.PNG)
+
+- Además de esto, habría que bloquear el acceso al home para que no se pudiera acceder escribiendo directamente la url, si recordamos, esto se hizo en la sección anterior creando un guard y modificando el modulo de routing. La lógica que se tomará es que se tenga token. Además habría que especificar que no se está autenticado, redireccione al login.
+
+```
+ng g guard services/auth
+```
+
+![App](./course_resources/Section_10/app_43.PNG)
+
+![App](./course_resources/Section_10/app_44.PNG)
+
+![App](./course_resources/Section_10/app_45.PNG)
+
+## Improvement save user
+- Tanto en el login como en el registro hay un check "Recordar mi usuario". La idea de este check es que si está activado, almacene en el localStorage el email y name del usuario y cuando carguen dichas páginas, los autocomplete, y si se desmarca que elimine esta información del localStorage, y por tanto, no rellene nada.
+- Se ha de crear una variable "remember" del tipo boolean y hay que enlazarna (NgModel) con el check. Además, en el login tiene sentido recuperar el email pero no en el registro.
+
+![App](./course_resources/Section_10/app_39.PNG)
+
+![App](./course_resources/Section_10/app_40.PNG)
+
+- La lógica para almacenar / eliminar el localStorage el email y el remember la he sacado en una función del auth service para que quede más limpio. Además de que los componentes no toquen directamente el localStorage, por lo que también he añadido una función para recuperar el email y otro para el remember.
+
+![App](./course_resources/Section_10/app_38.PNG)
+
+![App](./course_resources/Section_10/app_41.PNG)
+
+![App](./course_resources/Section_10/app_42.PNG)
+
+## Logout / autentication revision
+- En este punto se va a hacer una revisión del logout creado previamente. A priori la unica diferencia es que el diseño del home, que yo sólo he puesto un botón simple. Además en el diseño del curso en lugar del hacer la navegación al login desde la función del logOut en el auth service, lo hace en el componente home y el logOut lo único que hace es elminar el item token del localStorage. Quizá es una mejor manera ya que así el auth service obvia el tratamiento de rutas y esto queda en manos de los componentes.
+
+![App](./course_resources/Section_10/app_46.PNG)
+
+![App](./course_resources/Section_10/app_47.PNG)
+
+![App](./course_resources/Section_10/app_48.PNG)
+
+- Faltaría un detalle para el control de autenticación y es que limitarlo a la longitud del token es pobre. Habría que tener en cuenta también el tiempo de expiración, que es algo que se nos provee en el login / registro y podemos almacenar también. Podemos ver tras logear, que la propiedad **expiresIn** indica el tiempo de sesión, por lo que, la fecha de expiración sería la actual más el tiempo de sesión. Podemos usar la misma Pipe que se usó para almacenar el token, para también almacenar la fecha de expiración.
+
+![App](./course_resources/Section_10/app_49.PNG)
+
+![App](./course_resources/Section_10/app_50.PNG)
+
+![App](./course_resources/Section_10/app_51.PNG)

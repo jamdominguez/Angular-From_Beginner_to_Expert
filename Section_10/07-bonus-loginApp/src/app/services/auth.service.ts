@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserModel } from '../models/user.model';
 import { map } from 'rxjs/operators';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +14,12 @@ export class AuthService {
   SING_IN_ACTION: string = 'signInWithPassword';
 
   private userToken: string;
+  private expirationDate: number;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient) {
+    this.getToken();
+    this.getExpirationDate();
+  }
 
   signUp(user: UserModel) {
     return this.callAPI(this.SING_UP_ACTION, 'POST', user);
@@ -28,7 +31,8 @@ export class AuthService {
 
   logOut() {
     localStorage.removeItem('token');
-    this.router.navigate(['/login']);
+    localStorage.removeItem('expirationDate');
+    // this.router.navigate(['/login']);
   }
 
   private callAPI(action: string, method: string, user: UserModel) {
@@ -41,6 +45,7 @@ export class AuthService {
       return this.http.post(url, body).pipe(
         map(resp => {
           this.saveToken(resp['idToken']);
+          this.saveExpirationDate(resp['expiresIn']);
           return resp;
         })
       );
@@ -56,8 +61,43 @@ export class AuthService {
     localStorage.setItem('token', idToken);
   }
 
+  private saveExpirationDate(expiresIn: number) {
+    this.expirationDate = new Date().setSeconds(expiresIn);
+    localStorage.setItem('expirationDate', this.expirationDate.toString());
+  }
+
   private getToken() {
     this.userToken = localStorage.getItem('token') ? localStorage.getItem('token') : '';
     return this.userToken;
+  }
+
+  private getExpirationDate() {
+    this.expirationDate = localStorage.getItem('expirationDate') ? parseInt(localStorage.getItem('expirationDate')) : 0;
+    return this.expirationDate;
+  }
+
+  isAuthenticated(): boolean {
+    const hasToken = this.userToken.length > 2;
+    const expired = new Date().getTime() > this.expirationDate;
+    console.log(`hasToken[${hasToken}] expired[${expired}]`);
+    return hasToken && !expired;
+  }
+
+  rememberManager(email: string, remember: boolean) {
+    if (remember) {
+      localStorage.setItem('email', email);
+      localStorage.setItem('remember', JSON.stringify(remember));
+    } else {
+      localStorage.removeItem('email');
+      localStorage.removeItem('remember');
+    }
+  }
+
+  getStoredRemember() {
+    return JSON.parse(localStorage.getItem('remember'));
+  }
+
+  getStoredEmail() {
+    return localStorage.getItem('email');
   }
 }
