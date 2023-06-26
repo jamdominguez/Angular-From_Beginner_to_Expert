@@ -2032,3 +2032,128 @@ ng g guard services/auth
 ![App](./course_resources/Section_10/app_16.PNG)
 
 ![App](./course_resources/Section_10/app_17.PNG)
+
+## Firebase and REST service
+- Se va a aprovechar la plataforma Firebase para proporcionar un almacenamiento de registro y así poder autenticar en la aplicación (https://firebase.google.com/?hl=es).
+- Es posible que ya se haya trabajado con Firebase (como es mi caso) en otra ocasión. Pero basicamente es una plataforma que provee herramientas para hacer un backend. Es posible crear bases de datos y tener servicios rest para acceder a su información.
+- Si no se posee cuenta de Firebase, habría que crear una. Una vez con la cuenta logeada, hay que crear un nuevo proyecto.
+
+![Firebase](./course_resources/Section_10/fire_01.PNG)
+
+![Firebase](./course_resources/Section_10/fire_02.PNG)
+
+![Firebase](./course_resources/Section_10/fire_03.PNG)
+
+- Una vez con el proyecto creado, dentro dle dashboard del proyecto creado, en *Authentication*, habilitar correo y contraseña.
+
+![Firebase](./course_resources/Section_10/fire_04.PNG)
+
+![Firebase](./course_resources/Section_10/fire_05.PNG)
+
+![Firebase](./course_resources/Section_10/fire_06.PNG)
+
+![Firebase](./course_resources/Section_10/fire_07.PNG)
+
+- Esto nos permite poder llamar a cierta API para crear usuarios y autenticar los creados.
+
+![Firebase](./course_resources/Section_10/fire_08.PNG)
+
+- Desde la pestaña *Users* se puede gestionar los usuarios conectados / registrados.
+
+![Firebase](./course_resources/Section_10/fire_09.PNG)
+
+- Ahora habría que ver como funciona la API de autenticación de Firebase en este enlace https://firebase.google.com/docs/reference/rest/auth?hl=es-419#section-create-email-password. De todos los servicios proveidos por la API, nos interesa principalmente:
+  - Sign up with email / password
+   
+  ![Firebase](./course_resources/Section_10/fire_10.PNG)
+
+  - Sign in with email / password
+
+  ![Firebase](./course_resources/Section_10/fire_11.PNG)
+
+- Las imágenes están en Español por el enlace usado de Firebase, pero lo he cambiado en inglés ya que la traducción es pobre y confusa, por lo que es preferible revisarla en inglés.
+  
+- Empezando por el registro de usuario (sing up), podemos ver que además de la información en el cuerpo de la request, es necesario añadir una key como parametro de la llamada. Ésta es el API_KEY del proyecto. Esta información se puede encontrar el el **Project Settings**, configuración del proyecto.
+
+![Firebase](./course_resources/Section_10/fire_12.PNG)
+
+- Teniendo la documentación que explica cómo hacer las llamadas y la API_KEY, es el momento de montar la lógica en nuestra aplicación Angular para hacer esta llamadas. Como son llamadas HTTP, habrá que importar el HttpClientModule como se ha hecho en otras secciones en el app.module.ts. Lo ideal es crear un servicio para gestionar la autenticación.
+
+```
+ng g s services/auth
+```
+
+- Con el servicio creado, se tendría que crear al menos tres funciones, singup, singin y logout. En la documentación podemos tomar el end point de cada servicio y de la configuración del proyecto el API_KEY. Usando el HttpClient del HttpClientModule y organizando el código debería quedar un servicio similar al de la imagen.
+
+![App](./course_resources/Section_10/app_18.PNG)
+
+![App](./course_resources/Section_10/app_19.PNG)
+
+- Lo siguiente sería implementar cada una de las funciones y asignarlas a los botones correspondientes de la aplicación. Para construir el body de la request es necesarios datos que tenemos en el UserModel y cuyas propiedades se llaman igual a las requerias, por lo que usando el operador **...** se puede incluir un objeto dentro de otro y así construir de manera más limpia el body.
+
+- Una vez implementadas, se pueden usar en los componentes login y registro. Logicamente habrá que inyectar el servicio crado (auth) en el componente. De la respuesta del servicio lo que más nos interesa es el **idToken** (Firebase auth token id) y el **localId** (user id). El idToken es el que se almacenará en el localStorage ya que servirá para todas las peticiones.
+
+## SingUp functionality
+- La primera implementación y uso será la del registro de nuevo usuario.
+
+![App](./course_resources/Section_10/app_20.PNG)
+
+![App](./course_resources/Section_10/app_20b.PNG)
+
+![App](./course_resources/Section_10/app_20bb.PNG)
+
+![App](./course_resources/Section_10/app_21.PNG)
+
+- Si volviese a intentar registrar el mismo usuario, se obtendría un error que deberíamos manejar. Si se expande el objeto error de la respuesta, se puede obetner más información de la propiedad message.
+
+![App](./course_resources/Section_10/app_22.PNG)
+
+![App](./course_resources/Section_10/app_23.PNG)
+
+- El error es fácilmente manejable con los observables, ya que se pueden tratar directamente con ellos.
+
+![App](./course_resources/Section_10/app_24.PNG)
+
+![App](./course_resources/Section_10/app_24b.PNG)
+
+- El manejo de errores debería ser común para todas las llamadas al backend y se hará más adelante.
+
+## SignIn functionality
+- Una vez registrado un usuario se le debe permitir hacer login en la aplicación, para ello se implmenta la siguente función usando la acción del backend correspondiente. Si nos fijamos la llamada es similar a la anterior, también es POST, necesita el mismo body. El futuro logout que se haga, será la destrucción del idToken obtenido.
+
+![App](./course_resources/Section_10/app_25.PNG)
+
+![App](./course_resources/Section_10/app_26.PNG)
+
+![App](./course_resources/Section_10/app_26b.PNG)
+
+- Si se intenta logear con una password errónea se obtendrá error, al igual que si se intenta con un usuario no registrado.
+
+![App](./course_resources/Section_10/app_26bb.PNG)
+
+![App](./course_resources/Section_10/app_26bbb.PNG)
+
+- Al igual que el manejo de errores, se debería mostrar un loading mientras responde Firebase. Es otra mejor que se hará más adelante.
+
+## Logout
+- Para poder hacer el logout es neceario manejar el token. Para ello lo guardaremos en el localStorage. Para ello se va a trabajar con el observable que devuelven las funciones de singUp y singIn, ya que es posible manejar la información devuelta antes de que los componentes la usen. Para ello se usarán **Pipes** y el operador rxjs **map**. Lo bueno de hacerlo así, es que el Pipe sólo se ejecuta si la respuesta no fue error.
+
+![App](./course_resources/Section_10/app_27.PNG)
+
+![App](./course_resources/Section_10/app_27b.PNG)
+
+![App](./course_resources/Section_10/app_27bb.PNG)
+
+- Si borramos el item del localStorage y probamos registrando un nuevo usuario, comprobamos como se vuelve a almacenar el item con el token.
+
+![App](./course_resources/Section_10/app_27bbb.PNG)
+
+![App](./course_resources/Section_10/app_27bbbb.PNG)
+
+![App](./course_resources/Section_10/app_28.PNG)
+
+- A esta altura del curso aun no se hace nada con el logout, de hecho no hay ni botón por lo que veo, pero voy a adelantar una implementación personal de lo que pienso (Además aprovecho para hacer un pequeño refactor en el auth service), debería hacer que es:
+  - Eliminar el idToken del localStorage
+  - Redireccionar a la pantalla de login, usando Router.
+
+![App](./course_resources/Section_10/app_29.PNG)
