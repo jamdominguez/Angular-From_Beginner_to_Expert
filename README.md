@@ -2246,3 +2246,22 @@ ng g guard services/auth
 ![App](./course_resources/Section_10/app_50.PNG)
 
 ![App](./course_resources/Section_10/app_51.PNG)
+
+
+# Section 11: Forms
+- Angular es muy poderoso en el tratamiento de formularios, como ya pudimos ver en la sección anterior. La directiva **ngModel** facilita mucho el trabajo con los campos de un formulario.
+- Angular provee dos tipos de formularios. Templates y Reactivos, los primeros son como el visto en la sección anterior y son aconsejables sólo en el caso de formularios con un solo campo (muy simples), para el resto, la norma es usar Reactivos.
+
+## Init project
+- Crear un nuevo projecto llamado "forms". En el material adjunto hay una estructura HTML de formulario que se usará en esta sección.
+
+```
+ng new forms
+```
+
+- Tras ello se instala bootstrap con CDN añadiendo el link al CSS en el index.html, y se levanta la aplicación:
+
+```
+ng serve -o
+
+```
