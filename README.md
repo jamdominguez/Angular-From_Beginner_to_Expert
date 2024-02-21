@@ -2265,3 +2265,29 @@ ng new forms
 ng serve -o
 
 ```
+
+![App](./course_resources/Section_11/app_01.PNG)
+
+![App](./course_resources/Section_11/app_02.PNG)
+
+## Forms and Routing creation
+- Se crearán dos páginas, una para tratar los formularios templates y otros los reactivos, sin crear su ficheros de test.
+
+```
+ng g c pages/template --skip-tests
+ng g c pages/reactive --skip-tests
+```
+
+- Ahora, el HTML de proporcionado en los recursos, se copiará para usar como plantilla en cada uno de los componentes.
+- Hay que configurar las rutas en el modulo de rutas creado en el inicio.
+
+![App](./course_resources/Section_11/app_03.PNG)
+
+
+- Ahora mismo, el botón "Guardar" del formulario está haciendo un submit del mismo, por lo que la ruta recarga, se puede ver en la pestaña Network del navegador. Este es el comportamiento por defecto de un formulario.
+
+![App](./course_resources/Section_11/app_04.PNG)
+
+- Nosotros no queremos que haga un refresh del navegador, por ello vamos a trabajar con el modulo de formularios, llamda **FormsModule**, que habrá que importar en el app.module.ts. Si ahora, se pulsa el botón "Guasdar" y revisamos el Network del navegador, podemos comprobar que no hay refresh de la página.
+
+![App](./course_resources/Section_11/app_05.PNG)
